@@ -5,12 +5,10 @@ import loginLogo from '../assets/images/loginPage/Ubuntu Marcas-01.png'
 function Login() {
     return (
         <>
-            <div className='navbar-login'>
-                <img src={loginLogo} width='120' height='56' alt='Logon Ubuntu Financiamiento Sostenible'></img>
-            </div>
-            <div className='card-login'>
-                <LoginCard />
-            </div>
+            {/* <div className='navbar-login'>
+                <img src={loginLogo}  alt='Logon Ubuntu Financiamiento Sostenible'></img>
+            </div> */}
+            <LoginCard />
         </>
     )
 }

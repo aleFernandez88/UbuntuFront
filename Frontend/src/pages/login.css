@@ -1,0 +1,18 @@
+/* .navbar-login img {
+    height: 56px;
+
+} */
+
+body {
+    background-image: url('../assets/images/loginPage/fondo-ingreso-registro.jpg');
+    background-size: cover;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* font-family: 'Lato'; */
+    margin: 0 !important;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
