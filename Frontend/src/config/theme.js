@@ -21,9 +21,9 @@ export const theme = createTheme({
 		// Estilo personalizado para los encabezados h1
 		h1: {
 			fontFamily: "'Lato', sans-serif",
-			fontWeight: 600,
-			fontSize: '18px',
-			lineHeight: '24px',
+			fontWeight: 700,
+			fontSize: '3rem',
+			lineHeight: 1.5,
 			color: coloresUbuntu.negro,
 		},
 		// Estilo personalizado para los encabezados h2
@@ -31,36 +31,9 @@ export const theme = createTheme({
 			fontFamily: "'Lato', sans-serif",
 			fontWeight: 600,
 			fontSize: '18px',
-			lineHeight: '24px',
-			color: coloresUbuntu.negro,
-			textAlign: 'Left',
-		},
-		// Estilo personalizado para los encabezados h3
-		h3: {
-			fontFamily: "'Lato', sans-serif",
-			fontWeight: 700,
-			fontSize: '22px',
 			lineHeight: '25px',
-			color: coloresUbuntu.azul,
-			textAlign: 'Left',
-		},
-		// Estilo personalizado para los encabezados h5
-		h5: {
-			fontFamily: "'Lato', sans-serif",
-			fontWeight: 600,
-			fontSize: '14px',
-			lineHeight: '20px',
 			color: coloresUbuntu.negro,
-			textAlign: 'left',
-		},
-		// Estilo personalizado para los encabezados p
-		p: {
-			fontFamily: "'Lato', sans-serif",
-			fontWeight: 500,
-			fontSize: '28px',
-			lineHeight: '33px',
-			color: coloresUbuntu.negro,
-			textAlign: 'left',
+			textAlign: 'center',
 		},
 		// Estilo personalizado para el texto principal
 		body1: {
@@ -102,6 +75,9 @@ export const theme = createTheme({
 		grisClaro: {
 			primary: coloresUbuntu.grisClaro,
 		},
+		// background: {
+		// 	default: coloresUbuntu.azul,
+		// },
 	},
 	components: {
 		// Name of the component
