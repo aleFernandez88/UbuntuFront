@@ -1,17 +1,16 @@
 import { createTheme } from '@mui/material/styles'
 
 let coloresUbuntu = {
-	azul: '#093c59',
-	negro: '#090909',
-	verde: '#226516',
-	exito: '#1d9129',
+	blue: '#093c59',
+	black: '#090909',
+	green: '#226516',
+	success: '#1d9129',
 	warning: '#b86b11',
 	error: '#bc1111',
-	negro: '#090909',
-	gris: '#d2d2d2',
-	grisClaro: '#eaeaea',
-	grisOscuro: '#060f70',
-	blanco: '#fdfdfd',
+	grey: '#d2d2d2',
+	greyLight: '#eaeaea',
+	greyDark: '#060f70',
+	white: '#fdfdfd',
 }
 
 export const theme = createTheme({
@@ -24,7 +23,7 @@ export const theme = createTheme({
 			fontWeight: 600,
 			fontSize: '18px',
 			lineHeight: '24px',
-			color: coloresUbuntu.negro,
+			color: coloresUbuntu.black,
 		},
 		// Estilo personalizado para los encabezados h2
 		h2: {
@@ -32,7 +31,7 @@ export const theme = createTheme({
 			fontWeight: 600,
 			fontSize: '18px',
 			lineHeight: '24px',
-			color: coloresUbuntu.negro,
+			color: coloresUbuntu.black,
 			textAlign: 'Left',
 		},
 		// Estilo personalizado para los encabezados h3
@@ -41,7 +40,7 @@ export const theme = createTheme({
 			fontWeight: 700,
 			fontSize: '22px',
 			lineHeight: '25px',
-			color: coloresUbuntu.azul,
+			color: coloresUbuntu.blue,
 			textAlign: 'Left',
 		},
 		// Estilo personalizado para los encabezados h5
@@ -50,7 +49,7 @@ export const theme = createTheme({
 			fontWeight: 600,
 			fontSize: '14px',
 			lineHeight: '20px',
-			color: coloresUbuntu.negro,
+			color: coloresUbuntu.black,
 			textAlign: 'left',
 		},
 		// Estilo personalizado para los encabezados p
@@ -59,7 +58,7 @@ export const theme = createTheme({
 			fontWeight: 500,
 			fontSize: '28px',
 			lineHeight: '33px',
-			color: coloresUbuntu.negro,
+			color: coloresUbuntu.black,
 			textAlign: 'left',
 		},
 		// Estilo personalizado para el texto principal
@@ -68,7 +67,7 @@ export const theme = createTheme({
 			fontWeight: 400,
 			fontSize: '1rem',
 			lineHeight: '20px',
-			color: coloresUbuntu.negro,
+			color: coloresUbuntu.black,
 		},
 		// Estilo personalizado para los botones
 		button: {
@@ -82,13 +81,13 @@ export const theme = createTheme({
 	palette: {
 		mode: 'light',
 		primary: {
-			main: coloresUbuntu.azul,
+			main: coloresUbuntu.blue,
 		},
 		secondary: {
-			main: coloresUbuntu.verde,
+			main: coloresUbuntu.green,
 		},
 		success: {
-			main: coloresUbuntu.exito,
+			main: coloresUbuntu.success,
 		},
 		warning: {
 			main: coloresUbuntu.warning,
@@ -97,14 +96,11 @@ export const theme = createTheme({
 			main: coloresUbuntu.error,
 		},
 		text: {
-			primary: coloresUbuntu.negro,
+			primary: coloresUbuntu.black,
 		},
-		grisClaro: {
-			primary: coloresUbuntu.grisClaro,
+		greyLight: {
+			primary: coloresUbuntu.greyLight,
 		},
-		// background: {
-		// 	default: coloresUbuntu.azul,
-		// },
 	},
 	components: {
 		// Name of the component
