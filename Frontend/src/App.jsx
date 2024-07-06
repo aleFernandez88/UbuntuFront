@@ -2,16 +2,16 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { PruebasMUI } from './components/pruebas/PruebasMUI'
+import NavigationDrawer from "./common/navbar-drawer/index"
 
-function App() {
-	const [count, setCount] = useState(0)
 
+export default function App() {
+  
+	
+  
 	return (
-		<>
-			<PruebasMUI />
-		</>
-	)
-}
-
-export default App
+	  <>
+		<NavigationDrawer />
+	  </>
+	);
+  }
