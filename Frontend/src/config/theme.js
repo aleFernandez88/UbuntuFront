@@ -1,31 +1,105 @@
 import { createTheme } from '@mui/material/styles'
 
+let coloresUbuntu = {
+	blue: '#093c59',
+	black: '#090909',
+	green: '#226516',
+	success: '#1d9129',
+	warning: '#b86b11',
+	error: '#bc1111',
+	grey: '#d2d2d2',
+	greyLight: '#eaeaea',
+	greyDark: '#060f70',
+	white: '#fdfdfd',
+}
+
 export const theme = createTheme({
 	typography: {
+		// Fuente por defecto para toda la aplicación
 		fontFamily: ['Lato', 'sans-serif'].join(','),
+		// Estilo personalizado para los encabezados h1
+		h1: {
+			fontFamily: "'Lato', sans-serif",
+			fontWeight: 600,
+			fontSize: '18px',
+			lineHeight: '24px',
+			color: coloresUbuntu.black,
+		},
+		// Estilo personalizado para los encabezados h2
+		h2: {
+			fontFamily: "'Lato', sans-serif",
+			fontWeight: 600,
+			fontSize: '18px',
+			lineHeight: '24px',
+			color: coloresUbuntu.black,
+			textAlign: 'Left',
+		},
+		// Estilo personalizado para los encabezados h3
+		h3: {
+			fontFamily: "'Lato', sans-serif",
+			fontWeight: 700,
+			fontSize: '22px',
+			lineHeight: '25px',
+			color: coloresUbuntu.blue,
+			textAlign: 'Left',
+		},
+		// Estilo personalizado para los encabezados h5
+		h5: {
+			fontFamily: "'Lato', sans-serif",
+			fontWeight: 600,
+			fontSize: '14px',
+			lineHeight: '20px',
+			color: coloresUbuntu.black,
+			textAlign: 'left',
+		},
+		// Estilo personalizado para los encabezados p
+		p: {
+			fontFamily: "'Lato', sans-serif",
+			fontWeight: 500,
+			fontSize: '28px',
+			lineHeight: '33px',
+			color: coloresUbuntu.black,
+			textAlign: 'left',
+		},
+		// Estilo personalizado para el texto principal
+		body1: {
+			fontFamily: "'Open Sans', sans-serif",
+			fontWeight: 400,
+			fontSize: '1rem',
+			lineHeight: '20px',
+			color: coloresUbuntu.black,
+		},
+		// Estilo personalizado para los botones
+		button: {
+			fontFamily: "'Lato', sans-serif",
+			fontWeight: 500,
+			fontSize: '1rem',
+			textTransform: 'capitalize',
+			letterSpacing: '0.1em',
+		},
 	},
 	palette: {
 		mode: 'light',
 		primary: {
-			main: '#093c59',
+			main: coloresUbuntu.blue,
 		},
 		secondary: {
-			main: '#226516',
+			main: coloresUbuntu.green,
 		},
 		success: {
-			main: '#1d9129',
+			main: coloresUbuntu.success,
 		},
 		warning: {
-			main: '#b86b11',
+			main: coloresUbuntu.warning,
 		},
 		error: {
-			main: '#bc1111',
+			main: coloresUbuntu.error,
 		},
 		text: {
-			primary: '#090909',
+			primary: coloresUbuntu.black,
 		},
-		background: {
-			default: '#fdfdfd',
+		greyLight: {
+			primary: coloresUbuntu.greyLight,
 		},
 	},
 	components: {
@@ -40,7 +114,7 @@ export const theme = createTheme({
 					backgroundColor: 'primary',
 					color: 'text',
 					'&:hover': {
-						backgroundColor: 'success', // Color de fondo al pasar el ratón
+						backgroundColor: 'primary', // Color de fondo al pasar el ratón
 					},
 				},
 				containedSecondary: {
