@@ -1,7 +1,7 @@
 import './login.css'
 import LoginCard from '../../components/loginCard/LoginCard';
-import LoginNavbar from '../../components/loginCard/LoginNavbar';
 import { Box } from '@mui/material';
+import NavigationDrawer from '../../common/navbar-drawer';
 
 function Login() {
     return (
@@ -12,7 +12,7 @@ function Login() {
             minHeight: '100vh',
             justifyContent: 'space-between',
             }}>
-                <LoginNavbar/>
+                <NavigationDrawer />
                 <Box sx={{
                     display: 'flex',
                     flexDirection: 'column',
