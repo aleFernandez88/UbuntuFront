@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import {data} from '../../assets/objetivos.json'
 
 const CuadroDeObjetivos = () => {
   return (
@@ -26,19 +27,20 @@ const CuadroDeObjetivos = () => {
       <Typography variant='p' sx={{
       fontSize: '16px',
       fontWeight: 400,
-      lineHeight: '20px'
-
- }}>
+      lineHeight: '20px'}}>
+      
+      <ul>
+        {data.map((objetivo,index)=> (
+          <Typography sx={{ margin: '20px'}}>
+            <li id={index}>{objetivo.content}</li>
+          </Typography>
+          ))}
+       </ul>
+       </Typography>
        
-        <ul>
-        <Typography sx={{ margin: '20px'}}>
-          <li>Facilitar a productores o microemprendedores el acceso a microcréditos que les permitan desarrollar sus iniciativas empresariales.</li></Typography>
-          <Typography sx={{ margin: '20px'}}><li>Proporcionar financiación a empresas y organizaciones que ejecutan proyectos con objetivos sociales, ambientales y culturales.</li></Typography>
-          <Typography sx={{ margin: '20px'}}><li>Ofrecer a potenciales inversores la oportunidad de participar en proyectos con impacto significativo.</li></Typography>
-        </ul>
-      </Typography>
     </Box>
-    </Typography>
+   </Typography> 
+  
   );
 };
 
