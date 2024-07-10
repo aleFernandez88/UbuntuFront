@@ -9,7 +9,7 @@ export const Publications = () => {
 	return (
 		<div>
 			<NavBarDrawer />
-			<Hero publi={dataHero} imageBG={dataImages} />
+			<Hero publi={dataHero[0]} imageBG={dataImages} />
 			{dataPublis?.map((publi, index) => (
 				<CardPublication
 					id={index}
