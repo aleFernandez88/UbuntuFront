@@ -9,8 +9,6 @@ function LoginCard() {
 		<Card
 			sx={{
 				height: 352,
-				// marginRight: '16px',
-				// marginLeft: '16px',
 				margin: '0 16px',
 				borderRadius: 2,
 				display: 'flex',
