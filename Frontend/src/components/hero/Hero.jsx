@@ -1,6 +1,5 @@
 import { Box, Container, Typography } from '@mui/material'
 
-const imageBg = 'https://i.ibb.co/BByS9kr/imagen-publicaciones.jpg)'
 export const Hero = ({ imageBG, publi }) => {
 	return (
 		<div>

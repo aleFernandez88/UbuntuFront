@@ -18,7 +18,7 @@ import MailIcon from '@mui/icons-material/Mail'
 import logoImg from '../../assets/images/navbar/Ubuntu Marcas-01.png'
 import { useTheme } from '@mui/material/styles'
 
-export default function NavigationDrawer() {
+export default function NavBarDrawer() {
 	const [openDrawer, setOpenDrawer] = useState(false)
 	const theme = useTheme()
 
