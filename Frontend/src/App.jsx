@@ -5,9 +5,6 @@ import { AppRoutes } from './routes/AppRoutes'
 export default function App() {
 	return (
 		<>
-			{/* <NavigationDrawer />
-		<CuadroDeObjetivos /> */}
-			{/* <Publications /> */}
 			<main>
 				<BrowserRouter>
 					<AppRoutes />
