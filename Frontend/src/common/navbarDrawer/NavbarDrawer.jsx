@@ -90,16 +90,24 @@ export default function NavBarDrawer() {
 						},
 					}}
 				>
-					{menuItems.map((text, index) => (
-						<ListItem key={index} disablePadding>
-							{/* <ListItemButton>
-                <ListItemText primary={text} />
-              </ListItemButton> */}
-							<ListItemButton>
-								<Link to='publicaciones'>{text}</Link>
-							</ListItemButton>
-						</ListItem>
-					))}
+					<ListItem
+						disablePadding
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'start',
+						}}
+					>
+						<ListItemButton component={Link} to='/'>
+							<ListItemText primary='Home' />
+						</ListItemButton>
+						<ListItemButton component={Link} to='publicaciones'>
+							<ListItemText primary='Publicaciones' />
+						</ListItemButton>
+						<ListItemButton component={Link} to='publicaciones'>
+							<ListItemText primary='Publicaciones' />
+						</ListItemButton>
+					</ListItem>
 				</List>
 			</Drawer>
 		</Box>
