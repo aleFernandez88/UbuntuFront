@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from '@mui/material'
+import SearchBar from '../../common/searchBar/SearchBar'
 
 export const Hero = ({ imageBG, publi }) => {
 	return (
@@ -17,8 +18,11 @@ export const Hero = ({ imageBG, publi }) => {
 					height={'488px'}
 					width={'100%'}
 					display={'flex'}
-					alignItems={'center'}
+					alignItems={'space-araound'}
+					justifyContent={'space-around'}
+					flexDirection={'column'}
 				>
+					<SearchBar />
 					<Box padding={'20px 20px 50px 20px'} width={'65%'}>
 						<Typography variant='h1' color={'#fdfdfd'}>
 							{publi.subTitle}

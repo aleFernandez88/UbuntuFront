@@ -98,15 +98,45 @@ export default function NavBarDrawer() {
 							alignItems: 'start',
 						}}
 					>
-						<ListItemButton component={Link} to='/'>
+						<Link to='/'>
 							<ListItemText primary='Home' />
-						</ListItemButton>
-						<ListItemButton component={Link} to='publicaciones'>
+						</Link>
+					</ListItem>
+					<ListItem
+						disablePadding
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'start',
+						}}
+					>
+						<Link to='/login'>
+							<ListItemText primary='Login' />
+						</Link>
+					</ListItem>
+					<ListItem
+						disablePadding
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'start',
+						}}
+					>
+						<Link to='/publicaciones'>
 							<ListItemText primary='Publicaciones' />
-						</ListItemButton>
-						<ListItemButton component={Link} to='publicaciones'>
-							<ListItemText primary='Publicaciones' />
-						</ListItemButton>
+						</Link>
+					</ListItem>
+					<ListItem
+						disablePadding
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'start',
+						}}
+					>
+						<Link to='/emprendimientos'>
+							<ListItemText primary='Emprendimientos' />
+						</Link>
 					</ListItem>
 				</List>
 			</Drawer>
