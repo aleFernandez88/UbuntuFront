@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import NavigationDrawer from "./common/navbarDrawer/NavbarDrawer"
 import CuadroDeObjetivos from './components/objetivos/Objetivos'
+import SearchBar from './common/searchbar/Searchbar'
 
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
 	  <>
 		<NavigationDrawer />
 		<CuadroDeObjetivos />
+		<SearchBar/>
 	  </>
 	);
   }
