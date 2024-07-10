@@ -1,8 +1,8 @@
-import './login.css'
 import LoginCard from '../../components/loginCard/LoginCard'
 import { Box } from '@mui/material'
-import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
+
 import { dataImages } from '../../assets/images.json'
+import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
 
 function Login() {
 	return (

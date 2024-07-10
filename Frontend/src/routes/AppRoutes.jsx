@@ -2,8 +2,8 @@ import React from 'react'
 import { Publications } from '../pages/publications/Publications'
 import { Home } from '../pages/home/Home'
 import { useRoutes } from 'react-router-dom'
-import Login from '../pages/login/Login'
 import { Undertakings } from '../pages/undertakings/Undertakings'
+import Login from '../pages/login/Login'
 
 export const AppRoutes = () => {
 	const routes = [
