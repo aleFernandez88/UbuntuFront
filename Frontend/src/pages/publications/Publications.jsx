@@ -14,6 +14,7 @@ export const Publications = () => {
 				<CardPublication
 					id={index}
 					title={publi.title}
+					images={publi.images}
 					date={publi.date}
 					content={publi.content}
 				/>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Card, CardContent, Typography, Button, Collapse } from '@mui/material'
 import { Carousel } from '../carousel/Carousel'
 
-export const CardPublication = ({ title, date, content }) => {
+export const CardPublication = ({ title, images, date, content }) => {
 	// Controlar la expansión del contenido
 	const [expanded, setExpanded] = useState(false)
 
@@ -25,7 +25,7 @@ export const CardPublication = ({ title, date, content }) => {
 				<Typography variant='h2' component='div' margin={'4px 0 16px 0'}>
 					{title}
 				</Typography>
-				<Carousel />
+				<Carousel images={images} />
 				<Typography variant='h5' component='div' margin={'20px 0 4px 0'}>
 					{date}
 				</Typography>

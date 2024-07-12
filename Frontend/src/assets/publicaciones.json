@@ -1,7 +1,11 @@
 {
     "dataPublis":[{
 		"title": "Inversiones Éticas: Mas que ganancias",
-		"images": [],
+		"images": [
+			"https://i.ibb.co/NFPxYtV/card-ejemplo-publicacion-imagen1.jpg",
+			"https://i.ibb.co/RGw5WKK/card-ejemplo-publicacion-imagen2.jpg",
+			"https://i.ibb.co/xggY5rF/card-ejemplo-publicacion-imagen3.jpg"
+		],
 		"date": "17/04/2023",
 		"content": [
 			"Las decisiones financieras han trascendido la mera maximización del rendimiento. Actualmente, muchos inversores desean que sus decisiones reflejen sus valores éticos y morales, dando lugar a las inversiones éticas o sostenibles.",
