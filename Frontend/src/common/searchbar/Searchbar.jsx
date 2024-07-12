@@ -45,13 +45,23 @@ const StyledInputBase = styled(InputBase)(() => ({
 export default function SearchBar() {
   return (
     <Box>
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
+      <Search 
+        sx={{display: 'flex', 
+        gap: '0px', 
+        margin: 'auto', 
+        width: '75%', 
+        minWidth: '310px', 
+        maxWidth: '500px',
+        padding: '0px',
+        left: '0px',
+        textAlignLast: 'center'}}>
+          <SearchIconWrapper sx={{position: 'relative'}}>
+            <SearchIcon />
+          </SearchIconWrapper>
         
           <StyledInputBase 
             placeholder="Buscar Microemprendimientos"
+          sx={{margin: '0px', alignSelf: 'center', padding: '0px'}}
           />
         
       </Search>
