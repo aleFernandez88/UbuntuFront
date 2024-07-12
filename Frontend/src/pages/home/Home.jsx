@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
+import NavBarDrawer from '../../common/navBarDrawer/NavbarDrawer'
 import { Hero } from '../../components/hero/Hero'
 import Objetives from '../../components/objetives/Objetives'
 import { dataImages } from '../../assets/images.json'

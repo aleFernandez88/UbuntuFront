@@ -1,7 +1,7 @@
 import { dataHero } from '../../assets/hero.json'
 import { dataPublis } from '../../assets/publicaciones.json'
 import { dataImages } from '../../assets/images.json'
-import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
+import NavBarDrawer from '../../common/navBarDrawer/NavbarDrawer'
 import { Hero } from '../../components/hero/Hero'
 import { CardPublication } from '../../components/cardPublication/CardPublication'
 
