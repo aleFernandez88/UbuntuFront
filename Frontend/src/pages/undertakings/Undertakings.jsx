@@ -1,7 +1,7 @@
 import { dataHero } from '../../assets/hero.json'
 import { dataEmprendimientos } from '../../assets/emprendimientos.json'
 import { dataImages } from '../../assets/images.json'
-import NavBarDrawer from '../../common/navBarDrawer/NavbarDrawer'
+import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
 import Category from '../../common/category/Category'
 import { Hero } from '../../components/hero/Hero'
 import { CardEntrepreneurship } from '../../components/cardEntrepreneurship/CardEntrepreneurship'

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import NavBarDrawer from '../../common/navBarDrawer/NavbarDrawer'
+import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
 import { Hero } from '../../components/hero/Hero'
 import Objetives from '../../components/objetives/Objetives'
 import { dataImages } from '../../assets/images.json'

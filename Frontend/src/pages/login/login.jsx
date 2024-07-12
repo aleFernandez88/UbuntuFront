@@ -2,8 +2,7 @@ import LoginCard from '../../components/loginCard/LoginCard'
 import { Box } from '@mui/material'
 
 import { dataImages } from '../../assets/images.json'
-import NavBarDrawer from '../../common/navBarDrawer/NavbarDrawer'
-
+import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
 
 function Login() {
 	return (
