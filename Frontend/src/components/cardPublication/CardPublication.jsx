@@ -23,7 +23,7 @@ export const CardPublication = ({ title, images, date, content }) => {
 			sx={{
 				maxWidth: 345,
 				margin: 'auto',
-				mt: 5,
+				mt: 3,
 				bgcolor: 'greyLight.primary',
 				borderRadius: '16px',
 			}}
