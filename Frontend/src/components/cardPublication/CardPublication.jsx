@@ -1,5 +1,12 @@
 import { useState } from 'react'
-import { Card, CardContent, Typography, Button, Collapse } from '@mui/material'
+import {
+	Card,
+	CardContent,
+	Typography,
+	Button,
+	Collapse,
+	Box,
+} from '@mui/material'
 import { Carousel } from '../carousel/Carousel'
 
 export const CardPublication = ({ title, date, content }) => {
@@ -45,15 +52,17 @@ export const CardPublication = ({ title, date, content }) => {
 					))}
 				</Collapse>
 				{content.length > 1 && (
-					<Button
-						size='small'
-						onClick={handleExpandClick}
-						color='primary'
-						paddingTop='0px'
-					>
-						{/* Cambiar el texto del botón según el estado */}
-						{expanded ? 'Ver menos' : 'Ver más'}
-					</Button>
+					<Box sx={{ textAlign: 'center' }}>
+						<Button
+							size='small'
+							onClick={handleExpandClick}
+							color='primary'
+							paddingTop='0px'
+						>
+							{/* Cambiar el texto del botón según el estado */}
+							{expanded ? 'Ver menos' : 'Ver más'}
+						</Button>
+					</Box>
 				)}
 			</CardContent>
 			{/* No necesitamos Collapse aquí ya que no hay contenido adicional aparte del texto */}

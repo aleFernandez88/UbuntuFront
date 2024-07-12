@@ -73,6 +73,8 @@ export default function NavBarDrawer() {
 						backgroundColor: theme.palette.primary.main,
 						color: 'white',
 						top: '64px',
+						paddingLeft: '16px',
+						paddingTop: '8px',
 					},
 				}}
 				open={openDrawer}
