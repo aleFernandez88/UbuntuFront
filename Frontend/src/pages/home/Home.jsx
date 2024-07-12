@@ -35,6 +35,7 @@ export const Home = () => {
 			{dataPublis?.map((publi, index) => (
 				<CardPublication
 					id={index}
+					images={publi.images}
 					title={publi.title}
 					date={publi.date}
 					content={publi.content}
