@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from '@mui/material'
-import SearchBar from '../../common/searchbar/Searchbar'
+import SearchBar from '../../common/searchBar/SearchBar'
 
 export const Hero = ({ imageBG, publi }) => {
 	return (
