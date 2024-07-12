@@ -74,7 +74,7 @@ export const theme = createTheme({
 			fontFamily: "'Lato', sans-serif",
 			fontWeight: 500,
 			fontSize: '1rem',
-			textTransform: 'capitalize',
+			textTransform: 'none',
 			letterSpacing: '0.1em',
 		},
 	},
