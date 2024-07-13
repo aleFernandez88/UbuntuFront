@@ -44,7 +44,6 @@ export const CardEntrepreneurship = ({
 				maxWidth: 345,
 				margin: 'auto',
 				mt: 5,
-
 				bgcolor: 'greyLight.primary',
 				borderRadius: '16px',
 			}}

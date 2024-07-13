@@ -18,6 +18,7 @@ export const Undertakings = () => {
 					backgroundPosition: 'center center',
 					backgroundSize: 'cover',
 					padding: '0',
+					paddingBottom: '30px',
 				}}
 			>
 				<Category />
