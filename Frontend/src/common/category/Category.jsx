@@ -9,17 +9,16 @@ import Categorias from '../../assets/Category.json'
 function Category() {
 	return (
 		<>
-			<hr></hr>
-			<Box sx={{ textAlignLast: 'center' }}>
-				<Typography variant='h2' sx={{ mt: 4 }}>
+			<Box sx={{ textAlignLast: 'center'}}>
+				<Typography variant='h5' sx={{ mt: 4, fontSize: '16px' }}>
 					Microemprendimientos Ubuntu
 				</Typography>
-				<Typography variant='h4' sx={{ mb: 4 }}>
+				<Typography variant='h3' sx={{ mb: 4, color: '#090909' }}>
 					Categorías
 				</Typography>
 			</Box>
 
-			<Box sx={{ margin: '0px 10px', textAlign: 'center' }}>
+			<Box sx={{minWidth:'280px', maxWidth: '500px', margin: 'auto', padding: '0px 20px',textAlign: 'center'}}>
 				{Categorias.data.map(categoria => (
 					<CategoryComponent
 						key={categoria.id}
@@ -28,8 +27,8 @@ function Category() {
 					/>
 				))}
 
-				<Button variant='contained' sx={{ borderRadius: '20px', mt: '10px' }}>
-					<Typography variant='button'>Ver más Categorías</Typography>
+				<Button variant='contained' sx={{ borderRadius: '20px', mt: '10px', minWidth: '184px'}}>
+					<Typography variant='button' sx={{letterSpacing: '0px'}}>Ver más Categorías</Typography>
 				</Button>
 			</Box>
 		</>
