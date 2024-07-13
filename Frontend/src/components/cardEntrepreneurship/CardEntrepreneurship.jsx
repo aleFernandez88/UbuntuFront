@@ -20,7 +20,7 @@ const ExpandMore = ({ expand, ...props }) => (
 			transform: expand ? 'rotate(180deg)' : 'rotate(0deg)',
 		}}
 	>
-		<ExpandMoreIcon />
+		<ExpandMoreIcon sx={{ fontSize: '2rem' }} />
 	</IconButton>
 )
 
@@ -75,16 +75,7 @@ export const CardEntrepreneurship = ({
 					{ubi}
 				</Typography>
 			</CardContent>
-			<Box
-				sx={{
-					display: 'flex',
-					justifyContent: 'center',
-					p: 0,
-					height: '10px',
-				}}
-			>
-				<ExpandMore expand={expanded} onClick={handleExpandClick} />
-			</Box>
+
 			<Collapse in={expanded} timeout='auto' unmountOnExit>
 				<CardContent>
 					<Typography
@@ -109,8 +100,27 @@ export const CardEntrepreneurship = ({
 					<Typography variant='body2' color='text.secondary' paragraph>
 						{information}
 					</Typography>
+					<Box sx={{ textAlign: 'center' }}>
+						<Button
+							variant='contained'
+							sx={{ borderRadius: '20px', mt: '20px', mb: '10px' }}
+							// onClick={handleShowAllClick}
+						>
+							<Typography variant='button'>Contactar</Typography>
+						</Button>
+					</Box>
 				</CardContent>
 			</Collapse>
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					p: 0,
+					height: '10px',
+				}}
+			>
+				<ExpandMore expand={expanded} onClick={handleExpandClick} />
+			</Box>
 			<Button size='small' color='primary' paddingTop='0px'></Button>
 		</Card>
 	)
