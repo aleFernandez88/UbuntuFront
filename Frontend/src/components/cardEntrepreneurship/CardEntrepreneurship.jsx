@@ -20,7 +20,7 @@ const ExpandMore = ({ expand, ...props }) => (
 			transform: expand ? 'rotate(180deg)' : 'rotate(0deg)',
 		}}
 	>
-		<ExpandMoreIcon />
+		<ExpandMoreIcon sx={{ fontSize: '2rem' }} />
 	</IconButton>
 )
 
