@@ -3,6 +3,7 @@ import { Publications } from '../pages/publications/Publications'
 import { Home } from '../pages/home/Home'
 import { useRoutes } from 'react-router-dom'
 import { Undertakings } from '../pages/undertakings/Undertakings'
+import { UndertakingsCategory } from '../pages/undertakings/UndertakingsCategory'
 import Login from '../pages/login/Login'
 
 export const AppRoutes = () => {
@@ -23,6 +24,10 @@ export const AppRoutes = () => {
 			path: '/emprendimientos',
 			element: <Undertakings />,
 		},
+		{
+			path: '/categoriaSeleccionada',
+			element: <UndertakingsCategory/>, 
+		}
 	]
 
 	return useRoutes(routes)
