@@ -3,6 +3,8 @@ import { styled } from '@mui/material/styles'
 import InputBase from '@mui/material/InputBase'
 import SearchIcon from '@mui/icons-material/Search'
 import { Box } from '@mui/material'
+import { useState } from 'react'
+import searchFunction from './SearchFunction'
 
 const Search = styled('div')(() => ({
 	position: 'relative',
@@ -37,7 +39,27 @@ const StyledInputBase = styled(InputBase)(() => ({
 	height: '16px',
 }))
 
-export default function SearchBar() {
+
+
+export default function SearchBar({ customStyles }) {
+	const [searchQuery, setSearchQuery] = useState('');
+	const handleSearch = async () => {  
+        try {  
+            await searchFunction(searchQuery); 
+
+        } catch (error) {  
+            console.error('Error al buscar:', error);  
+        }  
+    };  
+
+    const handleKeyPress = (e) => {  
+        if (e.key === 'Enter') {  
+            handleSearch();  
+        }  	}
+	
+	
+	
+	
 	return (
 		<Box>
 			<Search
@@ -51,14 +73,18 @@ export default function SearchBar() {
 					padding: '0px',
 					left: '0px',
 					textAlignLast: 'center',
+					...customStyles,
 				}}
 			>
-				<SearchIconWrapper sx={{ position: 'relative' }}>
+				<SearchIconWrapper sx={{ position: 'relative' }} onClick={handleSearch}>
 					<SearchIcon />
 				</SearchIconWrapper>
 
 				<StyledInputBase
 					placeholder='Buscar Microemprendimientos'
+					value={searchQuery}  
+   					onChange={(e) => setSearchQuery(e.target.value)}  
+					onKeyPress={handleKeyPress}
 					sx={{ margin: '0px', alignSelf: 'center', padding: '0px' }}
 				/>
 			</Search>
