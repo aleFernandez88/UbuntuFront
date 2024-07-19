@@ -14,16 +14,23 @@ export const Carousel = ({ images }) => {
 
 	return (
 		<Slider {...settings}>
-			{images.map((image, index) => (
-				<box
-					key={index}
-					sx={{
-						overFlow: 'hidden',
-					}}
+		   {Array.isArray(images) && images.length > 0 ?(
+			images.map((image, index) => (
+			  <div key={index}>
+				<div
+				  style={{
+					overflow: 'hidden',
+				  }}
 				>
-					<img src={image} />
-				</box>
-			))}
+				  <img src={image} alt={`Slide ${index}`} />
+				</div>
+			  </div>
+			))
+		  ) : (
+			<div>
+			  <p>No hay imágenes para mostrar en el carrusel</p>
+			</div>
+		  )}
 		</Slider>
-	)
-}
+	  )
+	}

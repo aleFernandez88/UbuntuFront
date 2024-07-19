@@ -4,7 +4,9 @@ import InputBase from '@mui/material/InputBase'
 import SearchIcon from '@mui/icons-material/Search'
 import { Box } from '@mui/material'
 import { useState } from 'react'
-import searchFunction from './SearchFunction'
+import { fetchData }from './SearchFunction'
+import { useNavigate } from 'react-router-dom';  
+
 
 const Search = styled('div')(() => ({
 	position: 'relative',
@@ -40,25 +42,39 @@ const StyledInputBase = styled(InputBase)(() => ({
 }))
 
 
+const SearchBar = ({ customStyles }) => {  
+    const [searchQuery, setSearchQuery] = useState('');  
+    const [searchResults, setSearchResults] = useState([]);  
+	const [error, setError] = useState(false);
+	const navigate = useNavigate();
 
-export default function SearchBar({ customStyles }) {
-	const [searchQuery, setSearchQuery] = useState('');
-	const handleSearch = async () => {  
-        try {  
-            await searchFunction(searchQuery); 
 
-        } catch (error) {  
-            console.error('Error al buscar:', error);  
-        }  
-    };  
+	  const handleSearch = async () => {  
+		try {  
+		  const response = await fetchData(searchQuery);  
+		  if (response.length === 0) {  
+			setError(true);  
+			navigate("/sinresultados");
+		  } else {  
+			setSearchResults(response);
+			console.log('Resultados de la búsqueda:', response);
+			navigate("/resultados", { state: { searchQuery } });
+		  }  
+		} catch (error) {  
+		  console.error('Error al buscar:', error);  
+		  setError(true);
+		  navigate("/sinresultados");
+		}  
+	  };
+ const handleKeyPress = (e) => {  
+		if (e.key === 'Enter') {  
+		  handleSearch();  
+		}  
+	  };  
 
-    const handleKeyPress = (e) => {  
-        if (e.key === 'Enter') {  
-            handleSearch();  
-        }  	}
-	
-	
-	
+	  if (error) {  
+		navigate("/sinresultados");  
+	  } 
 	
 	return (
 		<Box>
@@ -83,7 +99,8 @@ export default function SearchBar({ customStyles }) {
 				<StyledInputBase
 					placeholder='Buscar Microemprendimientos'
 					value={searchQuery}  
-   					onChange={(e) => setSearchQuery(e.target.value)}  
+					onChange={(e) => setSearchQuery(e.target.value)}  
+				
 					onKeyPress={handleKeyPress}
 					sx={{ margin: '0px', alignSelf: 'center', padding: '0px' }}
 				/>
@@ -91,3 +108,4 @@ export default function SearchBar({ customStyles }) {
 		</Box>
 	)
 }
+export default SearchBar; 

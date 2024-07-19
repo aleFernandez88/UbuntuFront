@@ -7,35 +7,38 @@ import Login from '../pages/login/Login'
 import { Results } from '../pages/results/Results'
 import { Noresults } from '../pages/results/Noresults'
 
-export const AppRoutes = () => {
-	const routes = [
-		{
-			path: '/',
-			element: <Home />,
-		},
-		{
-			path: '/login',
-			element: <Login />,
-		},
-		{
-			path: '/publicaciones',
-			element: <Publications />,
-		},
-		{
-			path: '/emprendimientos',
-			element: <Undertakings />,
-		},
 
-		{
-			path: '/resultados',
-			element: <Results />,
-		},
 
-		{
-			path: '/sinresultados',
-			element: <Noresults />,
-		},
-	]
+ const AppRoutes = () => {
+    const routes = [
+        {
+            path: '/',
+            element: <Home />,
+        },
+        {
+            path: '/login',
+            element: <Login />,
+        },
+        {
+            path: '/publicaciones',
+            element: <Publications />,
+        },
+        {
+            path: '/emprendimientos',
+            element: <Undertakings />,
+        },
 
-	return useRoutes(routes)
+        {
+            path: '/resultados',
+            element: <Results />,
+        },
+
+        {
+            path: '/sinresultados',
+            element: <Noresults />,
+        },
+    ]
+
+        return useRoutes(routes)
 }
+export default AppRoutes;
