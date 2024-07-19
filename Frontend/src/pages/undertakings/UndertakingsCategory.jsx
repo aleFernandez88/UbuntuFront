@@ -1,13 +1,12 @@
 import { dataHero } from '../../assets/hero.json'
-// import { dataEmprendimientos } from '../../assets/emprendimientos.json'
+import { dataEmprendimientos } from '../../assets/emprendimientos.json'
 import { dataImages } from '../../assets/images.json'
 import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
-import Category from '../../common/category/Category'
 import { Hero } from '../../components/hero/Hero'
-// import { CardEntrepreneurship } from '../../components/cardEntrepreneurship/CardEntrepreneurship'
+import { CardEntrepreneurship } from '../../components/cardEntrepreneurship/CardEntrepreneurship'
 import { Box } from '@mui/material'
 
-export const Undertakings = () => {
+export const UndertakingsCategory = () => {
 	return (
 		<div>
 			<NavBarDrawer />
@@ -21,7 +20,20 @@ export const Undertakings = () => {
 					paddingBottom: '30px',
 				}}
 			>
-				<Category />
+				<Box>
+					{dataEmprendimientos?.map((emp, index) => (
+					<CardEntrepreneurship
+						id={index}
+						title={emp.title}
+						images={emp.images}
+						subtitle={emp.subtitle}
+						category={emp.category}
+						ubi={emp.ubi}
+						description={emp.description}
+						information={emp.information}
+					/>
+					))}
+				</Box>	
 			</Box>
 		</div>
 	)
