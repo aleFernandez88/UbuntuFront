@@ -1,12 +1,33 @@
 import { Box, Button, Typography } from '@mui/material'
 import CategoryComponent from './CategoryComponent'
-import Categorias from '../../assets/Category.json'
+import { useEffect, useState } from 'react'
+import servicesAxios from '../../services/axios';
+// import Categorias from '../../assets/Category.json'
 
 /*
     - El boton no acepta adecuadamente la variante "containedPrimary"
     Me pasó lo mismo en la página de Login
  */
 function Category() {
+	const [datos, setDatos] = useState("");
+	const [error, setError] = useState("");
+
+	useEffect(() => {
+		
+		const category = async() => {
+			try {
+				const response = await servicesAxios.category();
+				setDatos(response);
+				// console.log(response[0].name)
+			} catch (error) {
+				setError(error);
+			}
+		}
+
+		category();
+		
+	},[]);
+
 	return (
 		<>
 			<hr></hr>
@@ -20,13 +41,24 @@ function Category() {
 			</Box>
 
 			<Box sx={{ margin: '0px 10px', textAlign: 'center' }}>
-				{Categorias.data.map(categoria => (
-					<CategoryComponent
-						key={categoria.id}
-						text={categoria.name}
-						url={categoria.url}
-					/>
-				))}
+				{error && (
+					<Typography variant='body1' color='error'>
+						No se pudieron cargar las categorias
+					</Typography>
+				)}
+				{datos ? (
+					datos.map(categoria => (
+						<CategoryComponent
+							key={categoria.id}
+							text={categoria.name}
+							url={''}
+						/>
+					))
+				) : (
+					<Typography variant='body1'> Cargando categorias...</Typography>
+				)}
+				
+
 
 				<Button variant='contained' sx={{ borderRadius: '20px', mt: '10px' }}>
 					<Typography variant='button'>Ver más Categorías</Typography>
