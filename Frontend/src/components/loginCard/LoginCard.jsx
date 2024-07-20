@@ -1,10 +1,39 @@
+import React from 'react'
 import logoCard from '../../assets/images/loginPage/logo card ingreso registro.png'
 import logoButton from '../../assets/images/loginPage/google-logo.png'
 import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
+import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google'
+import axios from 'axios'
 
-function LoginCard() {
+function LoginCardComponent() {
+	const login = useGoogleLogin({
+		onSuccess: async googleData => {
+			try {
+				console.log('Google Data:', googleData)
+				const res = await axios.post(
+					'TU_ENDPOINT_DE_BACKEND',
+					{
+						token: googleData.credential,
+					},
+					{
+						headers: {
+							'Content-Type': 'application/json',
+						},
+					}
+				)
+
+				const data = res.data
+				console.log(data)
+			} catch (error) {
+				console.error('Login Failed:', error.response || error)
+			}
+		},
+		onError: error => {
+			console.error('Login Failure:', error)
+		},
+	})
+
 	return (
 		<Card
 			sx={{
@@ -37,6 +66,7 @@ function LoginCard() {
 			</Box>
 			<Button
 				variant='contained'
+				onClick={() => login()}
 				sx={{
 					mt: '60px',
 					borderRadius: '100px',
@@ -45,7 +75,12 @@ function LoginCard() {
 					gap: '4px',
 				}}
 			>
-				<img src={logoButton} width='24px' height='24px'></img>
+				<img
+					src={logoButton}
+					width='24px'
+					height='24px'
+					alt='Google logo'
+				></img>
 				<Typography
 					variant='button'
 					sx={{
@@ -61,6 +96,14 @@ function LoginCard() {
 				</Typography>
 			</Button>
 		</Card>
+	)
+}
+
+function LoginCard() {
+	return (
+		<GoogleOAuthProvider clientId='524777067522-bbtqsdcvsrhislfa820o81b8crn6opnu.apps.googleusercontent.com'>
+			<LoginCardComponent />
+		</GoogleOAuthProvider>
 	)
 }
 
