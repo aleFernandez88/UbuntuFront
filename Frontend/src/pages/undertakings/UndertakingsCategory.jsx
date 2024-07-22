@@ -4,9 +4,14 @@ import { dataImages } from '../../assets/images.json'
 import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
 import { Hero } from '../../components/hero/Hero'
 import { CardEntrepreneurship } from '../../components/cardEntrepreneurship/CardEntrepreneurship'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
+import { useParams } from 'react-router-dom'
 
 export const UndertakingsCategory = () => {
+	const { id } = useParams() ;
+
+	//BUSCAR LA CATEGORIA Y PONERLO
+
 	return (
 		<div>
 			<NavBarDrawer />
@@ -21,6 +26,7 @@ export const UndertakingsCategory = () => {
 				}}
 			>
 				<Box>
+					<Typography>{id}</Typography>
 					{dataEmprendimientos?.map((emp, index) => (
 					<CardEntrepreneurship
 						id={index}
