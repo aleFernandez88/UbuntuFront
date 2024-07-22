@@ -11,7 +11,7 @@ export const Undertakings = () => {
 	return (
 		<div>
 			<NavBarDrawer />
-			<Hero publi={dataHero[0]} imageBG={dataImages} />
+			<Hero publi={dataHero[3]} imageBG={dataImages[5].url} />
 			<Box
 				sx={{
 					backgroundImage: `url('${dataImages[3].bgVerde}')`,

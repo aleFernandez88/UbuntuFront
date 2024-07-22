@@ -23,7 +23,15 @@ export const Hero = ({ imageBG, publi }) => {
 					flexDirection={'column'}
 				>
 					<SearchBar />
-					<Box padding={'20px 20px 50px 20px'} width={'65%'}>
+					<Box
+						padding={'20px 20px 50px 20px'}
+						width={'65%'}
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							gap: '10px',
+						}}
+					>
 						<Typography variant='h1' color={'#fdfdfd'}>
 							{publi.subTitle}
 						</Typography>
