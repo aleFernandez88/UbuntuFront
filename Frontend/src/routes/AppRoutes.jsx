@@ -5,6 +5,7 @@ import { useRoutes } from 'react-router-dom'
 import { Undertakings } from '../pages/undertakings/Undertakings'
 import { UndertakingsCategory } from '../pages/undertakings/UndertakingsCategory'
 import Login from '../pages/login/Login'
+import UserAutenthicated from '../pages/testUserAuthenticated/TestUserAuthenticated'
 
 export const AppRoutes = () => {
 	const routes = [
@@ -27,6 +28,11 @@ export const AppRoutes = () => {
 		{
 			path: '/categoriaSeleccionada',
 			element: <UndertakingsCategory/>, 
+		},
+
+		{
+			path: '/userAuthenticated',
+			element: <UserAutenthicated/>, 
 		}
 	]
 

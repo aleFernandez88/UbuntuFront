@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText'
 import logoImg from '../../assets/images/navbar/Ubuntu Marcas-01.png'
 import { useTheme } from '@mui/material/styles'
 
-export default function NavBarDrawer() {
+export default function NavBarDrawer({ showUserAvatar, userAvatar }) {
 	const [openDrawer, setOpenDrawer] = useState(false)
 	const theme = useTheme()
 
@@ -34,15 +34,15 @@ export default function NavBarDrawer() {
 					boxShadow: 'none',
 					height: '56px',
 					padding: '0px 16px',
-					gap: '80px',
+					
 				}}
 			>
-				<Toolbar sx={{ height: '100%' }}>
+				<Toolbar sx={{ height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 					<IconButton
 						size='large'
 						edge='start'
 						aria-label='menu'
-						sx={{ mr: 0, height: '100%', fontSize: '8rem' }}
+						sx={{ mr: 0, /*height: '100%', fontSize: '8rem' */}}
 						onClick={toggleDrawer}
 					>
 						{openDrawer ? <CloseIcon /> : <MenuIcon />}
@@ -51,13 +51,18 @@ export default function NavBarDrawer() {
 						sx={{
 							display: 'flex',
 							justifyContent: 'center',
-							height: '100%',
-							alignItems: 'center',
+							
 							flexGrow: 1,
+							
 						}}
 					>
 						<img src={logoImg} alt='Logo' style={{ maxWidth: '100px' }} />
-					</Box>
+						{/* Renderiza el avatar solo si showUserAvatar es true */}  
+						</Box>
+						<Box sx={{ display: 'flex', alignItems: 'center', ml: '8px' }}>
+						{showUserAvatar && userAvatar} 
+						</Box>
+					
 				</Toolbar>
 			</AppBar>
 			<Drawer
