@@ -18,7 +18,7 @@ export const Home = () => {
 	return (
 		<>
 			<NavBarDrawer />
-			<Hero publi={dataHero[1]} imageBG={dataImages} />
+			<Hero publi={dataHero[1]} imageBG={dataImages[0].url} />
 			<Objetives />
 			<Category />
 			<Typography

@@ -22,18 +22,18 @@ export const UndertakingsCategory = () => {
 			>
 				<Box>
 					{dataEmprendimientos?.map((emp, index) => (
-					<CardEntrepreneurship
-						id={index}
-						title={emp.title}
-						images={emp.images}
-						subtitle={emp.subtitle}
-						category={emp.category}
-						ubi={emp.ubi}
-						description={emp.description}
-						information={emp.information}
-					/>
+						<CardEntrepreneurship
+							id={index}
+							title={emp.title}
+							images={emp.images}
+							subtitle={emp.subtitle}
+							category={emp.category}
+							ubi={emp.ubi}
+							description={emp.description}
+							information={emp.information}
+						/>
 					))}
-				</Box>	
+				</Box>
 			</Box>
 		</div>
 	)
