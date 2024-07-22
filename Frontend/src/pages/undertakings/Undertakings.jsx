@@ -17,8 +17,8 @@ export const Undertakings = () => {
 					backgroundImage: `url('${dataImages[3].bgVerde}')`,
 					backgroundPosition: 'center center',
 					backgroundSize: 'cover',
-					padding: '0',
-					paddingBottom: '30px',
+					paddingTop: '20px',
+					paddingBottom: '20px',
 				}}
 			>
 				<Category />

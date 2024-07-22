@@ -30,16 +30,8 @@ function Category() {
 
 	return (
 		<>
-			<Box sx={{ textAlignLast: 'center'}}>
-				<Typography variant='h5' sx={{ mt: 4, fontSize: '16px' }}>
-					Microemprendimientos Ubuntu
-				</Typography>
-				<Typography variant='h3' sx={{ mb: 4, color: '#090909' }}>
-					Categorías
-				</Typography>
-			</Box>
-
 			<Box sx={{minWidth:'280px', maxWidth: '500px', margin: 'auto', padding: '0px 20px',textAlign: 'center'}}>
+				{/* APLICAR PAGINADO? O HACERLO DE OTRO MODO? */}
 				{datos ? (
 					datos.slice(0, 3).map(categoria => (
                         <Link underline='none' href={'/categoriaSeleccionada/'+categoria.id}>
@@ -53,13 +45,7 @@ function Category() {
 				) : (
 					<Typography variant='body1' sx={{mb: '10px'}}> Cargando categorias...</Typography>
 				)}
-
 				{/* aplicar hundleClick no LINK: AVERIGUAR */}
-				<Link underline='none' href={'/emprendimientos'}>
-					<Button variant='contained' sx={{ borderRadius: '20px', mt: '10px', minWidth: '184px'}}>
-						<Typography variant='button' sx={{letterSpacing: '0px'}}>Ver más Categorías</Typography>
-					</Button>
-				</Link>
 			</Box>
 		</>
 	)
