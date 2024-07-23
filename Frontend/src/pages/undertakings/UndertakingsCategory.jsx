@@ -10,7 +10,7 @@ export const UndertakingsCategory = () => {
 	return (
 		<div>
 			<NavBarDrawer />
-			<Hero publi={dataHero[0]} imageBG={dataImages} />
+			<Hero publi={dataHero[3]} imageBG={dataImages[5].url} />
 			<Box
 				sx={{
 					backgroundImage: `url('${dataImages[3].bgVerde}')`,
@@ -22,18 +22,18 @@ export const UndertakingsCategory = () => {
 			>
 				<Box>
 					{dataEmprendimientos?.map((emp, index) => (
-					<CardEntrepreneurship
-						id={index}
-						title={emp.title}
-						images={emp.images}
-						subtitle={emp.subtitle}
-						category={emp.category}
-						ubi={emp.ubi}
-						description={emp.description}
-						information={emp.information}
-					/>
+						<CardEntrepreneurship
+							id={index}
+							title={emp.title}
+							images={emp.images}
+							subtitle={emp.subtitle}
+							category={emp.category}
+							ubi={emp.ubi}
+							description={emp.description}
+							information={emp.information}
+						/>
 					))}
-				</Box>	
+				</Box>
 			</Box>
 		</div>
 	)

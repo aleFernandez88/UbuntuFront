@@ -4,8 +4,11 @@ import { data } from '../../assets/objetivos.json'
 
 const Objetives = () => {
 	return (
-		<Typography
+		<Box
 			sx={{
+				marginTop: '30px',
+				marginRight: '16px',
+				marginLeft: '16px',
 				top: '585px',
 				left: '16px',
 				padding: '8px 0px 16px 0px',
@@ -15,35 +18,35 @@ const Objetives = () => {
 				borderColor: 'green',
 			}}
 		>
-			<Box>
-				<Typography
-					variant='h3'
-					sx={{
-						gap: '0px',
-						opacity: '0px',
-						textAlign: 'center',
-					}}
-				>
-					Objetivos de Ubuntu
-				</Typography>
-				<Typography
-					variant='p'
-					sx={{
-						fontSize: '16px',
-						fontWeight: 400,
-						lineHeight: '20px',
-					}}
-				>
-					<ul>
-						{data.map((objetivo, index) => (
-							<Typography sx={{ margin: '20px' }}>
-								<li id={index}>{objetivo.content}</li>
-							</Typography>
-						))}
-					</ul>
-				</Typography>
+			<Typography
+				variant='h3'
+				sx={{
+					gap: '0px',
+					opacity: '0px',
+					marginTop: '10px',
+					textAlign: 'center',
+				}}
+			>
+				Objetivos de Ubuntu
+			</Typography>
+
+			<Box
+				component='ul'
+				sx={{
+					paddingLeft: '16px',
+					listStyleType: 'disc',
+					fontSize: '16px',
+					fontWeight: 400,
+					lineHeight: '20px',
+				}}
+			>
+				{data.map((objetivo, index) => (
+					<Box component='li' key={index} sx={{ margin: '20px 0' }}>
+						<Typography>{objetivo.content}</Typography>
+					</Box>
+				))}
 			</Box>
-		</Typography>
+		</Box>
 	)
 }
 

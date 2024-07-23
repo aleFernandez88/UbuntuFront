@@ -50,7 +50,8 @@ export default function SearchBar() {
 					maxWidth: '500px',
 					padding: '0px',
 					left: '0px',
-					textAlignLast: 'center',
+					textAlign: 'center',
+					paddingRight: '15px',
 				}}
 			>
 				<SearchIconWrapper sx={{ position: 'relative' }}>
