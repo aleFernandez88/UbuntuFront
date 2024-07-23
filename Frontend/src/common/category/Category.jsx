@@ -8,7 +8,7 @@ import servicesAxios from '../../services/axios';
     - El boton no acepta adecuadamente la variante "containedPrimary"
     Me pasó lo mismo en la página de Login
  */
-function Category() {
+function Category({cant}) {
 	const [datos, setDatos] = useState("");
 	const [error, setError] = useState("");
 
@@ -17,7 +17,15 @@ function Category() {
 		const category = async() => {
 			try {
 				const response = await servicesAxios.category();
-				setDatos(response);
+				// console.log(response.slice(0, 3));
+				if(cant == 0)
+				{
+					setDatos(response);
+				}else{
+
+					setDatos(response.slice(0,cant));
+				}
+				
 				// console.log(response[0].name)
 			} catch (error) {
 				setError(error);
@@ -33,7 +41,7 @@ function Category() {
 			<Box sx={{minWidth:'280px', maxWidth: '500px', margin: 'auto', padding: '0px 20px',textAlign: 'center'}}>
 				{/* APLICAR PAGINADO? O HACERLO DE OTRO MODO? */}
 				{datos ? (
-					datos.slice(0, 3).map(categoria => (
+					datos.map(categoria => (
                         <Link underline='none' href={'/categoriaSeleccionada/'+categoria.id}>
                             <CategoryComponent
                                 key={categoria.id}

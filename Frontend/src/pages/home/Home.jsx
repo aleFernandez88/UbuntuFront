@@ -19,7 +19,7 @@ export const Home = () => {
 	return (
 		<>
 			<NavBarDrawer />
-			<Hero publi={dataHero[1]} imageBG={dataImages} />
+			<Hero publi={dataHero[1]} imageBG={dataImages[1].url} />
 			<Objetives />
 			<Box sx={{ textAlignLast: 'center'}}>
 				<Typography variant='h5' sx={{ mt: 4, fontSize: '16px' }}>
@@ -29,7 +29,7 @@ export const Home = () => {
 					Categorías
 				</Typography>
 			</Box>
-			<Category />
+			<Category cant={4} />
 			<Box sx={{minWidth:'280px', maxWidth: '500px', margin: 'auto', padding: '0px 20px',textAlign: 'center'}}>
 				<Link underline='none' href={'/emprendimientos'}>
 						<Button variant='contained' sx={{ borderRadius: '20px', mt: '10px', minWidth: '184px'}}>
