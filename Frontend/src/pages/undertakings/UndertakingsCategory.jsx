@@ -1,5 +1,4 @@
 import { dataHero } from '../../assets/hero.json'
-import { dataEmprendimientos } from '../../assets/emprendimientos.json'
 import { dataImages } from '../../assets/images.json'
 import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
 import { Hero } from '../../components/hero/Hero'
@@ -19,8 +18,7 @@ export const UndertakingsCategory = () => {
 		const undertakings = async() => {
 			try {
 				//AUN NO FUNCIONA EL DE MICROEMPRENDIMIENTOS, NO HAY DATOS
-				const response = await servicesAxios.undertakings();
-				console.log(response);
+				const response = await servicesAxios.undertakings(id);
 				setDatos(response);
 			} catch (error) {
 				setError(error);
@@ -45,30 +43,24 @@ export const UndertakingsCategory = () => {
 				}}
 			>
 				<Box>
-					<Typography>{id}</Typography>
-					{dataEmprendimientos?.map((emp, index) => (
-					<CardEntrepreneurship
-						id={index}
-						title={emp.title}
-						images={emp.images}
-						subtitle={emp.subtitle}
-						category={emp.category}
-						ubi={emp.ubi}
-						description={emp.description}
-						information={emp.information} 
-						/* 	deleted
-							city
-							contact_messages
-							description
-							images
-							managing
-							more_information
-							name
-							category_id
-							country_id
-							province_id */
-					/>
-					))}
+					{datos ? (
+						datos.map(emp => (
+							<CardEntrepreneurship
+								key={emp.id}
+								title={emp.name}
+								images={[]}
+								subtitle={emp.subCategory}
+								category={""}
+								ubi={emp.city}
+								description={emp.description}
+								information={emp.moreInformation} 
+							/>
+						))
+					):(
+						<Typography variant='body1' sx={{mb: '10px', textAlign: 'center', pt: '50px'}}> Cargando microemprendimientos...</Typography>
+					)
+					
+					}
 				</Box>	
 			</Box>
 		</div>
