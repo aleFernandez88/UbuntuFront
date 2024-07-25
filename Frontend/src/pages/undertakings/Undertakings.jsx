@@ -1,10 +1,8 @@
 import { dataHero } from '../../assets/hero.json'
-// import { dataEmprendimientos } from '../../assets/emprendimientos.json'
 import { dataImages } from '../../assets/images.json'
 import NavBarDrawer from '../../common/navBarDrawer/NavBarDrawer'
 import Category from '../../common/category/Category'
 import { Hero } from '../../components/hero/Hero'
-// import { CardEntrepreneurship } from '../../components/cardEntrepreneurship/CardEntrepreneurship'
 import { Box } from '@mui/material'
 
 export const Undertakings = () => {
@@ -17,11 +15,11 @@ export const Undertakings = () => {
 					backgroundImage: `url('${dataImages[3].bgVerde}')`,
 					backgroundPosition: 'center center',
 					backgroundSize: 'cover',
-					padding: '0',
-					paddingBottom: '30px',
+					paddingTop: '20px',
+					paddingBottom: '20px',
 				}}
 			>
-				<Category />
+				<Category cant={0}/>
 			</Box>
 		</div>
 	)

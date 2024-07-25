@@ -12,6 +12,15 @@ const servicesAxios = {
             console.log(error);
         }
 
+    },
+
+    undertakings: async(id) => {
+        try {
+            const response = await axios.get(`http://localhost:8080/microbusiness/category/${id}`);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+        }
     }
 };
 
