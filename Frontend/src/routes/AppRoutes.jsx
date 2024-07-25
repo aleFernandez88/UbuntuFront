@@ -27,7 +27,7 @@ export const AppRoutes = () => {
 			element: <Undertakings />,
 		},
 		{
-			path: '/categoriaSeleccionada',
+			path: '/categoriaSeleccionada/:id',
 			element: <UndertakingsCategory />,
 		},
 		{
