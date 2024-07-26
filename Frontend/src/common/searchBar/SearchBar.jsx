@@ -88,8 +88,9 @@ const SearchBar = ({ customStyles }) => {
 					maxWidth: '500px',
 					padding: '0px',
 					left: '0px',
-					textAlignLast: 'center',
+					textAlign: 'center',
 					...customStyles,
+					paddingRight: '15px',
 				}}
 			>
 				<SearchIconWrapper sx={{ position: 'relative' }} onClick={handleSearch}>

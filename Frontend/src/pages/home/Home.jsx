@@ -8,6 +8,7 @@ import { dataPublis } from '../../assets/publicaciones.json'
 import { CardPublication } from '../../components/cardPublication/CardPublication'
 import Category from '../../common/category/Category'
 import { Box, Button, Typography } from '@mui/material'
+import {Link} from '@mui/material'
 
 export const Home = () => {
 	const [showAll, setShowAll] = useState(false)
@@ -18,9 +19,24 @@ export const Home = () => {
 	return (
 		<>
 			<NavBarDrawer />
-			<Hero publi={dataHero[1]} imageBG={dataImages} />
+			<Hero publi={dataHero[1]} imageBG={dataImages[1].url} />
 			<Objetives />
-			<Category />
+			<Box sx={{ textAlignLast: 'center'}}>
+				<Typography variant='h5' sx={{ mt: 4, fontSize: '16px' }}>
+					Microemprendimientos Ubuntu
+				</Typography>
+				<Typography variant='h3' sx={{ mb: 4, color: '#090909' }}>
+					Categorías
+				</Typography>
+			</Box>
+			<Category cant={4} />
+			<Box sx={{minWidth:'280px', maxWidth: '500px', margin: 'auto', padding: '0px 20px',textAlign: 'center'}}>
+				<Link underline='none' href={'/emprendimientos'}>
+						<Button variant='contained' sx={{ borderRadius: '20px', mt: '10px', minWidth: '184px'}}>
+							<Typography variant='button' sx={{letterSpacing: '0px'}}>Ver más Categorías</Typography>
+						</Button>
+				</Link>
+			</Box>
 			<Typography
 				variant='h5'
 				color='text.primary'

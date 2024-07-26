@@ -7,14 +7,14 @@ export const Hero = ({ imageBG, publi }) => {
 			<Container
 				sx={{
 					height: '488px',
-					backgroundImage: `url('${imageBG[0].url}')`,
+					backgroundImage: `url('${imageBG}')`,
 					backgroundPosition: 'center center',
 					backgroundSize: 'cover',
 					padding: '0',
 				}}
 			>
 				<Box
-					bgcolor={'#000000d6'}
+					bgcolor={'#090909CC'}
 					height={'488px'}
 					width={'100%'}
 					display={'flex'}
@@ -23,7 +23,15 @@ export const Hero = ({ imageBG, publi }) => {
 					flexDirection={'column'}
 				>
 					<SearchBar />
-					<Box padding={'20px 20px 50px 20px'} width={'65%'}>
+					<Box
+						padding={'20px 20px 50px 20px'}
+						width={'65%'}
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							gap: '10px',
+						}}
+					>
 						<Typography variant='h1' color={'#fdfdfd'}>
 							{publi.subTitle}
 						</Typography>
