@@ -38,26 +38,6 @@ export const AppRoutes = () => {
 			path: '/formulariodeContacto',
 			element: <ContactForm />,
 		},
-	]
- const AppRoutes = () => {
-    const routes = [
-        {
-            path: '/',
-            element: <Home />,
-        },
-        {
-            path: '/login',
-            element: <Login />,
-        },
-        {
-            path: '/publicaciones',
-            element: <Publications />,
-        },
-        {
-            path: '/emprendimientos',
-            element: <Undertakings />,
-        },
-
         {
             path: '/resultados',
             element: <Results />,
@@ -71,4 +51,3 @@ export const AppRoutes = () => {
 
         return useRoutes(routes)
 }
-export default AppRoutes;

@@ -16,13 +16,13 @@ export const Carousel = ({ images }) => {
 		<Slider {...settings}>
 		   {Array.isArray(images) && images.length > 0 ?(
 			images.map((image, index) => (
-			  <div key={index}>
+				<div key={image.id}> {/* Usar 'image.id' para una clave única */} 
 				<div
 				  style={{
 					overflow: 'hidden',
 				  }}
 				>
-				  <img src={image} alt={`Slide ${index}`} />
+				  <img src={image.url} alt={`Slide ${index}`} /> {/* Acceder a image.url */}
 				</div>
 			  </div>
 			))
