@@ -9,6 +9,7 @@ import { CardPublication } from '../../components/cardPublication/CardPublicatio
 import Category from '../../common/category/Category'
 import { Box, Button, Typography } from '@mui/material'
 import {Link} from '@mui/material'
+import { SwitchNavBar } from '../../common/switchNavBar/SwitchNavBar'
 
 export const Home = () => {
 	const [showAll, setShowAll] = useState(false)
@@ -18,7 +19,7 @@ export const Home = () => {
 	}
 	return (
 		<>
-			<NavBarDrawer />
+			<SwitchNavBar />
 			<Hero publi={dataHero[1]} imageBG={dataImages[1].url} />
 			<Objetives />
 			<Box sx={{ textAlignLast: 'center'}}>

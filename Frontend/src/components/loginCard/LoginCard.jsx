@@ -5,8 +5,11 @@ import Card from '@mui/material/Card';
 import { Box, Typography, Button } from '@mui/material';
 import { GoogleOAuthProvider, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function LoginCardComponent() {
+    const navigate = useNavigate();
+
     const login = useGoogleLogin({
         flow: 'auth-code',
         onSuccess: async googleData => {
@@ -26,6 +29,13 @@ function LoginCardComponent() {
 
                 const data = res.data;
                 console.log(data);
+
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('rol', res.data.rol);
+                localStorage.setItem('name', res.data.name);
+                localStorage.setItem('lastName', res.data.lastName);
+                
+                navigate('/')
             } catch (error) {
                 console.error('Login Failed:', error.response || error);
             }
