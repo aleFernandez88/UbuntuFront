@@ -5,6 +5,10 @@ import { useRoutes } from 'react-router-dom'
 import { Undertakings } from '../pages/undertakings/Undertakings'
 import { UndertakingsCategory } from '../pages/undertakings/UndertakingsCategory'
 import Login from '../pages/login/Login'
+import { Results } from '../pages/results/Results'
+import { Noresults } from '../pages/results/Noresults'
+
+
 
 import { ContactForm } from '../pages/form/ContactForm'
 
@@ -34,7 +38,16 @@ export const AppRoutes = () => {
 			path: '/formulariodeContacto',
 			element: <ContactForm />,
 		},
-	]
+        {
+            path: '/resultados',
+            element: <Results />,
+        },
 
-	return useRoutes(routes)
+        {
+            path: '/sinresultados',
+            element: <Noresults />,
+        },
+    ]
+
+        return useRoutes(routes)
 }

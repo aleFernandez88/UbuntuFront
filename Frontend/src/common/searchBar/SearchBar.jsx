@@ -3,6 +3,10 @@ import { styled } from '@mui/material/styles'
 import InputBase from '@mui/material/InputBase'
 import SearchIcon from '@mui/icons-material/Search'
 import { Box } from '@mui/material'
+import { useState } from 'react'
+import { fetchData }from './SearchFunction'
+import { useNavigate } from 'react-router-dom';  
+
 
 const Search = styled('div')(() => ({
 	position: 'relative',
@@ -37,7 +41,41 @@ const StyledInputBase = styled(InputBase)(() => ({
 	height: '16px',
 }))
 
-export default function SearchBar() {
+
+const SearchBar = ({ customStyles }) => {  
+    const [searchQuery, setSearchQuery] = useState('');  
+    const [searchResults, setSearchResults] = useState([]);  
+	const [error, setError] = useState(false);
+	const navigate = useNavigate();
+
+
+	  const handleSearch = async () => {  
+		try {  
+		  const response = await fetchData(searchQuery);  
+		  if (response.length === 0) {  
+			setError(true);  
+			navigate("/sinresultados");
+		  } else {  
+			setSearchResults(response);
+			console.log('Resultados de la búsqueda:', response);
+			navigate("/resultados", { state: { searchQuery } });
+		  }  
+		} catch (error) {  
+		  console.error('Error al buscar:', error);  
+		  setError(true);
+		  navigate("/sinresultados");
+		}  
+	  };
+ const handleKeyPress = (e) => {  
+		if (e.key === 'Enter') {  
+		  handleSearch();  
+		}  
+	  };  
+
+	  if (error) {  
+		navigate("/sinresultados");  
+	  } 
+	
 	return (
 		<Box>
 			<Search
@@ -51,18 +89,24 @@ export default function SearchBar() {
 					padding: '0px',
 					left: '0px',
 					textAlign: 'center',
+					...customStyles,
 					paddingRight: '15px',
 				}}
 			>
-				<SearchIconWrapper sx={{ position: 'relative' }}>
+				<SearchIconWrapper sx={{ position: 'relative' }} onClick={handleSearch}>
 					<SearchIcon />
 				</SearchIconWrapper>
 
 				<StyledInputBase
 					placeholder='Buscar Microemprendimientos'
+					value={searchQuery}  
+					onChange={(e) => setSearchQuery(e.target.value)}  
+				
+					onKeyPress={handleKeyPress}
 					sx={{ margin: '0px', alignSelf: 'center', padding: '0px' }}
 				/>
 			</Search>
 		</Box>
 	)
 }
+export default SearchBar; 
