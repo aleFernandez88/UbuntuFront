@@ -1,24 +1,12 @@
 import axios from "axios";  
 
-/*const baseURL = "https://rickandmortyapi.com/api/character";  
-
-export const fetchData = async (searchQuery) => {  
-  try { 
-  const response = await axios.get(`${baseURL}?name=${searchQuery}`);  
-  const data = response.data.results.map((result) => ({
-    title: result.name,
-    description: result.gender,
-    information: result.status,
-    images: result.image,
-    subtitle: result.species,
-    category: result.status,
-    ubi: result.name*/
-   const baseURL = "http://localhost:8080/microbusiness";  
+   const baseURL = "http://localhost:8080/microbusiness/find";  
 
     export const fetchData = async (searchQuery) => {  
       try { 
+        console.log("Buscando datos con el query:", searchQuery);
       const response = await axios.get(`${baseURL}?name=${searchQuery}`);  
-      console.log(response)
+      console.log("Respuesta de la API:", response.data);
       const data = response.data.map((result) => ({
         title: result.name,
         description: result.description,
