@@ -26,6 +26,12 @@ function LoginCardComponent() {
 
                 const data = res.data;
                 console.log(data);
+
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('rol', res.data.rol);
+                localStorage.setItem('name', res.data.name);
+                localStorage.setItem('lastName', res.data.lastName);
+
             } catch (error) {
                 console.error('Login Failed:', error.response || error);
             }
