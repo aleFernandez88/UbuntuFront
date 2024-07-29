@@ -108,7 +108,7 @@ export default function NavBarAdmin({ showUserAvatar, userAvatar }) {
 							marginTop: '8px',
 						}}
 					>
-						<Link to='*'>
+						<Link to=''>
 							<ListItemText primary='Administrador' />
 						</Link>
 					</ListItem>
