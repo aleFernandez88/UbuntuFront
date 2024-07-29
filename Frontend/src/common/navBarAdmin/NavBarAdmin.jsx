@@ -108,11 +108,12 @@ export default function NavBarAdmin({ showUserAvatar, userAvatar }) {
 							marginTop: '8px',
 						}}
 					>
-						<Link to=''>
+						<Link onClick={toggleDrawer} to=''>
 							<ListItemText primary='Administrador' />
 						</Link>
 					</ListItem>
 					<ListItem
+						
 						disablePadding
 						sx={{
 							display: 'flex',
@@ -121,7 +122,7 @@ export default function NavBarAdmin({ showUserAvatar, userAvatar }) {
 							marginTop: '8px',
 						}}
 					>
-						<Link to='/dashboard'>
+						<Link onClick={toggleDrawer} to='/dashboard'>
 							<ListItemText primary='Dashboard Administrador' />
 						</Link>
 					</ListItem>
@@ -134,7 +135,7 @@ export default function NavBarAdmin({ showUserAvatar, userAvatar }) {
 							marginTop: '8px',
 						}}
 					>
-						<Link to='/microemprendimientos'>
+						<Link onClick={toggleDrawer} to='/microemprendimientos'>
 							<ListItemText primary='Microemprendimientos' />
 						</Link>
 					</ListItem>
@@ -147,7 +148,7 @@ export default function NavBarAdmin({ showUserAvatar, userAvatar }) {
 							marginTop: '8px',
 						}}
 					>
-						<Link to='/contacto'>
+						<Link onClick={toggleDrawer} to='/contacto'>
 							<ListItemText primary='Solicitud de contacto' />
 						</Link>
 					</ListItem>
@@ -160,7 +161,7 @@ export default function NavBarAdmin({ showUserAvatar, userAvatar }) {
 							marginTop: '8px',
 						}}
 					>
-						<Link to='/publicaciones'>
+						<Link onClick={toggleDrawer} to='/publicaciones'>
 							<ListItemText primary='Publicaciones' />
 						</Link>
 					</ListItem>
