@@ -96,7 +96,7 @@ export default function NavBarDrawer() {
 							alignItems: 'start',
 						}}
 					>
-						<Link to='/'>
+						<Link onClick={toggleDrawer} to='/'>
 							<ListItemText primary='Home' />
 						</Link>
 					</ListItem>
@@ -108,7 +108,7 @@ export default function NavBarDrawer() {
 							alignItems: 'start',
 						}}
 					>
-						<Link to='/login'>
+						<Link onClick={toggleDrawer} to='/login'>
 							<ListItemText primary='Login' />
 						</Link>
 					</ListItem>
@@ -120,7 +120,7 @@ export default function NavBarDrawer() {
 							alignItems: 'start',
 						}}
 					>
-						<Link to='/publicaciones'>
+						<Link onClick={toggleDrawer} to='/publicaciones'>
 							<ListItemText primary='Publicaciones' />
 						</Link>
 					</ListItem>
@@ -132,7 +132,7 @@ export default function NavBarDrawer() {
 							alignItems: 'start',
 						}}
 					>
-						<Link to='/emprendimientos'>
+						<Link onClick={toggleDrawer} to='/microemprendimientos'>
 							<ListItemText primary='Microemprendimientos' />
 						</Link>
 					</ListItem>

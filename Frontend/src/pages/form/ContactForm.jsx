@@ -8,7 +8,6 @@ import CardContactForm from '../../components/cardContactForm/CardContactForm'
 export const ContactForm = () => {
 	return (
 		<div>
-			<NavBarDrawer />
 			<Hero publi={dataHero[2]} imageBG={dataImages[4].url} />
 			<CardContactForm />
 		</div>

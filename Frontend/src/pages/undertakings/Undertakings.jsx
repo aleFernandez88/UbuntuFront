@@ -8,7 +8,6 @@ import { Box } from '@mui/material'
 export const Undertakings = () => {
 	return (
 		<div>
-			<NavBarDrawer />
 			<Hero publi={dataHero[3]} imageBG={dataImages[5].url} />
 			<Box
 				sx={{
@@ -19,7 +18,7 @@ export const Undertakings = () => {
 					paddingBottom: '20px',
 				}}
 			>
-				<Category cant={0}/>
+				<Category cant={0} />
 			</Box>
 		</div>
 	)

@@ -9,29 +9,26 @@ import { useEffect, useState } from 'react'
 import servicesAxios from '../../services/axios'
 
 export const UndertakingsCategory = () => {
-	const { id } = useParams() ;
-	const [datos, setDatos] = useState("");
-	const [error, setError] = useState("");
+	const { id } = useParams()
+	const [datos, setDatos] = useState('')
+	const [error, setError] = useState('')
 
 	useEffect(() => {
-		
-		const undertakings = async() => {
+		const undertakings = async () => {
 			try {
 				//AUN NO FUNCIONA EL DE MICROEMPRENDIMIENTOS, NO HAY DATOS
-				const response = await servicesAxios.undertakings(id);
-				setDatos(response);
+				const response = await servicesAxios.undertakings(id)
+				setDatos(response)
 			} catch (error) {
-				setError(error);
+				setError(error)
 			}
 		}
 
-		undertakings();
-		
-	},[]);
+		undertakings()
+	}, [])
 
 	return (
 		<div>
-			<NavBarDrawer />
 			<Hero publi={dataHero[3]} imageBG={dataImages[5].url} />
 			<Box
 				sx={{
@@ -50,18 +47,22 @@ export const UndertakingsCategory = () => {
 								title={emp.name}
 								images={[]}
 								subtitle={emp.subCategory}
-								category={""}
+								category={''}
 								ubi={emp.city}
 								description={emp.description}
-								information={emp.moreInformation} 
+								information={emp.moreInformation}
 							/>
 						))
-					):(
-						<Typography variant='body1' sx={{mb: '10px', textAlign: 'center', pt: '50px'}}> Cargando microemprendimientos...</Typography>
-					)
-					
-					}
-				</Box>	
+					) : (
+						<Typography
+							variant='body1'
+							sx={{ mb: '10px', textAlign: 'center', pt: '50px' }}
+						>
+							{' '}
+							Cargando microemprendimientos...
+						</Typography>
+					)}
+				</Box>
 			</Box>
 		</div>
 	)

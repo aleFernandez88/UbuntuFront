@@ -8,46 +8,56 @@ import Login from '../pages/login/Login'
 import { Results } from '../pages/results/Results'
 import { Noresults } from '../pages/results/Noresults'
 
-
-
 import { ContactForm } from '../pages/form/ContactForm'
+import { DashBoardAdmin } from '../pages/dashBoardAdmin/DashBoardAdmin'
+import { Layout } from '../components/layout/Layout'
 
 export const AppRoutes = () => {
 	const routes = [
 		{
-			path: '/',
-			element: <Home />,
+			element: <Layout />,
+			children: [
+				{
+					path: '/',
+					element: <Home />,
+				},
+
+				{
+					path: '/publicaciones',
+					element: <Publications />,
+				},
+				{
+					path: '/microemprendimientos',
+					element: <Undertakings />,
+				},
+				{
+					path: '/categoriaSeleccionada/:id',
+					element: <UndertakingsCategory />,
+				},
+				{
+					path: '/contacto',
+					element: <ContactForm />,
+				},
+				{
+					path: '/resultados',
+					element: <Results />,
+				},
+
+				{
+					path: '/sinresultados',
+					element: <Noresults />,
+				},
+				{
+					path: '/dashboard',
+					element: <DashBoardAdmin />,
+				},
+			],
 		},
 		{
 			path: '/login',
 			element: <Login />,
 		},
-		{
-			path: '/publicaciones',
-			element: <Publications />,
-		},
-		{
-			path: '/emprendimientos',
-			element: <Undertakings />,
-		},
-		{
-			path: '/categoriaSeleccionada/:id',
-			element: <UndertakingsCategory />,
-		},
-		{
-			path: '/formulariodeContacto',
-			element: <ContactForm />,
-		},
-        {
-            path: '/resultados',
-            element: <Results />,
-        },
+	]
 
-        {
-            path: '/sinresultados',
-            element: <Noresults />,
-        },
-    ]
-
-        return useRoutes(routes)
+	return useRoutes(routes)
 }

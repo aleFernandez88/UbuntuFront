@@ -28,13 +28,13 @@ function Login() {
 						backgroundColor: 'rgba(0, 0, 0, 0.3)',
 					}}
 				/>
-				<NavBarDrawer />
 				<Box
 					sx={{
 						display: 'flex',
 						flexDirection: 'column',
 						flexGrow: 1,
 						zIndex: 1,
+						justifyContent: 'center',
 					}}
 				>
 					<LoginCard />

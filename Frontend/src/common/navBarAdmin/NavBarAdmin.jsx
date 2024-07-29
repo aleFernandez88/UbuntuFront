@@ -14,11 +14,11 @@ import ListItemText from '@mui/material/ListItemText'
 import logoImg from '../../assets/images/navbar/Ubuntu Marcas-01.png'
 import { useTheme } from '@mui/material/styles'
 
-export default function NavBarAdmin({showUserAvatar, userAvatar}) {
+export default function NavBarAdmin({ showUserAvatar, userAvatar }) {
 	const [openDrawer, setOpenDrawer] = useState(false)
 	const theme = useTheme()
-    const nombre = localStorage.getItem('name');
-    const apellido = localStorage.getItem('lastName')
+	const nombre = localStorage.getItem('name')
+	const apellido = localStorage.getItem('lastName')
 
 	const toggleDrawer = () => {
 		setOpenDrawer(!openDrawer)
@@ -36,15 +36,21 @@ export default function NavBarAdmin({showUserAvatar, userAvatar}) {
 					boxShadow: 'none',
 					height: '56px',
 					padding: '0px 16px',
-					
 				}}
 			>
-				<Toolbar sx={{ height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+				<Toolbar
+					sx={{
+						height: '100%',
+						display: 'flex',
+						justifyContent: 'space-between',
+						alignItems: 'center',
+					}}
+				>
 					<IconButton
 						size='large'
 						edge='start'
 						aria-label='menu'
-						sx={{ mr: 0, /*height: '100%', fontSize: '8rem' */}}
+						sx={{ mr: 0 /*height: '100%', fontSize: '8rem' */ }}
 						onClick={toggleDrawer}
 					>
 						{openDrawer ? <CloseIcon /> : <MenuIcon />}
@@ -53,18 +59,16 @@ export default function NavBarAdmin({showUserAvatar, userAvatar}) {
 						sx={{
 							display: 'flex',
 							justifyContent: 'center',
-							
+
 							flexGrow: 1,
-							
 						}}
 					>
 						<img src={logoImg} alt='Logo' style={{ maxWidth: '100px' }} />
-						{/* Renderiza el avatar solo si showUserAvatar es true */}  
-						</Box>
-						<Box sx={{ display: 'flex', alignItems: 'center', ml: '8px' }}>
-						{userAvatar} 
-						</Box>
-					
+						{/* Renderiza el avatar solo si showUserAvatar es true */}
+					</Box>
+					<Box sx={{ display: 'flex', alignItems: 'center', ml: '8px' }}>
+						{userAvatar}
+					</Box>
 				</Toolbar>
 			</AppBar>
 			<Drawer
@@ -91,7 +95,7 @@ export default function NavBarAdmin({showUserAvatar, userAvatar}) {
 							fontSize: '18px',
 							top: '32px',
 							lineHeight: '20px',
-							fontWeight: '700',
+							fontWeight: '500',
 						},
 					}}
 				>
@@ -101,10 +105,25 @@ export default function NavBarAdmin({showUserAvatar, userAvatar}) {
 							display: 'flex',
 							flexDirection: 'column',
 							alignItems: 'start',
+							marginTop: '8px',
 						}}
 					>
-						<Link to='/'>
-							<ListItemText primary='Home' />
+						<Link onClick={toggleDrawer} to=''>
+							<ListItemText primary='Administrador' />
+						</Link>
+					</ListItem>
+					<ListItem
+						
+						disablePadding
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'start',
+							marginTop: '8px',
+						}}
+					>
+						<Link onClick={toggleDrawer} to='/dashboard'>
+							<ListItemText primary='Dashboard Administrador' />
 						</Link>
 					</ListItem>
 					<ListItem
@@ -113,34 +132,37 @@ export default function NavBarAdmin({showUserAvatar, userAvatar}) {
 							display: 'flex',
 							flexDirection: 'column',
 							alignItems: 'start',
+							marginTop: '8px',
 						}}
 					>
-						<Link to='/login'>
-							<ListItemText primary='Login' />
-						</Link>
-					</ListItem>
-					<ListItem
-						disablePadding
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'start',
-						}}
-					>
-						<Link to='/publicaciones'>
-							<ListItemText primary='Publicaciones' />
-						</Link>
-					</ListItem>
-					<ListItem
-						disablePadding
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'start',
-						}}
-					>
-						<Link to='/emprendimientos'>
+						<Link onClick={toggleDrawer} to='/microemprendimientos'>
 							<ListItemText primary='Microemprendimientos' />
+						</Link>
+					</ListItem>
+					<ListItem
+						disablePadding
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'start',
+							marginTop: '8px',
+						}}
+					>
+						<Link onClick={toggleDrawer} to='/contacto'>
+							<ListItemText primary='Solicitud de contacto' />
+						</Link>
+					</ListItem>
+					<ListItem
+						disablePadding
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'start',
+							marginTop: '8px',
+						}}
+					>
+						<Link onClick={toggleDrawer} to='/publicaciones'>
+							<ListItemText primary='Publicaciones' />
 						</Link>
 					</ListItem>
 				</List>
