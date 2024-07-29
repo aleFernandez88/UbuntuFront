@@ -8,7 +8,7 @@ import { dataPublis } from '../../assets/publicaciones.json'
 import { CardPublication } from '../../components/cardPublication/CardPublication'
 import Category from '../../common/category/Category'
 import { Box, Button, Typography } from '@mui/material'
-import {Link} from '@mui/material'
+import { Link } from '@mui/material'
 import { SwitchNavBar } from '../../common/switchNavBar/SwitchNavBar'
 
 export const Home = () => {
@@ -19,10 +19,9 @@ export const Home = () => {
 	}
 	return (
 		<>
-			<SwitchNavBar />
 			<Hero publi={dataHero[1]} imageBG={dataImages[1].url} />
 			<Objetives />
-			<Box sx={{ textAlignLast: 'center'}}>
+			<Box sx={{ textAlignLast: 'center' }}>
 				<Typography variant='h5' sx={{ mt: 4, fontSize: '16px' }}>
 					Microemprendimientos Ubuntu
 				</Typography>
@@ -31,11 +30,24 @@ export const Home = () => {
 				</Typography>
 			</Box>
 			<Category cant={4} />
-			<Box sx={{minWidth:'280px', maxWidth: '500px', margin: 'auto', padding: '0px 20px',textAlign: 'center'}}>
+			<Box
+				sx={{
+					minWidth: '280px',
+					maxWidth: '500px',
+					margin: 'auto',
+					padding: '0px 20px',
+					textAlign: 'center',
+				}}
+			>
 				<Link underline='none' href={'/emprendimientos'}>
-						<Button variant='contained' sx={{ borderRadius: '20px', mt: '10px', minWidth: '184px'}}>
-							<Typography variant='button' sx={{letterSpacing: '0px'}}>Ver más Categorías</Typography>
-						</Button>
+					<Button
+						variant='contained'
+						sx={{ borderRadius: '20px', mt: '10px', minWidth: '184px' }}
+					>
+						<Typography variant='button' sx={{ letterSpacing: '0px' }}>
+							Ver más Categorías
+						</Typography>
+					</Button>
 				</Link>
 			</Box>
 			<Typography
