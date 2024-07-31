@@ -8,12 +8,13 @@ import {
 	Grid,
 } from '@mui/material'
 
-const CardContactForm = () => {
+const CardContactForm = ({ title }) => {
 	const [form, setForm] = useState({
 		name: '',
 		email: '',
 		phone: '',
 		message: '',
+		title: title,
 	})
 
 	const [errors, setErrors] = useState({
@@ -44,7 +45,6 @@ const CardContactForm = () => {
 
 		const hasErrors = Object.values(newErrors).some(error => error)
 		if (!hasErrors) {
-			// Manejar el envío del formulario
 			console.log('Formulario enviado:', form)
 		}
 	}
@@ -83,7 +83,7 @@ const CardContactForm = () => {
 					marginBottom: '20px',
 				}}
 			>
-				EcoSenda
+				{title}
 			</Typography>
 			<Typography
 				sx={{
@@ -111,6 +111,23 @@ const CardContactForm = () => {
 				}}
 				onSubmit={handleSubmit}
 			>
+				<Typography
+					value={form.title}
+					sx={{
+						fontFamily: 'Lato',
+						textAlign: 'center',
+						fontSize: '20px',
+						fontWeight: 600,
+						lineHeight: '25px',
+						color: ' #093C59',
+						marginBottom: '20px',
+					}}
+				></Typography>
+				<TextField
+					name='title'
+					value={form.title}
+					sx={{ display: 'none' }} // Ocultar el campo
+				/>
 				<TextField
 					label='Apellido y Nombre'
 					name='name'
