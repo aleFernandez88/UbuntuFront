@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import {
 	TextField,
 	Button,
@@ -7,6 +8,7 @@ import {
 	Container,
 	Grid,
 } from '@mui/material'
+import servicesAxios from '../../services/axios'
 
 const CardContactForm = ({ title }) => {
 	const [form, setForm] = useState({
@@ -32,7 +34,7 @@ const CardContactForm = ({ title }) => {
 		})
 	}
 
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		e.preventDefault()
 		const newErrors = {
 			name: form.name === '',
@@ -45,6 +47,14 @@ const CardContactForm = ({ title }) => {
 
 		const hasErrors = Object.values(newErrors).some(error => error)
 		if (!hasErrors) {
+			try {
+				console.log('Sending form data:', form)
+				const response = await servicesAxios.sendContactForm(form)
+				console.log('Response:', response)
+			} catch (error) {
+				console.error('Contact form was not sent:', error)
+			}
+
 			console.log('Formulario enviado:', form)
 		}
 	}
@@ -123,11 +133,7 @@ const CardContactForm = ({ title }) => {
 						marginBottom: '20px',
 					}}
 				></Typography>
-				<TextField
-					name='title'
-					value={form.title}
-					sx={{ display: 'none' }} // Ocultar el campo
-				/>
+				<TextField name='title' value={form.title} sx={{ display: 'none' }} />
 				<TextField
 					label='Apellido y Nombre'
 					name='name'

@@ -32,7 +32,7 @@ const servicesAxios = {
 			)
 			return response.data
 		} catch (error) {
-			console.log('Contact form was not send:', error)
+			console.log(error)
 		}
 	},
 }
