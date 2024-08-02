@@ -52,6 +52,34 @@ export const theme = createTheme({
 			color: coloresUbuntu.black,
 			textAlign: 'left',
 		},
+		// Estilo personalizado para los encabezados h6
+		h6: {
+			fontFamily: "'Lato', sans-serif",
+			fontWeight: 500,
+			fontSize: '28px',
+			lineHeight: '35px',
+			color: coloresUbuntu.black,
+			textAlign: 'center',
+		},
+		// Estilo personalizado para los campos de formularios
+		cf1: {
+			fontFamily: "'Lato', sans-serif",
+			fontWeight: 500,
+			fontSize: '16px',
+			lineHeight: '24px',
+			color: coloresUbuntu.black,
+		},
+		cf2: {
+			fontFamily: "'Lato', sans-serif",
+			fontWeight: 400,
+			fontSize: '13px',
+			lineHeight: '16px',
+			color: coloresUbuntu.black,
+		
+		},
+
+
+
 		// Estilo personalizado para los encabezados p
 		p: {
 			fontFamily: "'Lato', sans-serif",

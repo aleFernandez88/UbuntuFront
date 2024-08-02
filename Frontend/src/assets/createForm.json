@@ -1,0 +1,56 @@
+{  
+  "dataForm": [  
+    {  
+      "title": "Carga de Microemprendimiento",  
+      "subtitle": "Completá el formulario para cargar un Microemprendimiento",  
+      "fieldLabels":[
+         {  
+        "nombre": {  
+          "label": "Nombre del Microemprendimiento",  
+          "subtitle": "Se visualizará en el título de la publicación"  
+        },  
+        "categoria": {  
+          "label": "Categoria",  
+          "subtitle": "Seleccioná la categoría del Microemprendimiento",  
+          "item1": "Economía social/ Desarrollo local/ Inclusión financiera",  
+           "item2": "Agroecología/ Orgánicos/ Alimentación saludable",  
+           "item3": "Conservación/ Regeneración/ Servicios ecosistémicos", 
+           "item4": "Empresas/ Organismos de impacto/ Economía circular"  
+            } ,   
+        "subcategoria": {  
+          "label": "Subcategoria",  
+          "subtitle": "Escribi la subcategoría del Microemprendimiento"  
+        },  
+        "pais": {  
+          "label": "Pais",  
+          "subtitle": "Seleccioná un País de la lista",
+          "item1": "Argentina",  
+          "item2": "Chile",  
+          "item3": "Colombia", 
+          "item4": "Uruguay"   
+        },  
+        "provincia": {  
+          "label": "Provincia/Estado",  
+          "subtitle": "Seleccioná una Provincia/Estado de la lista",
+          "item1": "Buenos Aires",  
+          "item2": "Córdoba",  
+          "item3": "Mendoza", 
+          "item4": "San Luis" 
+        },  
+        "ciudad": {  
+          "label": "Ciudad",  
+          "subtitle": "Sin abreviaturas, nombre completo"  
+        },  
+        "descripcion": {  
+          "label": "Descripción del Microemprendimiento",  
+          "subtitle": "Máximo 300 caracteres                                     0/300"  
+        },  
+        "informacion": {  
+          "label": "Más información del Microemprendedor",  
+          "subtitle": "Máximo 300 caracteres                                     0/300"  
+        }  
+      }  
+    ]
+    }  
+  ]  
+}

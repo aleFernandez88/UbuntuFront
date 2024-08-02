@@ -11,6 +11,7 @@ import { Noresults } from '../pages/results/Noresults'
 import { ContactForm } from '../pages/form/ContactForm'
 import { DashBoardAdmin } from '../pages/dashBoardAdmin/DashBoardAdmin'
 import { Layout } from '../components/layout/Layout'
+import { CreateForm } from '../pages/microbusinessForm/CreateForm'
 
 export const AppRoutes = () => {
 	const routes = [
@@ -51,12 +52,18 @@ export const AppRoutes = () => {
 					path: '/dashboard',
 					element: <DashBoardAdmin />,
 				},
+				{
+					path: '/crearMicroemprendimiento',
+					element: <CreateForm />,
+				},
 			],
 		},
 		{
 			path: '/login',
 			element: <Login />,
 		},
+
+		
 	]
 
 	return useRoutes(routes)
