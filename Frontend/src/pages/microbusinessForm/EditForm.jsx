@@ -1,8 +1,8 @@
 import React from "react";  
 import FormularioMicroemprendimiento from '../../common/microbusinessForm/MicrobusinessForm';  
-import { dataForm } from "../../assets/createForm.json"
+import { dataForm } from "../../assets/editForm.json"
 
-export const CreateForm = () => {  
+export const EditForm = () => {  
   
         
         const title = dataForm[0].title;  
@@ -21,14 +21,3 @@ export const CreateForm = () => {
     />  
   );  
 };
-/*import React from "react";
-import FormularioMicroemprendimiento from '../../common/microbusinessForm/MicrobusinessForm';
-
-
-
-export const CreateForm = () => {
-
-    return(
-        <FormularioMicroemprendimiento />
-    )
-}*/

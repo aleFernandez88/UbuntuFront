@@ -11,7 +11,8 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 
 const FormularioMicroemprendimiento = ({  
   title,  
-  subtitle,  
+  subtitle, 
+  button2, 
   fieldLabels,  
 }) => {  
   const [nombre, setNombre] = useState('');  
@@ -212,7 +213,7 @@ const FormularioMicroemprendimiento = ({
         width= "328px"
         sx={{ marginTop: 2, backgroundColor: '#6E6F70', borderRadius:'100px', fontSize:'16px', width:'328px', justifyContent:'center' }}  
       >  
-        Cargar Microemprendimiento  
+        { button2 }
       </Button>  
     </Box>  
       </form>  

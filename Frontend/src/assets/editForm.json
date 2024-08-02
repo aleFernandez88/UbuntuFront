@@ -1,9 +1,9 @@
 {  
   "dataForm": [  
     {  
-      "title": "Carga de Microemprendimiento",  
-      "subtitle": "Completá el formulario para cargar un Microemprendimiento",  
-      "button2": "Cargar Microemprendimiento",
+      "title": "Edición de Microemprendimiento",  
+      "subtitle": "Editá el formulario de carga del Microemprendimiento",  
+      "button2": "Guardar Cambios",
       "fieldLabels":[
          {  
         "nombre": {  
@@ -49,7 +49,7 @@
         "informacion": {  
           "label": "Más información del Microemprendedor",  
           "subtitle": "Máximo 300 caracteres                                     0/300"  
-        }
+        }  
       }  
     ]
     }  

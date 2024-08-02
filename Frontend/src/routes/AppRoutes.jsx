@@ -12,6 +12,7 @@ import { ContactForm } from '../pages/form/ContactForm'
 import { DashBoardAdmin } from '../pages/dashBoardAdmin/DashBoardAdmin'
 import { Layout } from '../components/layout/Layout'
 import { CreateForm } from '../pages/microbusinessForm/CreateForm'
+import { EditForm } from '../pages/microbusinessForm/EditForm'
 
 export const AppRoutes = () => {
 	const routes = [
@@ -55,6 +56,10 @@ export const AppRoutes = () => {
 				{
 					path: '/crearMicroemprendimiento',
 					element: <CreateForm />,
+				},
+				{
+					path: '/editarMicroemprendimiento',
+					element: <EditForm />,
 				},
 			],
 		},
