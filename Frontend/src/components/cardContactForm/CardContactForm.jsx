@@ -10,13 +10,13 @@ import {
 } from '@mui/material'
 import servicesAxios from '../../services/axios'
 
-const CardContactForm = ({ title }) => {
+const CardContactForm = ({ title, id }) => {
 	const [form, setForm] = useState({
 		name: '',
 		email: '',
 		phone: '',
 		message: '',
-		title: title,
+		id: id,
 	})
 
 	const [errors, setErrors] = useState({
@@ -121,7 +121,7 @@ const CardContactForm = ({ title }) => {
 				}}
 				onSubmit={handleSubmit}
 			>
-				<Typography
+				{/* <Typography
 					value={form.title}
 					sx={{
 						fontFamily: 'Lato',
@@ -132,8 +132,8 @@ const CardContactForm = ({ title }) => {
 						color: ' #093C59',
 						marginBottom: '20px',
 					}}
-				></Typography>
-				<TextField name='title' value={form.title} sx={{ display: 'none' }} />
+				></Typography> */}
+				<TextField name='id' value={form.id} sx={{ display: 'none' }} />
 				<TextField
 					label='Apellido y Nombre'
 					name='name'

@@ -26,6 +26,7 @@ const ExpandMore = ({ expand, ...props }) => (
 )
 
 export const CardEntrepreneurship = ({
+	id,
 	title,
 	subtitle,
 	images,
@@ -42,7 +43,7 @@ export const CardEntrepreneurship = ({
 	const navigate = useNavigate()
 
 	const handleContactClick = () => {
-		navigate('/contacto', { state: { title } })
+		navigate('/contacto', { state: { title, id } })
 	}
 
 	return (
