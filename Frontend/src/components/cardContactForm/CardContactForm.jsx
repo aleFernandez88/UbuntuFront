@@ -16,7 +16,7 @@ const CardContactForm = ({ title, id, name, email, phone }) => {
 		email: email,
 		phone: phone,
 		message: '',
-		id: id,
+		microBusiness: { id: id, name: title },
 	})
 
 	const [errors, setErrors] = useState({
@@ -70,9 +70,18 @@ const CardContactForm = ({ title, id, name, email, phone }) => {
 		const hasErrors = Object.values(newErrors).some(error => error)
 		if (!hasErrors) {
 			try {
-				console.log('Sending form data:', form)
-				const response = await servicesAxios.sendContactForm(form)
-				console.log('Response:', response)
+				const formData = {
+					fullName: form.name,
+					email: form.email,
+					phone: form.phone,
+					message: form.message,
+					microBusiness: {
+						id: form.microBusiness.id,
+						name: form.microBusiness.name,
+					},
+				}
+
+				const response = await servicesAxios.sendContactForm(formData)
 			} catch (error) {
 				console.error('Contact form was not sent:', error)
 			}
@@ -141,7 +150,11 @@ const CardContactForm = ({ title, id, name, email, phone }) => {
 				}}
 				onSubmit={handleSubmit}
 			>
-				<TextField name='id' value={form.id} sx={{ display: 'none' }} />
+				<TextField
+					name='id'
+					value={form.microBusiness.id}
+					sx={{ display: 'none' }}
+				/>
 				<TextField
 					label='Apellido y Nombre'
 					name='name'
