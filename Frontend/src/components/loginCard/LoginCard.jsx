@@ -35,6 +35,8 @@ function LoginCardComponent() {
 				localStorage.setItem('rol', res.data.rol)
 				localStorage.setItem('name', res.data.name)
 				localStorage.setItem('lastName', res.data.lastName)
+				localStorage.setItem('email', res.data.email)
+				// localStorage.setItem('phone', res.data.phone)
 
 				navigate('/dashboard')
 			} catch (error) {

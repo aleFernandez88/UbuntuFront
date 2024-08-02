@@ -27,7 +27,7 @@ const servicesAxios = {
 	sendContactForm: async formData => {
 		try {
 			const response = await axios.post(
-				'http://localhost:8080/message',
+				`http://localhost:8080/message`,
 				formData
 			)
 			return response.data

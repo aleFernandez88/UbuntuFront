@@ -10,11 +10,11 @@ import {
 } from '@mui/material'
 import servicesAxios from '../../services/axios'
 
-const CardContactForm = ({ title, id }) => {
+const CardContactForm = ({ title, id, name, email, phone }) => {
 	const [form, setForm] = useState({
-		name: '',
-		email: '',
-		phone: '',
+		name: name,
+		email: email,
+		phone: phone,
 		message: '',
 		id: id,
 	})
@@ -76,8 +76,6 @@ const CardContactForm = ({ title, id }) => {
 			} catch (error) {
 				console.error('Contact form was not sent:', error)
 			}
-
-			console.log('Formulario enviado:', form)
 		}
 	}
 
