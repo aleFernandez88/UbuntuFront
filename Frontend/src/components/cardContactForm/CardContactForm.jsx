@@ -26,20 +26,42 @@ const CardContactForm = ({ title, id }) => {
 		message: false,
 	})
 
+	const emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+	const validateEmail = email => emailRegExp.test(email)
+
+	const phoneRegExp = /^\+\d{1,3}( 9)? \d{6,14}$/
+
+	const validatePhone = phone => {
+		return phoneRegExp.test(phone)
+	}
+
 	const handleChange = e => {
 		const { name, value } = e.target
 		setForm({
 			...form,
 			[name]: value,
 		})
+		if (name === 'phone') {
+			setErrors({
+				...errors,
+				phone: !validatePhone(value),
+			})
+		}
+		if (name === 'email') {
+			setErrors({
+				...errors,
+				email: !validateEmail(value),
+			})
+		}
 	}
 
 	const handleSubmit = async e => {
 		e.preventDefault()
 		const newErrors = {
 			name: form.name === '',
-			email: form.email === '',
-			phone: form.phone === '',
+			email: form.email === '' || !validateEmail(form.email),
+			phone: form.phone === '' || !validatePhone(form.phone),
 			message: form.message === '',
 		}
 
@@ -121,18 +143,6 @@ const CardContactForm = ({ title, id }) => {
 				}}
 				onSubmit={handleSubmit}
 			>
-				{/* <Typography
-					value={form.title}
-					sx={{
-						fontFamily: 'Lato',
-						textAlign: 'center',
-						fontSize: '20px',
-						fontWeight: 600,
-						lineHeight: '25px',
-						color: ' #093C59',
-						marginBottom: '20px',
-					}}
-				></Typography> */}
 				<TextField name='id' value={form.id} sx={{ display: 'none' }} />
 				<TextField
 					label='Apellido y Nombre'
@@ -149,7 +159,10 @@ const CardContactForm = ({ title, id }) => {
 					value={form.email}
 					onChange={handleChange}
 					error={errors.email}
-					helperText={errors.email && 'Este campo es obligatorio'}
+					helperText={
+						errors.email &&
+						'Este campo es obligatorio. Formato: usuario@dominio.com'
+					}
 				/>
 				<TextField
 					label='Teléfono'
@@ -158,7 +171,10 @@ const CardContactForm = ({ title, id }) => {
 					value={form.phone}
 					onChange={handleChange}
 					error={errors.phone}
-					helperText={errors.phone && 'Este campo es obligatorio'}
+					helperText={
+						errors.phone &&
+						'Este campo es obligatorio. Formato: +54 9 123456789'
+					}
 				/>
 				<TextField
 					label='Mensaje'
