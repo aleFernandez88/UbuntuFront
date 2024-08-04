@@ -27,7 +27,7 @@ function ContactRequestManagment ( {noGestionados, gestionados} ) {
             <Box sx={{ 
                 maxWidth: '500px',
                 minWidth: '200px',
-                margin: 'auto',
+                margin: {xs: '2%', sm: '2% 20%', md: '2% 30%'},
                 borderBottom: '1.5px solid',
                 borderColor: '#093c59',
                 alignItems: 'center',
