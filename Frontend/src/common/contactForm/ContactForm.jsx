@@ -1,17 +1,41 @@
 import { Box, FormControl, InputLabel, MenuItem, OutlinedInput, Select, TextField, Typography } from "@mui/material";
 import CircleIcon from '@mui/icons-material/Circle';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import servicesAxios from "../../services/axios";
+import { useEffect, useState } from "react";
 
 
 function ContactForm ({dato}) {
+		const [gestion, setGestion] = useState(false);
+		const [message, setMessage] = useState(dato); //DEBERIA BUSCAR EL ID LINEA 29
 
-	const cambiarEstado = () => {
-		console.log('llamar a axios')
-		
-		console.log('poner el modal en caso de exito/error')
+		const cambiarEstado = async() => {
+			try {
+				const today = new Date();
+				const year = today.getFullYear();
+				const month = String(today.getMonth() + 1).padStart(2, '0');
+				const day = String(today.getDay()).padStart(2, '0');
+				message.managed = `${year}-${month}-${day}`;
 
-		console.log('se renderiza nuevamente la pagina')
-	}
+				setMessage(message);
+
+				const response = await servicesAxios.messageId(message.id, message)
+				console.log(response);
+				setGestion(false);
+			} catch ( error ) {
+				console.log(error);
+			}
+		}
+
+		useEffect(() => {
+				/* DEBERIA BUSCAR EL MENSAJE POR EL ID Y RENDERIZAR ESO */
+				if ( gestion ) {
+					cambiarEstado();
+				}	
+			},[gestion]);
+
+		// console.log('poner el modal en caso de exito/error')
+
+		// console.log('se renderiza nuevamente la pagina')
 
     return (
         <>
@@ -20,13 +44,13 @@ function ContactForm ({dato}) {
 				margin: 'auto',
 				padding: '15px 0px 0px'
 			}}>
-				{dato.managed ? (
+				{message.managed ? (
 					<Box sx={{display: 'flex', marginBottom: '30px',alignItems: 'center', justifyContent: 'center'}}>
 						<CircleIcon sx={{
 						fontSize:'25px', 
 						marginRight: '5px', 
 						marginBottom: '10px',
-						color: dato.managed === null ? 'brown' : 'green' 
+						color: message.managed === null ? 'brown' : 'green' 
 						}}/>
 						<Typography variant='h3' sx={{
 							fontSize: {xs: '18px', sm: '26px'}, 
@@ -41,7 +65,7 @@ function ContactForm ({dato}) {
 							fontSize:'25px', 
 							marginRight: '5px', 
 							marginBottom: '5px',
-							color: dato.managed === null ? 'brown' : 'green' 
+							color: message.managed === null ? 'brown' : 'green' 
 							}}/>
 							<Typography variant='h3' sx={{
 								fontSize: {xs: '18px', sm: '26px'}, 
@@ -54,7 +78,7 @@ function ContactForm ({dato}) {
 			</Box>
 
 			<Box sx={{
-				display: dato.managed? 'none' : 'flex',
+				display: message.managed? 'none' : 'flex',
 				justifyContent: 'right',
 				margin: { xs:'0% 5% 5%', sm: '2% 20%', md: '2% 30%', lg: '2% 35%'},
 			}}>
@@ -65,7 +89,7 @@ function ContactForm ({dato}) {
 						displayEmpty
 						value=''
 						input={<OutlinedInput />}
-						onChange={cambiarEstado}
+						onChange = {() => setGestion(true)}
 						renderValue={(selected) => {
 							if (selected.length === 0) {
 							return <em>Estado</em>;
@@ -108,7 +132,7 @@ function ContactForm ({dato}) {
 					marginBottom: '10px',
 				}}
 			>
-				{dato.microBusiness.name}
+				{message.microBusiness.name}
 			</Typography>
 			<Typography
 				sx={{
@@ -121,7 +145,7 @@ function ContactForm ({dato}) {
 					marginBottom: '20px',
 				}}
 			>
-				Fecha de solicitud: {dato.requestDate}
+				Fecha de solicitud: {message.requestDate}
 			</Typography>
 
 			<Box sx={{margin: '0 4%'}}>
@@ -143,27 +167,27 @@ function ContactForm ({dato}) {
 					<TextField
 						label='Apellido y Nombre'
 						name='name'
-						value={dato.fullName}
+						value={message.fullName}
 						InputProps={{ readOnly: true }}
 					/>
 					<TextField
 						label='Correo Electrónico'
 						name='email'
 						type='email'
-						value={dato.email}
+						value={message.email}
 						InputProps={{ readOnly: true }}
 					/>
 					<TextField
 						label='Teléfono'
 						name='phone'
 						type='tel'
-						value={dato.phone}
+						value={message.phone}
 						InputProps={{ readOnly: true }}
 					/>
 					<TextField
 						label='Mensaje'
 						name='message'
-						value={dato.message}
+						value={message.message}
 						sx={{ marginBottom: '-10px' }}
 						inputProps={{ maxLength: 300, readOnly: true }}
 						multiline
