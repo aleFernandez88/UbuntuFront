@@ -8,7 +8,7 @@ import CircleIcon from '@mui/icons-material/Circle';
 function ContactRequestLoading ( { datos, setDatosCompletos, setDatos, setError } ) {
 
     const navigate = useNavigate();
-    const selection = (d) => {navigate(`/contactoSeleccionado`,{state: {id: d.id}})};
+    const selection = (d) => {navigate(`/contactoSeleccionado`,{state: {dato: d}})};
 
     useEffect(() => {
         const gestion = async() => {
@@ -31,7 +31,8 @@ function ContactRequestLoading ( { datos, setDatosCompletos, setDatos, setError 
             <Box>
                 {datos ? (
                         datos.map((d) => (
-                            <Box key={d.id} sx={{
+                            <Box key={d.id} 
+                                sx={{
                                 backgroundColor: 'lightblue', 
                                 mb: '15px',
                                 height: '88px',
@@ -60,7 +61,7 @@ function ContactRequestLoading ( { datos, setDatosCompletos, setDatos, setError 
                                             </Typography>
                                     </Box>
                                     <Box sx={{ 
-                                        width: '230px', 
+                                        width: {xs: '180px', sm: '280px'}, 
                                         borderBottom: {xs: '1px solid #093c59', sm: 'px solid #093c59'}, 
                                         mb: '5px'
                                     }}>
@@ -71,7 +72,14 @@ function ContactRequestLoading ( { datos, setDatosCompletos, setDatos, setError 
                                         {d.requestDate}
                                     </Typography>
                                 </Box>
-                                <KeyboardArrowRightIcon onClick={()=> selection(d)}/>
+                                <Box
+                                    onClick={()=> selection(d)} 
+                                    sx={{
+                                        padding: {xs: '12% 4% 12% 16%', sm: '10% 1% 10% 20%'}
+                                    }}>
+                                        <KeyboardArrowRightIcon />
+                                </Box>
+                                
                             </Box>
                     ))
                     ) : (

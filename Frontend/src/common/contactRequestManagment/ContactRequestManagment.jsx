@@ -2,13 +2,14 @@ import { Box, Typography } from "@mui/material";
 import { useState } from "react";
 
 
-function ContactRequestManagment ( {noGestionados, gestionados} ) {
+function ContactRequestManagment ( {noGestionados = () =>{console.log()}, gestionados= () =>{console.log()}, datoGestionado = false, gestionar = true}) {
 
-    const [seleccion, setSeleccion] = useState('noGestionadas');
+    const [seleccion, setSeleccion] = useState(datoGestionado);
 
-    const changeColor = (gestion) => {
-        
-        setSeleccion(gestion);
+    const changeColor = (color) => {
+        if (gestionar) {
+            setSeleccion(color);
+        }
     };
 
     return (
@@ -35,34 +36,34 @@ function ContactRequestManagment ( {noGestionados, gestionados} ) {
                 justifyContent: 'space-evenly'}
             }>
                     <Box onClick={() => {
-                            changeColor('noGestionadas'); 
+                            changeColor(false); 
                             noGestionados()}} 
                         sx={{
-                            cursor: 'pointer', 
-                            borderBottom: seleccion === 'noGestionadas' ? '2px solid' : '',
+                            cursor: gestionar ? 'pointer' : 'default', 
+                            borderBottom: seleccion === false ? '2px solid' : '',
                             padding: {xs: '5px', sm: '10px'}
                     }}>
                             <Typography variant='h2' sx={{
                                 fontWeight: 'bold', 
                                 fontSize: {xs:'16px', sm: '22px'},
-                                color: seleccion === 'noGestionadas' ? 'black' : 'gray'
+                                color: seleccion === false ? 'black' : 'gray'
                             }}> 
                                     No gestionadas 
                             </Typography>
                     </Box>
                     <Box onClick={() => {
-                            changeColor('gestionadas'); 
+                            changeColor(true); 
                             gestionados()
                         }} 
                         sx={{
-                            cursor: 'pointer',
-                            borderBottom: seleccion === 'gestionadas' ? '2px solid' : '',
+                            cursor: gestionar ? 'pointer' : 'default',
+                            borderBottom: seleccion === true ? '2px solid' : '',
                             padding: {xs: '5px', sm: '10px'}
                     }}>
                             <Typography variant='h2' sx={{
                                 fontWeight: 'bold', 
                                 fontSize: {xs:'16px', sm: '22px'},
-                                color: seleccion === 'gestionadas' ? 'black' : 'gray'
+                                color: seleccion === true ? 'black' : 'gray'
                             }}> 
                                     Gestionadas
                             </Typography>
