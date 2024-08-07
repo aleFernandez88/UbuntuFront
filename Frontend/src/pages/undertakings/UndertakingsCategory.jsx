@@ -44,6 +44,7 @@ export const UndertakingsCategory = () => {
 						datos.map(emp => (
 							<CardEntrepreneurship
 								key={emp.id}
+								id={emp.id}
 								title={emp.name}
 								images={[]}
 								subtitle={emp.subCategory}
