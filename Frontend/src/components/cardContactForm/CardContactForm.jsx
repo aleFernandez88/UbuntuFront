@@ -95,8 +95,8 @@ const CardContactForm = ({ title, id }) => {
 	const isFormValid = () => {
 		return (
 			form.name.trim().length > 0 &&
-			form.email.trim().length > 0 &&
-			form.phone.trim().length > 0 &&
+			validateEmail(form.email) &&
+			validatePhone(form.phone) > 0 &&
 			form.message.trim().length > 0
 		)
 	}
