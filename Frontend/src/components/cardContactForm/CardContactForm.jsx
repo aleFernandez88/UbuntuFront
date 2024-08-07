@@ -9,12 +9,14 @@ import {
 	Grid,
 } from '@mui/material'
 import servicesAxios from '../../services/axios'
+import { useNavigate } from 'react-router-dom'
 
-const CardContactForm = ({ title, id, name, email, phone }) => {
+const CardContactForm = ({ title, id }) => {
+	const navigate = useNavigate()
 	const [form, setForm] = useState({
-		name: name,
-		email: email,
-		phone: phone,
+		name: '',
+		email: '',
+		phone: '',
 		message: '',
 		microBusiness: { id: id, name: title },
 	})
@@ -82,6 +84,8 @@ const CardContactForm = ({ title, id, name, email, phone }) => {
 				}
 
 				const response = await servicesAxios.sendContactForm(formData)
+				console.log('Contact form was sent:', response)
+				navigate('/microemprendimientos')
 			} catch (error) {
 				console.error('Contact form was not sent:', error)
 			}
