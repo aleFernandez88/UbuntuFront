@@ -32,7 +32,16 @@ const servicesAxios = {
         }
     },
 
-    messageId: async(id, datos) => {
+    messageId: async(id) => {
+        try {
+            const response = await axios.get(`http://localhost:8080/message/${id}`);
+            return response.data;
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    messageUpdate: async(id, datos) => {
         try {
             const response = await axios.put(`http://localhost:8080/message/${id}`, datos);
             return response.data;

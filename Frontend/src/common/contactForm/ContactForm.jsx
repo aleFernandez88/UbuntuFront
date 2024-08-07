@@ -1,15 +1,21 @@
+import { useContext, useEffect, useState } from "react";
+import { ContactContext } from "../../pages/contactRequest/ContactSelected";
 import { Box, FormControl, InputLabel, MenuItem, OutlinedInput, Select, TextField, Typography } from "@mui/material";
 import CircleIcon from '@mui/icons-material/Circle';
 import servicesAxios from "../../services/axios";
-import { useEffect, useState } from "react";
 
 
-function ContactForm ({dato}) {
+function ContactForm () {
+	//gestion: si se le asigna TRUE cambiamos al estado Gestionado
+	//message: tenemos el mensaje, siempre lo actualizamos.
+
+		const { setCambio, contact } = useContext(ContactContext);
 		const [gestion, setGestion] = useState(false);
-		const [message, setMessage] = useState(dato); //DEBERIA BUSCAR EL ID LINEA 29
+		const [message, setMessage] = useState(contact);
 
 		const cambiarEstado = async() => {
 			try {
+				//actualizamos el mensaje, para ello debemos obtener el día actual
 				const today = new Date();
 				const year = today.getFullYear();
 				const month = String(today.getMonth() + 1).padStart(2, '0');
@@ -18,24 +24,34 @@ function ContactForm ({dato}) {
 
 				setMessage(message);
 
-				const response = await servicesAxios.messageId(message.id, message)
-				console.log(response);
+				await servicesAxios.messageUpdate(message.id, message)
 				setGestion(false);
 			} catch ( error ) {
 				console.log(error);
 			}
 		}
-
+			
 		useEffect(() => {
-				/* DEBERIA BUSCAR EL MENSAJE POR EL ID Y RENDERIZAR ESO */
-				if ( gestion ) {
-					cambiarEstado();
-				}	
-			},[gestion]);
+			const findIdMessage = async() => {
+				try {
+					//traemos el mensaje actualizado
+					const mensaje = await servicesAxios.messageId(contact.id);
+					setMessage(mensaje);
 
-		// console.log('poner el modal en caso de exito/error')
+				} catch (error) {
+					console.log(error)
+				}
+			}
 
-		// console.log('se renderiza nuevamente la pagina')
+			findIdMessage();
+
+			//cuando se cambia el estado de gestion en el select, se renderiza la pagina y pasa por aqui
+			if ( gestion ) {
+				setCambio(true);
+				cambiarEstado();
+			}
+
+		},[gestion]);
 
     return (
         <>

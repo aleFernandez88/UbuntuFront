@@ -3,11 +3,12 @@ import ContactRequestManagment from '../../common/contactRequestManagment/Contac
 import ContactRequestLoading from '../../common/contactRequestManagment/ContactRequestLoading';
 
 function ContactRequest() {
-    //estados y axios
+    //estados
     const [datosCompletos, setDatosCompletos] = useState("");
     const [datos, setDatos] = useState("");
     const [error, setError] = useState("");
 
+    //cambio los mensajes que se van a mostrar, si estan o no gestionados
     const gestionados = () => {
         const g = datosCompletos.filter((item) => item.managed)
         setDatos(g);

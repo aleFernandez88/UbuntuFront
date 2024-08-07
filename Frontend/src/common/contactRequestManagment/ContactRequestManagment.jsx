@@ -1,16 +1,42 @@
+import { useContext, useEffect, useState } from "react";
+import { ContactContext } from "../../pages/contactRequest/ContactSelected";
 import { Box, Typography } from "@mui/material";
-import { useState } from "react";
 
+function ContactRequestManagment ( {noGestionados = () =>{console.log()}, gestionados= () =>{console.log()}, mensajeGestionado = false, gestionarMensaje = true}) {
 
-function ContactRequestManagment ( {noGestionados = () =>{console.log()}, gestionados= () =>{console.log()}, datoGestionado = false, gestionar = true}) {
+    // si "mensajeGestionado/SELECCION" es FALSE --> el dato NO fue Gestionado cambia al COLOR Black  
+    // si "mensajeGestionado/SELECCION" es TRUE --> el dato fue Gestionado cambia al COLOR Black
 
-    const [seleccion, setSeleccion] = useState(datoGestionado);
+    // ---- PARA CAMBIAR COLOR GESTIONAR DATO DEBE SER TRUE
+
+    // si "gestionarMensaje" es TRUE --> Se puede clickear: 'pointer' y permite cambiar de COLOR
+    // si "gestionarMensaje" es FALSE --> No se puede clickear 'default'
+
+    // "cambio" lo utilizo para indicar que se hizo un cambio en el select del ContactForm
+    // (para pasar de No Gestionado a Gestionado)
+
+    const [seleccion, setSeleccion] = useState(mensajeGestionado);
+    const { cambio } = useContext(ContactContext);
 
     const changeColor = (color) => {
-        if (gestionar) {
+        if (gestionarMensaje) {
             setSeleccion(color);
         }
     };
+
+    useEffect(() => {
+
+        /* cambio se Setea en 2 ocaciones:
+            1 - Cuando se cambia de estado de no gestionado a gestionado, con el select en el ContactForm
+            2 - Cuando se actualiza la pagina, en el ContactSelected se llama al mensaje con la información
+                actualizada, por lo que se vuelve a seter el cambio de acuerdo al mensaje.
+        */
+        if ( cambio ) {
+            gestionarMensaje = true;
+            changeColor(true);
+            gestionarMensaje = false;
+        }
+    },[cambio])
 
     return (
         <Box sx={{
@@ -39,7 +65,7 @@ function ContactRequestManagment ( {noGestionados = () =>{console.log()}, gestio
                             changeColor(false); 
                             noGestionados()}} 
                         sx={{
-                            cursor: gestionar ? 'pointer' : 'default', 
+                            cursor: gestionarMensaje ? 'pointer' : 'default', 
                             borderBottom: seleccion === false ? '2px solid' : '',
                             padding: {xs: '5px', sm: '10px'}
                     }}>
@@ -56,7 +82,7 @@ function ContactRequestManagment ( {noGestionados = () =>{console.log()}, gestio
                             gestionados()
                         }} 
                         sx={{
-                            cursor: gestionar ? 'pointer' : 'default',
+                            cursor: gestionarMensaje? 'pointer' : 'default',
                             borderBottom: seleccion === true ? '2px solid' : '',
                             padding: {xs: '5px', sm: '10px'}
                     }}>

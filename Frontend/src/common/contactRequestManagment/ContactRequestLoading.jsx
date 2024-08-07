@@ -8,7 +8,7 @@ import CircleIcon from '@mui/icons-material/Circle';
 function ContactRequestLoading ( { datos, setDatosCompletos, setDatos, setError } ) {
 
     const navigate = useNavigate();
-    const selection = (d) => {navigate(`/contactoSeleccionado`,{state: {dato: d}})};
+    const selection = (d) => {navigate(`/contactoSeleccionado`,{state: {mensaje: d}})};
 
     useEffect(() => {
         const gestion = async() => {
