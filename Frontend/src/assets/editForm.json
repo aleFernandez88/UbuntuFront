@@ -13,10 +13,14 @@
         "categoria": {  
           "label": "Categoria",  
           "subtitle": "Seleccioná la categoría del Microemprendimiento",  
-          "item1": "Economía social/ Desarrollo local/ Inclusión financiera",  
-           "item2": "Agroecología/ Orgánicos/ Alimentación saludable",  
-           "item3": "Conservación/ Regeneración/ Servicios ecosistémicos", 
-           "item4": "Empresas/ Organismos de impacto/ Economía circular"  
+          "item1": {"id": 1,
+                    "name": "Economía social/ Desarrollo local/ Inclusión financiera"},  
+           "item2": {"id": 2,
+                    "name":"Agroecología/ Orgánicos/ Alimentación saludable"},  
+           "item3": {"id": 3,
+                    "name":"Conservación/ Regeneración/ Servicios ecosistémicos"}, 
+           "item4": {"id": 4,
+                    "name":"Empresas/ Organismos de impacto/ Economía circular"}  
             } ,   
         "subcategoria": {  
           "label": "Subcategoria",  
@@ -25,18 +29,30 @@
         "pais": {  
           "label": "Pais",  
           "subtitle": "Seleccioná un País de la lista",
-          "item1": "Argentina",  
-          "item2": "Chile",  
-          "item3": "Colombia", 
-          "item4": "Uruguay"   
+          "item1":{"id": 12,
+                    "name":"Argentina"},  
+          "item2": {"id": 22,
+                    "name":"Chile"},  
+          "item3": {"id": 32,
+                    "name":"Colombia"}, 
+          "item4": {"id": 42,
+                    "name":"Uruguay" }  
         },  
         "provincia": {  
           "label": "Provincia/Estado",  
           "subtitle": "Seleccioná una Provincia/Estado de la lista",
-          "item1": "Buenos Aires",  
-          "item2": "Córdoba",  
-          "item3": "Mendoza", 
-          "item4": "San Luis" 
+          "item1": {"id": 11,
+                    "name": "La Rioja"
+                    } , 
+          "item2": {"id": 21,
+                    "name": "Vizcaya"
+                    },    
+          "item3": {"id": 31,
+                    "name": "Chaco"
+                    }  , 
+          "item4": {"id": 41,
+                    "name": "Jujuy"
+                    }  
         },  
         "ciudad": {  
           "label": "Ciudad",  
@@ -49,7 +65,7 @@
         "informacion": {  
           "label": "Más información del Microemprendedor",  
           "subtitle": "Máximo 300 caracteres                                     0/300"  
-        }  
+        }
       }  
     ]
     }  

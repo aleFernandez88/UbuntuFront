@@ -11,8 +11,9 @@ import { Noresults } from '../pages/results/Noresults'
 import { ContactForm } from '../pages/form/ContactForm'
 import { DashBoardAdmin } from '../pages/dashBoardAdmin/DashBoardAdmin'
 import { Layout } from '../components/layout/Layout'
-import { CreateForm } from '../pages/microbusinessForm/CreateForm'
-import { EditForm } from '../pages/microbusinessForm/EditForm'
+import { CreateFormu } from '../pages/microbusinessForm/MicroBusinessFormPost'
+import { EditFormu } from '../pages/microbusinessForm/pruebaedit'
+import { MicroemprendimientoDetail } from '../pages/microbusinessForm/MicroBusinessFormGet'
 
 export const AppRoutes = () => {
 	const routes = [
@@ -53,13 +54,18 @@ export const AppRoutes = () => {
 					path: '/dashboard',
 					element: <DashBoardAdmin />,
 				},
+			
 				{
-					path: '/crearMicroemprendimiento',
-					element: <CreateForm />,
+					path: '/microenviar',
+					element: <CreateFormu />,
 				},
 				{
-					path: '/editarMicroemprendimiento',
-					element: <EditForm />,
+					path: '/microeditar/:id',
+					element: <EditFormu />,
+				},
+				{
+					path: '/microver/:id',
+					element: <MicroemprendimientoDetail />,
 				},
 			],
 		},
