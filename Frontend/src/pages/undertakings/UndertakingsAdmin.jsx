@@ -14,7 +14,9 @@ export const UndertakingsAdmin = () => {
     ]
 
     const navigate = useNavigate();
-    const seleccion = (m) => {navigate(`/dashboard`,{state: {microemprendimiento: m}})}
+    const cargarMicro = () => {navigate(`/microcrear`)};
+    const seleccion = (m) => {navigate(`/microver/${m.id}`)};
+
 
     useEffect(() => {
         const cargarEmprendimientos = async() => {
@@ -49,17 +51,18 @@ export const UndertakingsAdmin = () => {
                     mt: '30px',
                     mb: '35px'
                 }}>
-                    <Typography variant='button' sx={{ letterSpacing: '0px' }}>
+                    <Typography variant='button' onClick={cargarMicro} sx={{ letterSpacing: '0px' }}>
                     Cargar Microemprendimiento
 					</Typography>
                 </Button>
             </Box>
 
-            <Box>
                 {
                     microE? (
                         microE.map((m) => (
-                            <CardContactRequest id={m.id} title={m.name} description={m.subCategory} metodoClickArrow={seleccion} datoMetodoClick={m} optionCircle={false} />
+                            <Box key={m.id}>
+                                <CardContactRequest id={m.id} title={m.name} description={m.subCategory} metodoClickArrow={seleccion} datoMetodoClick={m} optionCircle={false} />
+                            </Box>
                         ))
                     ) : (
                         <Typography>
@@ -67,7 +70,6 @@ export const UndertakingsAdmin = () => {
                         </Typography>
                     )
                 }
-            </Box>
         </>
     )
 }

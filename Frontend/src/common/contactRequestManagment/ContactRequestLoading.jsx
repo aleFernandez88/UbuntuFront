@@ -29,15 +29,15 @@ function ContactRequestLoading ( { datos, setDatosCompletos, setDatos, setError 
 
     return (
         <>
-            <Box>
                 {datos ? (
                         datos.map((d) => (
-                            <CardContactRequest id={d.id} title={d.microBusiness.name} description={d.requestDate} metodoClickArrow={selection} datoMetodoClick={d} colorCirculo={d.managed} />
+                            <Box key={d.id}>
+                                <CardContactRequest id={d.id} title={d.microBusiness.name} description={d.requestDate} metodoClickArrow={selection} datoMetodoClick={d} colorCirculo={d.managed} />
+                            </Box>
                     ))
                     ) : (
                         <Typography variant='body1'> No se pudieron cargar las solicitudes de contacto </Typography>
                 )}
-            </Box>
         </>
     )
 }
