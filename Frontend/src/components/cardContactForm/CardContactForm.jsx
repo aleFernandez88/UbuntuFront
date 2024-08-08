@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 import {
 	TextField,
 	Button,
@@ -10,9 +9,12 @@ import {
 } from '@mui/material'
 import servicesAxios from '../../services/axios'
 import { useNavigate } from 'react-router-dom'
+import { ModalGeneric } from '../modalGeneric/ModalGeneric'
 
 const CardContactForm = ({ title, id }) => {
 	const navigate = useNavigate()
+
+	// Estado para el formulario
 	const [form, setForm] = useState({
 		name: '',
 		email: '',
@@ -28,15 +30,14 @@ const CardContactForm = ({ title, id }) => {
 		message: false,
 	})
 
-	const emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+	// Estado para controlar el modal
+	const [isOpen, setIsOpen] = useState(false)
 
+	const emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 	const validateEmail = email => emailRegExp.test(email)
 
 	const phoneRegExp = /^\+\d{1,3}( 9)? \d{6,14}$/
-
-	const validatePhone = phone => {
-		return phoneRegExp.test(phone)
-	}
+	const validatePhone = phone => phoneRegExp.test(phone)
 
 	const handleChange = e => {
 		const { name, value } = e.target
@@ -85,7 +86,14 @@ const CardContactForm = ({ title, id }) => {
 
 				const response = await servicesAxios.sendContactForm(formData)
 				console.log('Contact form was sent:', response)
-				navigate('/microemprendimientos')
+
+				// Abrir el modal cuando el formulario se envía correctamente
+				setIsOpen(true)
+
+				// Navegar después de que el modal se cierra automáticamente
+				setTimeout(() => {
+					navigate('/microemprendimientos')
+				}, 3500) // Navegar después de 3.5 segundos
 			} catch (error) {
 				console.error('Contact form was not sent:', error)
 			}
@@ -96,7 +104,7 @@ const CardContactForm = ({ title, id }) => {
 		return (
 			form.name.trim().length > 0 &&
 			validateEmail(form.email) &&
-			validatePhone(form.phone) > 0 &&
+			validatePhone(form.phone) &&
 			form.message.trim().length > 0
 		)
 	}
@@ -226,6 +234,13 @@ const CardContactForm = ({ title, id }) => {
 					Enviar
 				</Button>
 			</Box>
+
+			{/* Modal que se abre al enviar el formulario */}
+			<ModalGeneric
+				titulo='Formulario enviado'
+				mensaje='Tu formulario se ha enviado exitosamente.'
+				isOpen={isOpen}
+			/>
 		</Container>
 	)
 }
