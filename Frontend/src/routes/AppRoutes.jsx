@@ -14,6 +14,7 @@ import { Layout } from '../components/layout/Layout'
 
 import ContactRequest from '../pages/contactRequest/ContactRequest'
 import ContactSelected from '../pages/contactRequest/ContactSelected'
+import { UndertakingsAdmin } from '../pages/undertakings/UndertakingsAdmin'
 
 export const AppRoutes = () => {
 	const routes = [
@@ -32,6 +33,10 @@ export const AppRoutes = () => {
 				{
 					path: '/microemprendimientos',
 					element: <Undertakings />,
+				},
+				{
+					path: '/microemprendimientosA',
+					element: <UndertakingsAdmin />,
 				},
 				{
 					path: '/categoriaSeleccionada/:id',

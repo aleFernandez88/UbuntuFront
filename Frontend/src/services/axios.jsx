@@ -23,6 +23,15 @@ const servicesAxios = {
 		}
 	},
 
+	undertakingsAll: async() => {
+		try {
+			const response = await axios.get(`http://localhost:8080/microbusiness`)
+			return response.data;
+		} catch (error) {
+			console.log(error)
+		}
+	},
+
 	sendContactForm: async formData => {
 		try {
 			const response = await axios.post(

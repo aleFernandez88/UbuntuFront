@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import CircleIcon from '@mui/icons-material/Circle';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 
-export default function CardContactRequest ( {id, title, description, metodoClick, datoMetodoClick, colorCirculo = null} ) {
+export default function CardContactRequest ( {id, title, description, metodoClickArrow, datoMetodoClick, colorCirculo = null, optionCircle = true} ) {
 
     return (
         <Box key={id} 
@@ -23,6 +24,7 @@ export default function CardContactRequest ( {id, title, description, metodoClic
             <Box>
                 <Box sx={{display: 'flex', alignItems: 'center'}}>
                     <CircleIcon sx={{
+                        display: optionCircle? 'default' : 'none',
                         fontSize:"large", 
                         marginRight: '5px', 
                         marginBottom: '5px',
@@ -48,11 +50,16 @@ export default function CardContactRequest ( {id, title, description, metodoClic
                 </Typography>
             </Box>
             <Box
-                onClick={()=> metodoClick(datoMetodoClick)} 
                 sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
                     padding: {xs: '12% 4% 12% 16%', sm: '10% 1% 10% 20%'}
                 }}>
-                    <KeyboardArrowRightIcon />
+                    <MoreVertIcon sx={{
+                        display: optionCircle? 'none' : 'default',
+                        mb: '30px'
+                    }}/>
+                    <KeyboardArrowRightIcon onClick={()=> metodoClickArrow(datoMetodoClick)} />
             </Box>
             
         </Box>
