@@ -218,6 +218,16 @@ const FormMicroemprendimiento = ({
         />  
       </Button>  
       </Box>
+      {images.length === 0 && (  
+              <>  
+                <Typography variant="body2" color="textSecondary" align="left" width="152px">  
+                  *Requerida al menos una imagen  
+                </Typography>  
+                <Typography variant="body2" color="textSecondary" align="left" width="152px">  
+                  Hasta 3 imágenes. Máximo 3Mb cada una.  
+                </Typography>  
+              </>  
+            )}  
       </Grid>
       </Grid>
       {images.length > 0 && (  
@@ -230,16 +240,7 @@ const FormMicroemprendimiento = ({
                 ))}  
               </Box>  
             )}  
-            {images.length === 0 && (  
-              <>  
-                <Typography variant="body2" color="textSecondary" align="left" width="152px">  
-                  *Requerida al menos una imagen  
-                </Typography>  
-                <Typography variant="body2" color="textSecondary" align="left" width="152px">  
-                  Hasta 3 imágenes. Máximo 3Mb cada una.  
-                </Typography>  
-              </>  
-            )}  
+          
           
       <Box
        display="flex"  

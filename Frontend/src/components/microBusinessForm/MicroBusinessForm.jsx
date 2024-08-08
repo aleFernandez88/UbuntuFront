@@ -1,35 +1,51 @@
 import React from 'react';  
-import { Container, TextField, Typography, Box} from '@mui/material';   
+import { Container, TextField, Typography, Box, Dialog} from '@mui/material';   
 import { styled } from '@mui/material/styles';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import ImageViewer from './VisorImagen';
+import { useState } from 'react';
 
 const CustomTextField = styled(TextField)(({ theme }) => ({  
     ...theme.typography.cf1,  
   }));  
 const FormMicroGet = ({ initialValues }) => {  
+  const [open, setOpen] = useState(false);  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); 
+  const handleImageClick = (index) => {  
+    setCurrentImageIndex(index); // Guarda el índice de la imagen actual  
+    setOpen(true); // Abre el modal  
+  };  
+
+  const handleClose = () => {  
+    setOpen(false); // Cierra el modal  
+  }; 
   return (  
     <Container maxWidth="sm">  
       <Typography variant="h6" gutterBottom sx={{ marginTop: '2rem' }}>  
         Microemprendimientos  
       </Typography>  
-      <Typography variant="body1" gutterBottom sx={{ fontSize: '20px', color: 'black', fontFamily: 'Lato', margin: '1.5rem', textAlign: 'center', lineHeight:"25px"}}>  
+      <Typography variant="body1"  gutterBottom sx={{ fontSize: '22px', color: 'primary.main', fontFamily: 'Lato', marginTop: '1.5rem', textAlign: 'center', lineHeight:"25px"}}>  
       {initialValues.name}  
       </Typography>  
-      <Typography variant="body1" gutterBottom sx={{ fontSize: '20px', color: 'black', fontFamily: 'Lato', margin: '1.5rem', textAlign: 'center', lineHeight:"25px"}}>  
+      <Typography variant="body1" textAlign='center' gutterBottom sx={{ marginBottom:'22px', textAlign:'center', fontFamily:'Lato'}}>  
       {initialValues.category.name}  
       </Typography>  
       
-      
+     
       <form>  
+      <Typography variant="cf1">
         <CustomTextField  
           id="subCategoria"
           label={<Typography variant="cf1">Subcategoria</Typography>}  
           fullWidth  
           margin="normal"  
-          value={initialValues.subCategory}  
+          value= {initialValues.subCategory}
+      
          
           
         /> 
+        </Typography>
+        
         <CustomTextField
         id="provincia"
         label={<Typography variant="cf1">Provincia</Typography>}  
@@ -82,37 +98,38 @@ const FormMicroGet = ({ initialValues }) => {
           inputProps={{ maxLength: 200 }}  
             
         />  
+        
         </form>
-        <Box display="flex" justifyContent="space-between" sx={{ marginTop: '1rem' }}>  
-        {initialValues.images.map((image) => (  
-          <Box key={image.id} sx={{ flexGrow: 1, padding: '0.5rem', textAlign: 'center', position: 'relative' }}>  
-            <img   
-              src={image.url}   
-              alt={image.name}   
-              style={{ width: '100%', height: 'auto', maxHeight: '200px', objectFit: 'cover' }}   
-              onClick={() => window.open(image.url, "_blank")} // Abrir imagen en nueva pestaña  
-            />  
-            <ZoomInIcon   
-              sx={{  
-                position: 'absolute',  
-                top: '50%',  
-                left: '50%',  
-                transform: 'translate(-50%, -50%)',  
-                color: 'white',  
-                fontSize: '2rem',  
-                cursor: 'pointer',  
-                '&:hover': {  
-                  opacity: 0.8,  
-                }  
-              }}   
-              onClick={() => window.open(image.url, "_blank")} 
-            />  
-          </Box>  
-        ))}  
-      </Box>   
-
+        
+        <Box display="flex" justifyContent="space-between" sx={{ marginTop: '1rem', marginBottom: '10px' }}>  
+      {initialValues.images.map((image, index) => (  
+        <Box key={image.id} sx={{ flexGrow: 1, padding: '0.5rem', textAlign: 'center', position: 'relative' }}>  
+          <img  
+            src={image.url}  
+            alt={image.name}  
+            style={{ width: '100%', height: 'auto', maxHeight: '200px', objectFit: 'cover' }}  
+            onClick={() => handleImageClick(index)} // Ahora al hacer clic se abrirá el visor de imágenes  
+          />  
+          <ZoomInIcon  
+            sx={{  
+              position: 'absolute',  
+              top: '50%',  
+              left: '50%',  
+              transform: 'translate(-50%, -50%)',  
+              color: 'white',  
+              fontSize: '2rem',  
+              cursor: 'pointer',  
+              '&:hover': { opacity: 0.8 },  
+            }}  
+            onClick={() => handleImageClick(index)}  
+          />  
+        </Box>  
+      ))}  
+    </Box>  
           
-     
+    <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>  
+        <ImageViewer images={initialValues.images} initialIndex={currentImageIndex} /> {/* Pasa la lista de imágenes y el índice actual al visor */}  
+      </Dialog> 
 
     </Container>  
   );  
