@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
 import {
 	TextField,
 	Button,
@@ -10,6 +9,7 @@ import {
 } from '@mui/material'
 import servicesAxios from '../../services/axios'
 import { useNavigate } from 'react-router-dom'
+import { ModalGeneric } from '../modalGeneric/ModalGeneric'
 
 const CardContactForm = ({ title, id }) => {
 	const navigate = useNavigate()
@@ -29,33 +29,29 @@ const CardContactForm = ({ title, id }) => {
 	})
 
 	const emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
 	const validateEmail = email => emailRegExp.test(email)
 
 	const phoneRegExp = /^\+\d{1,3}( 9)? \d{6,14}$/
-
-	const validatePhone = phone => {
-		return phoneRegExp.test(phone)
-	}
+	const validatePhone = phone => phoneRegExp.test(phone)
 
 	const handleChange = e => {
 		const { name, value } = e.target
-		setForm({
-			...form,
-			[name]: value,
-		})
+		setForm({ ...form, [name]: value })
 		if (name === 'phone') {
-			setErrors({
-				...errors,
-				phone: !validatePhone(value),
-			})
+			setErrors({ ...errors, phone: !validatePhone(value) })
 		}
 		if (name === 'email') {
-			setErrors({
-				...errors,
-				email: !validateEmail(value),
-			})
+			setErrors({ ...errors, email: !validateEmail(value) })
 		}
+	}
+
+	const [modalOpen, setModalOpen] = useState(false)
+	const [modalMessage, setModalMessage] = useState('')
+	const [shouldNavigate, setShouldNavigate] = useState(false)
+
+	const handleModalClose = () => {
+		setModalOpen(false)
+		setShouldNavigate(true)
 	}
 
 	const handleSubmit = async e => {
@@ -85,9 +81,12 @@ const CardContactForm = ({ title, id }) => {
 
 				const response = await servicesAxios.sendContactForm(formData)
 				console.log('Contact form was sent:', response)
-				navigate('/microemprendimientos')
+				setModalMessage('Formulario enviado exitosamente')
+				setModalOpen(true)
 			} catch (error) {
 				console.error('Contact form was not sent:', error)
+				setModalMessage('Error al enviar el formulario')
+				setModalOpen(true)
 			}
 		}
 	}
@@ -96,10 +95,16 @@ const CardContactForm = ({ title, id }) => {
 		return (
 			form.name.trim().length > 0 &&
 			validateEmail(form.email) &&
-			validatePhone(form.phone) > 0 &&
+			validatePhone(form.phone) &&
 			form.message.trim().length > 0
 		)
 	}
+
+	useEffect(() => {
+		if (shouldNavigate) {
+			navigate('/microemprendimientos')
+		}
+	}, [shouldNavigate, navigate])
 
 	return (
 		<Container sx={{ marginTop: '23px', marginBottom: '20px' }}>
@@ -212,9 +217,10 @@ const CardContactForm = ({ title, id }) => {
 					<Typography variant='body2' color='textSecondary'>
 						Máximo 300 caracteres
 					</Typography>
-					<Typography variant='body2' color='textSecondary'>
-						{`${form.message.length}/300`}
-					</Typography>
+					<Typography
+						variant='body2'
+						color='textSecondary'
+					>{`${form.message.length}/300`}</Typography>
 				</Grid>
 				<Button
 					size='large'
@@ -222,10 +228,18 @@ const CardContactForm = ({ title, id }) => {
 					color={isFormValid() ? 'primary' : 'secondary'}
 					type='submit'
 					sx={{ borderRadius: '100px', marginTop: '30px' }}
+					disabled={!isFormValid()}
 				>
 					Enviar
 				</Button>
 			</Box>
+
+			<ModalGeneric
+				open={modalOpen}
+				handleClose={handleModalClose}
+				titulo='Estado del Envío'
+				mensaje={modalMessage}
+			/>
 		</Container>
 	)
 }

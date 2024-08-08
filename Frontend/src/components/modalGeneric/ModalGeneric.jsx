@@ -16,29 +16,23 @@ const style = {
 	p: 4,
 }
 
-export const ModalGeneric = ({ titulo, mensaje }) => {
-	const [open, setOpen] = React.useState(false)
-	const handleOpen = () => setOpen(true)
-	const handleClose = () => setOpen(false)
-
+export const ModalGeneric = ({ open, handleClose, titulo, mensaje }) => {
 	return (
-		<div>
-			<Button onClick={handleOpen}>Open modal</Button>
-			<Modal
-				open={open}
-				onClose={handleClose}
-				aria-labelledby='modal-modal-title'
-				aria-describedby='modal-modal-description'
-			>
-				<Box sx={style}>
-					<Typography id='modal-modal-title' variant='h6' component='h2'>
-						{titulo}
-					</Typography>
-					<Typography id='modal-modal-description' sx={{ mt: 2 }}>
-						{mensaje}
-					</Typography>
-				</Box>
-			</Modal>
-		</div>
+		<Modal
+			open={open}
+			onClose={handleClose}
+			aria-labelledby='modal-modal-title'
+			aria-describedby='modal-modal-description'
+		>
+			<Box sx={style}>
+				<Typography id='modal-modal-title' variant='h6' component='h2'>
+					{titulo}
+				</Typography>
+				<Typography id='modal-modal-description' sx={{ mt: 2 }}>
+					{mensaje}
+				</Typography>
+				<Button onClick={handleClose}>Cerrar</Button>
+			</Box>
+		</Modal>
 	)
 }
