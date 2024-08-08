@@ -16,14 +16,27 @@ const style = {
 	p: 4,
 }
 
-export const ModalGeneric = ({ titulo, mensaje }) => {
-	const [open, setOpen] = React.useState(false)
-	const handleOpen = () => setOpen(true)
+export const ModalGeneric = ({ titulo, mensaje, isOpen }) => {
+	const [open, setOpen] = React.useState(isOpen)
+	const autoCloseTime = 3000;
 	const handleClose = () => setOpen(false)
+
+	React.useEffect(() => {
+		setOpen(isOpen);
+	}, [isOpen]);
+
+	React.useEffect(() => {
+		let tiempo
+		if (isOpen && autoCloseTime) {
+			tiempo = setTimeout(() => {
+				setOpen(false)
+			}, autoCloseTime)
+		}
+		return () => clearTimeout(tiempo) // Clear the timeout if the component unmounts or isOpen changes
+	}, [isOpen, autoCloseTime])
 
 	return (
 		<div>
-			<Button onClick={handleOpen}>Open modal</Button>
 			<Modal
 				open={open}
 				onClose={handleClose}
