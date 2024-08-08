@@ -12,11 +12,12 @@ import { ContactForm } from '../pages/form/ContactForm'
 import { DashBoardAdmin } from '../pages/dashBoardAdmin/DashBoardAdmin'
 import { Layout } from '../components/layout/Layout'
 import { CreateFormu } from '../pages/microbusinessForm/MicroBusinessFormPost'
-import { EditFormu } from '../pages/microbusinessForm/pruebaedit'
+
 import { MicroemprendimientoDetail } from '../pages/microbusinessForm/MicroBusinessFormGet'
 
 import ContactRequest from '../pages/contactRequest/ContactRequest'
 import ContactSelected from '../pages/contactRequest/ContactSelected'
+import { EditMicroemprendimiento } from '../pages/microbusinessForm/MicroBusinessFormPut'
 
 export const AppRoutes = () => {
 	const routes = [
@@ -59,12 +60,13 @@ export const AppRoutes = () => {
 				},
 			
 				{
-					path: '/microenviar',
+					path: '/microcrear',
 					element: <CreateFormu />,
 				},
+			
 				{
 					path: '/microeditar/:id',
-					element: <EditFormu />,
+					element: <EditMicroemprendimiento />,
 				},
 				{
 					path: '/microver/:id',
