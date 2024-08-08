@@ -3,7 +3,7 @@ import { ContactContext } from "../../pages/contactRequest/ContactSelected";
 import { Box, FormControl, InputLabel, MenuItem, OutlinedInput, Select, TextField, Typography } from "@mui/material";
 import CircleIcon from '@mui/icons-material/Circle';
 import servicesAxios from "../../services/axios";
-
+import { ModalGeneric } from "../../components/modalGeneric/ModalGeneric";
 
 function ContactForm () {
 	//gestion: si se le asigna TRUE cambiamos al estado Gestionado
@@ -12,6 +12,7 @@ function ContactForm () {
 		const { setCambio, contact } = useContext(ContactContext);
 		const [gestion, setGestion] = useState(false);
 		const [message, setMessage] = useState(contact);
+		const [isModalOpen, setIsModalOpen] = useState(false);
 
 		const cambiarEstado = async() => {
 			try {
@@ -24,11 +25,17 @@ function ContactForm () {
 
 				setMessage(message);
 
-				await servicesAxios.messageUpdate(message.id, message)
-				setGestion(false);
+				const response = await servicesAxios.messageUpdate(message.id, message)
+
+				if ( response ) {
+					setIsModalOpen(true);
+				}
+
 			} catch ( error ) {
 				console.log(error);
-			}
+			} finally {
+				setGestion(false);
+			}	
 		}
 			
 		useEffect(() => {
@@ -52,9 +59,10 @@ function ContactForm () {
 			}
 
 		},[gestion]);
-
-    return (
+    
+	return (
         <>
+			<ModalGeneric titulo={'Exito'} mensaje={'El mensaje fue gestionado'} isOpen={isModalOpen}/>
 			<Box sx={{
 				maxWidth: '300px',
 				margin: 'auto',
@@ -105,7 +113,7 @@ function ContactForm () {
 						displayEmpty
 						value=''
 						input={<OutlinedInput />}
-						onChange = {() => setGestion(true)}
+						onChange = {() => {setGestion(true); setIsModalOpen(true);}}
 						renderValue={(selected) => {
 							if (selected.length === 0) {
 							return <em>Estado</em>;
