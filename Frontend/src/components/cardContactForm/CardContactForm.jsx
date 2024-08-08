@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import {
 	TextField,
 	Button,
@@ -7,13 +8,17 @@ import {
 	Container,
 	Grid,
 } from '@mui/material'
+import servicesAxios from '../../services/axios'
+import { useNavigate } from 'react-router-dom'
 
-const CardContactForm = () => {
+const CardContactForm = ({ title, id }) => {
+	const navigate = useNavigate()
 	const [form, setForm] = useState({
 		name: '',
 		email: '',
 		phone: '',
 		message: '',
+		microBusiness: { id: id, name: title },
 	})
 
 	const [errors, setErrors] = useState({
@@ -23,20 +28,42 @@ const CardContactForm = () => {
 		message: false,
 	})
 
+	const emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+	const validateEmail = email => emailRegExp.test(email)
+
+	const phoneRegExp = /^\+\d{1,3}( 9)? \d{6,14}$/
+
+	const validatePhone = phone => {
+		return phoneRegExp.test(phone)
+	}
+
 	const handleChange = e => {
 		const { name, value } = e.target
 		setForm({
 			...form,
 			[name]: value,
 		})
+		if (name === 'phone') {
+			setErrors({
+				...errors,
+				phone: !validatePhone(value),
+			})
+		}
+		if (name === 'email') {
+			setErrors({
+				...errors,
+				email: !validateEmail(value),
+			})
+		}
 	}
 
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		e.preventDefault()
 		const newErrors = {
 			name: form.name === '',
-			email: form.email === '',
-			phone: form.phone === '',
+			email: form.email === '' || !validateEmail(form.email),
+			phone: form.phone === '' || !validatePhone(form.phone),
 			message: form.message === '',
 		}
 
@@ -44,16 +71,32 @@ const CardContactForm = () => {
 
 		const hasErrors = Object.values(newErrors).some(error => error)
 		if (!hasErrors) {
-			// Manejar el envío del formulario
-			console.log('Formulario enviado:', form)
+			try {
+				const formData = {
+					fullName: form.name,
+					email: form.email,
+					phone: form.phone,
+					message: form.message,
+					microBusiness: {
+						id: form.microBusiness.id,
+						name: form.microBusiness.name,
+					},
+				}
+
+				const response = await servicesAxios.sendContactForm(formData)
+				console.log('Contact form was sent:', response)
+				navigate('/microemprendimientos')
+			} catch (error) {
+				console.error('Contact form was not sent:', error)
+			}
 		}
 	}
 
 	const isFormValid = () => {
 		return (
 			form.name.trim().length > 0 &&
-			form.email.trim().length > 0 &&
-			form.phone.trim().length > 0 &&
+			validateEmail(form.email) &&
+			validatePhone(form.phone) > 0 &&
 			form.message.trim().length > 0
 		)
 	}
@@ -83,7 +126,7 @@ const CardContactForm = () => {
 					marginBottom: '20px',
 				}}
 			>
-				EcoSenda
+				{title}
 			</Typography>
 			<Typography
 				sx={{
@@ -112,6 +155,11 @@ const CardContactForm = () => {
 				onSubmit={handleSubmit}
 			>
 				<TextField
+					name='id'
+					value={form.microBusiness.id}
+					sx={{ display: 'none' }}
+				/>
+				<TextField
 					label='Apellido y Nombre'
 					name='name'
 					value={form.name}
@@ -126,7 +174,10 @@ const CardContactForm = () => {
 					value={form.email}
 					onChange={handleChange}
 					error={errors.email}
-					helperText={errors.email && 'Este campo es obligatorio'}
+					helperText={
+						errors.email &&
+						'Este campo es obligatorio. Formato: usuario@dominio.com'
+					}
 				/>
 				<TextField
 					label='Teléfono'
@@ -135,7 +186,10 @@ const CardContactForm = () => {
 					value={form.phone}
 					onChange={handleChange}
 					error={errors.phone}
-					helperText={errors.phone && 'Este campo es obligatorio'}
+					helperText={
+						errors.phone &&
+						'Este campo es obligatorio. Formato: +54 9 123456789'
+					}
 				/>
 				<TextField
 					label='Mensaje'

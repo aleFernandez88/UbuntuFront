@@ -15,6 +15,9 @@ import { CreateFormu } from '../pages/microbusinessForm/MicroBusinessFormPost'
 import { EditFormu } from '../pages/microbusinessForm/pruebaedit'
 import { MicroemprendimientoDetail } from '../pages/microbusinessForm/MicroBusinessFormGet'
 
+import ContactRequest from '../pages/contactRequest/ContactRequest'
+import ContactSelected from '../pages/contactRequest/ContactSelected'
+
 export const AppRoutes = () => {
 	const routes = [
 		{
@@ -66,6 +69,14 @@ export const AppRoutes = () => {
 				{
 					path: '/microver/:id',
 					element: <MicroemprendimientoDetail />,
+				},
+				{
+					path: '/solicitudContacto',
+					element: <ContactRequest />,
+				},
+				{
+					path: '/contactoSeleccionado',
+					element: <ContactSelected />,
 				},
 			],
 		},

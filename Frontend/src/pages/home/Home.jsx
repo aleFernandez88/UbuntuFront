@@ -10,6 +10,7 @@ import Category from '../../common/category/Category'
 import { Box, Button, Typography } from '@mui/material'
 import { Link } from '@mui/material'
 import { SwitchNavBar } from '../../common/switchNavBar/SwitchNavBar'
+import { ModalGeneric } from '../../components/modalGeneric/ModalGeneric'
 
 export const Home = () => {
 	const [showAll, setShowAll] = useState(false)

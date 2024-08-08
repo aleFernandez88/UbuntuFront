@@ -9,6 +9,7 @@ import {
 } from '@mui/material'
 import { Carousel } from '../carousel/Carousel'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 // Estilo para el botón de expandir
@@ -25,6 +26,7 @@ const ExpandMore = ({ expand, ...props }) => (
 )
 
 export const CardEntrepreneurship = ({
+	id,
 	title,
 	subtitle,
 	images,
@@ -36,6 +38,12 @@ export const CardEntrepreneurship = ({
 	const [expanded, setExpanded] = useState(false)
 	const handleExpandClick = () => {
 		setExpanded(!expanded)
+	}
+
+	const navigate = useNavigate()
+
+	const handleContactClick = () => {
+		navigate('/contacto', { state: { title, id } })
 	}
 
 	return (
@@ -104,7 +112,7 @@ export const CardEntrepreneurship = ({
 						<Button
 							variant='contained'
 							sx={{ borderRadius: '20px', mt: '20px', mb: '10px' }}
-							// onClick={handleShowAllClick}
+							onClick={handleContactClick}
 						>
 							<Typography variant='button'>Contactar</Typography>
 						</Button>

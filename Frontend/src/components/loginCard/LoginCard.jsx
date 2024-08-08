@@ -31,9 +31,12 @@ function LoginCardComponent() {
 				console.log(data)
 
 				localStorage.setItem('token', res.data.token)
+				console.log('Token:', res.data.token)
 				localStorage.setItem('rol', res.data.rol)
 				localStorage.setItem('name', res.data.name)
 				localStorage.setItem('lastName', res.data.lastName)
+				localStorage.setItem('email', res.data.email)
+				// localStorage.setItem('phone', res.data.phone)
 
 				navigate('/dashboard')
 			} catch (error) {
