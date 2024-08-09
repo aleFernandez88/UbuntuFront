@@ -14,7 +14,7 @@ function LoginCardComponent() {
 		flow: 'auth-code',
 		onSuccess: async googleData => {
 			try {
-				console.log('Google Data:', googleData)
+				// console.log('Google Data:', googleData)
 				const res = await axios.post(
 					'http://localhost:8080/login/oauth2/code/google',
 					{
@@ -28,17 +28,17 @@ function LoginCardComponent() {
 				)
 
 				const data = res.data
-				console.log(data)
+				// console.log(data)
 
 				localStorage.setItem('token', res.data.token)
-				console.log('Token:', res.data.token)
+				// console.log('Token:', res.data.token)
 				localStorage.setItem('rol', res.data.rol)
 				localStorage.setItem('name', res.data.name)
 				localStorage.setItem('lastName', res.data.lastName)
 				localStorage.setItem('email', res.data.email)
 				// localStorage.setItem('phone', res.data.phone)
 
-				navigate('/dashboard')
+				navigate('/')
 			} catch (error) {
 				console.error('Login Failed:', error.response || error)
 			}
