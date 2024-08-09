@@ -18,6 +18,7 @@ import { MicroemprendimientoDetail } from '../pages/microbusinessForm/MicroBusin
 import ContactRequest from '../pages/contactRequest/ContactRequest'
 import ContactSelected from '../pages/contactRequest/ContactSelected'
 import { EditMicroemprendimiento } from '../pages/microbusinessForm/MicroBusinessFormPut'
+import { UndertakingsAdmin } from '../pages/undertakings/UndertakingsAdmin'
 
 export const AppRoutes = () => {
 	const routes = [
@@ -36,6 +37,10 @@ export const AppRoutes = () => {
 				{
 					path: '/microemprendimientos',
 					element: <Undertakings />,
+				},
+				{
+					path: '/microemprendimientosA',
+					element: <UndertakingsAdmin />,
 				},
 				{
 					path: '/categoriaSeleccionada/:id',

@@ -135,7 +135,7 @@ export default function NavBarAdmin({ showUserAvatar, userAvatar }) {
 							marginTop: '8px',
 						}}
 					>
-						<Link onClick={toggleDrawer} to='/microemprendimientos'>
+						<Link onClick={toggleDrawer} to='/microemprendimientosA'>
 							<ListItemText primary='Microemprendimientos' />
 						</Link>
 					</ListItem>
