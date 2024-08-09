@@ -25,7 +25,7 @@ export const UndertakingsAdmin = () => {
         }
 
         cargarEmprendimientos();
-    },[microE]);
+    },[]);
 
     return (
         <>

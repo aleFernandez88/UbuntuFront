@@ -1,5 +1,6 @@
 import { Box, Button, Link, Typography } from '@mui/material'
 import CategoryComponent from './CategoryComponent'
+import categorias from '../../assets/Category.json'; 
 
 import { useEffect, useState } from 'react'
 import servicesAxios from '../../services/axios';
@@ -46,7 +47,7 @@ function Category({cant}) {
                             <CategoryComponent
                                 key={categoria.id}
                                 text={categoria.name}
-                                url={''}
+                                url={categorias.data[0].url}
                             />
                         </Link>
 					))

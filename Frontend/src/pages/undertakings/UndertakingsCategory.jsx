@@ -19,6 +19,7 @@ export const UndertakingsCategory = () => {
 				//AUN NO FUNCIONA EL DE MICROEMPRENDIMIENTOS, NO HAY DATOS
 				const response = await servicesAxios.undertakings(id)
 				setDatos(response)
+				console.log(response);
 			} catch (error) {
 				setError(error)
 			}
@@ -46,7 +47,7 @@ export const UndertakingsCategory = () => {
 								key={emp.id}
 								id={emp.id}
 								title={emp.name}
-								images={[]}
+								images={emp.images}
 								subtitle={emp.subCategory}
 								category={''}
 								ubi={emp.city}
