@@ -1,29 +1,36 @@
 import * as React from 'react'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 
 const style = {
 	position: 'absolute',
-	top: '50vh',
+	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: '90%',
+	width: '75%',
+	maxWidth: '400px',
 	bgcolor: 'background.paper',
-	border: '2px solid #000',
+	borderRadius: '10px',
 	boxShadow: 24,
 	p: 4,
+	textAlign: 'center',
+}
+
+const iconStyle = {
+	color: '#4CAF50',
+	fontSize: '50px',
+	marginBottom: '16px',
 }
 
 export const ModalGeneric = ({ titulo, mensaje, isOpen }) => {
 	const [open, setOpen] = React.useState(isOpen)
-	const autoCloseTime = 3000;
-	const handleClose = () => setOpen(false)
+	const autoCloseTime = 3000
 
 	React.useEffect(() => {
-		setOpen(isOpen);
-	}, [isOpen]);
+		setOpen(isOpen)
+	}, [isOpen])
 
 	React.useEffect(() => {
 		let tiempo
@@ -32,26 +39,28 @@ export const ModalGeneric = ({ titulo, mensaje, isOpen }) => {
 				setOpen(false)
 			}, autoCloseTime)
 		}
-		return () => clearTimeout(tiempo) // Clear the timeout if the component unmounts or isOpen changes
-	}, [isOpen, autoCloseTime])
+		return () => clearTimeout(tiempo)
+	}, [isOpen])
 
 	return (
-		<div>
-			<Modal
-				open={open}
-				onClose={handleClose}
-				aria-labelledby='modal-modal-title'
-				aria-describedby='modal-modal-description'
-			>
-				<Box sx={style}>
-					<Typography id='modal-modal-title' variant='h6' component='h2'>
-						{titulo}
-					</Typography>
-					<Typography id='modal-modal-description' sx={{ mt: 2 }}>
-						{mensaje}
-					</Typography>
-				</Box>
-			</Modal>
-		</div>
+		<Modal
+			open={open}
+			onClose={() => setOpen(false)}
+			aria-labelledby='modal-modal-title'
+			aria-describedby='modal-modal-description'
+		>
+			<Box sx={style}>
+				<CheckCircleIcon sx={iconStyle} />
+				<Typography id='modal-modal-title' variant='h6' component='h2'>
+					{titulo}
+				</Typography>
+				<Typography
+					id='modal-modal-description'
+					sx={{ mt: 2, color: '#666', fontSize: '16px' }}
+				>
+					{mensaje}
+				</Typography>
+			</Box>
+		</Modal>
 	)
 }
