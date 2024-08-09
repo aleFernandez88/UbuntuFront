@@ -1,10 +1,24 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import CircleIcon from '@mui/icons-material/Circle';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function CardContactRequest ( {id, title, description, metodoClickArrow, datoMetodoClick, colorCirculo = null, optionCircle = true} ) {
+
+    const [menuEl, setMenuEl] = useState(null);
+    const open = Boolean(menuEl);
+    const navigate = useNavigate();
+    const editarMicro = () => {navigate(`/microeditar/${id}`)}
+
+    const handleClick = (evento) => {
+        setMenuEl(evento.currentTarget);
+    }
+    const handleClose = () => {
+        setMenuEl(null);
+    }
 
     return (
         <Box key={id} 
@@ -55,10 +69,23 @@ export default function CardContactRequest ( {id, title, description, metodoClic
                     flexDirection: 'column',
                     padding: {xs: '12% 4% 12% 16%', sm: '10% 1% 10% 20%'}
                 }}>
-                    <MoreVertIcon sx={{
-                        display: optionCircle? 'none' : 'default',
-                        mb: '30px'
-                    }}/>
+                    <Box>
+                        
+                        <MoreVertIcon sx={{
+                            display: optionCircle? 'none' : 'default',
+                            mb: '30px',
+                            }}
+                            onClick={handleClick}
+                        />
+                        <Menu
+                            anchorEl={menuEl}
+                            open={open}
+                            onClose={handleClose}
+                            MenuListProps={{'aria-labelledby': 'basic-button'}}>
+                                <MenuItem onClick={editarMicro}>Editar</MenuItem>
+                                <MenuItem onClick={handleClose}>Ocultar</MenuItem>
+                        </Menu>
+                    </Box>
                     <KeyboardArrowRightIcon onClick={()=> metodoClickArrow(datoMetodoClick)} />
             </Box>
             
