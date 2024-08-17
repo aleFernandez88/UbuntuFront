@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
+import apiClient from './apiClient';
 
 const servicesAxios = {
 	category: async () => {
@@ -46,7 +47,7 @@ const servicesAxios = {
 
 	message: async () => {
 		try {
-			const response = await axios.get(`http://localhost:8080/message`)
+			const response = await apiClient.get(`/message`);
 			return response.data
 		} catch (error) {
 			console.log(error)
@@ -55,7 +56,7 @@ const servicesAxios = {
 
 	messageId: async id => {
 		try {
-			const response = await axios.get(`http://localhost:8080/message/${id}`)
+			const response = await apiClient.get(`/message/${id}`)
 			return response.data
 		} catch (error) {
 			console.log(error)
@@ -64,8 +65,8 @@ const servicesAxios = {
 
 	messageUpdate: async (id, datos) => {
 		try {
-			const response = await axios.put(
-				`http://localhost:8080/message/${id}`,
+			const response = await apiClient.put(
+				`/message/${id}`,
 				datos
 			)
 			return response.data

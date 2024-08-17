@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Crear una instancia de Axios
 const apiClient = axios.create({
-  baseURL: 'https://api.example.com', // Reemplaza con tu URL base
+  baseURL: 'http://localhost:8080', // Reemplaza con tu URL base
   headers: {
     'Content-Type': 'application/json',
   },
@@ -18,3 +18,5 @@ apiClient.interceptors.request.use(
     }
     return config;
     })
+
+export default apiClient;
