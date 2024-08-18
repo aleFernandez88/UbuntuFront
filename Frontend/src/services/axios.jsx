@@ -23,10 +23,10 @@ const servicesAxios = {
 		}
 	},
 
-	undertakingsAll: async() => {
+	undertakingsAll: async () => {
 		try {
 			const response = await axios.get(`http://localhost:8080/microbusiness`)
-			return response.data;
+			return response.data
 		} catch (error) {
 			console.log(error)
 		}
@@ -68,6 +68,15 @@ const servicesAxios = {
 				`http://localhost:8080/message/${id}`,
 				datos
 			)
+			return response.data
+		} catch (error) {
+			console.log(error)
+		}
+	},
+
+	getPublications: async () => {
+		try {
+			const response = await axios.get(`http://localhost:8080/publication`)
 			return response.data
 		} catch (error) {
 			console.log(error)
