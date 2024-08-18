@@ -67,17 +67,7 @@ export const Home = () => {
 			>
 				Finanzas con impacto
 			</Typography>
-			{dataPublis
-				.slice(0, showAll ? dataPublis.length : 3)
-				.map((publi, index) => (
-					<CardPublication
-						key={index}
-						images={publi.images}
-						title={publi.title}
-						date={publi.date}
-						content={publi.content}
-					/>
-				))}
+			<CardPublication />
 			<Box sx={{ textAlign: 'center' }}>
 				<Button
 					variant='contained'
