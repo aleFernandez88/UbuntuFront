@@ -170,7 +170,19 @@ const FormMicroemprendimiento = ({
           inputProps={{ maxLength: 300 }}  
           required  
         />  
-        <Typography variant="cf2" sx={{marginLeft:"1rem"}}>{fieldLabels.descripcion.subtitle}</Typography> 
+           <Grid
+					container
+					justifyContent='space-between'
+					alignItems='center'
+					sx={{ padding: '0 10px' }}
+				>
+        <Typography variant='body2' color='textSecondary'>
+						Máximo 300 caracteres
+					</Typography>
+					<Typography variant='body2' color='textSecondary'>
+						{`${description.length}/300`}
+					</Typography>
+				</Grid>
 
         <CustomTextField 
           id="masInformacion" 
@@ -181,10 +193,22 @@ const FormMicroemprendimiento = ({
           rows={6}  
           value={moreInformation}  
           onChange={(e) => setMoreInformation(e.target.value)}  
-          inputProps={{ maxLength: 200 }}  
+          inputProps={{ maxLength: 300 }}  
           required  
         />  
-        <Typography variant="cf2" sx={{marginLeft:"1rem"}}>{fieldLabels.informacion.subtitle}</Typography> 
+        <Grid
+					container
+					justifyContent='space-between'
+					alignItems='center'
+					sx={{ padding: '0 10px' }}
+				>
+					<Typography variant='body2' color='textSecondary'>
+						Máximo 300 caracteres
+					</Typography>
+					<Typography variant='body2' color='textSecondary'>
+						{`${moreInformation.length}/300`}
+					</Typography>
+				</Grid>
         <Grid container spacing={2}>   
           <Grid item xs={6}>  </Grid>  
       <Grid item xs={6}>  

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';  
 import FormMicroEdit from "../../components/microBusinessForm/MicroBusinessFormEdit"; 
 import { ModalGeneric2 } from "../../components/modalGeneric/ModalGeneric copy";
+import { dataForm } from "../../assets/editForm.json";
 
 export const EditMicroemprendimiento = () => {  
     const { id } = useParams();  
@@ -11,7 +12,10 @@ export const EditMicroemprendimiento = () => {
     const [modalOpen, setModalOpen] = useState(false);  
     const [modalTitle, setModalTitle] = useState('');  
     const [modalMessage, setModalMessage] = useState('');  
-  
+    const fieldLabels = dataForm[0].fieldLabels.reduce((acc, item) => {  
+        return { ...acc, ...item };  
+    }, {});
+
     const navigate = useNavigate(); // Para redirigir después de la edición  
   
     useEffect(() => {  
@@ -62,6 +66,7 @@ export const EditMicroemprendimiento = () => {
             <FormMicroEdit  
                 initial  
                 initialValues={microbusinessData}  
+                fieldLabels={fieldLabels} 
                 onSubmit={handleSubmit} // Agrega esta prop para manejar el envío  
             />  
             <ModalGeneric2   

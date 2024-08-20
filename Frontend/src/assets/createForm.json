@@ -52,7 +52,13 @@
                     }  , 
           "item4": {"id": 41,
                     "name": "Jujuy"
-                    }  
+                    } , 
+          "item5": {"id": 5,
+                    "name": "Cordoba"
+                    },
+          "item6": {"id": 6,
+                    "name": "Monterrey"
+                    } 
         },  
         "ciudad": {  
           "label": "Ciudad",  

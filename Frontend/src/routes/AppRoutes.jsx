@@ -77,6 +77,7 @@ export const AppRoutes = () => {
 					path: '/microver/:id',
 					element: <MicroemprendimientoDetail />,
 				},
+				
 				{
 					path: '/solicitudContacto',
 					element: <ContactRequest />,

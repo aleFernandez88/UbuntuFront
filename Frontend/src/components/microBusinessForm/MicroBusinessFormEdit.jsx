@@ -1,5 +1,5 @@
 import React from 'react';  
-import { Container, TextField, Typography, MenuItem, Button, Box} from '@mui/material';   
+import { Container, TextField, Typography, MenuItem, Button, Box, Grid} from '@mui/material';   
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -11,7 +11,7 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 
 
 
-const FormMicroEdit = ({ initialValues, onSubmit }) => {  
+const FormMicroEdit = ({ initialValues,fieldLabels, onSubmit }) => {  
     const [formData, setFormData] = useState(initialValues);  
     const categories = dataForm[0].fieldLabels[0].categoria;
     const provinces = dataForm[0].fieldLabels[0].provincia;
@@ -64,6 +64,7 @@ const FormMicroEdit = ({ initialValues, onSubmit }) => {
                     value={formData.name || ''}   
                     onChange={handleChange}  
                 />  
+                <Typography variant="cf2" sx={{marginLeft:"1rem"}}>{fieldLabels.nombre.subtitle}</Typography> 
 
             <CustomTextField  
             id="categoria"  
@@ -83,6 +84,7 @@ const FormMicroEdit = ({ initialValues, onSubmit }) => {
             </MenuItem>   
              ))}  
             </CustomTextField> 
+            <Typography variant="cf2" sx={{marginLeft:"1rem"}}>{fieldLabels.categoria.subtitle}</Typography> 
             
                 <CustomTextField  
                     id="subCategoria"  
@@ -93,6 +95,8 @@ const FormMicroEdit = ({ initialValues, onSubmit }) => {
                     value={formData.subCategory || ''}   
                     onChange={handleChange}  
                 />   
+
+                <Typography variant="cf2" sx={{marginLeft:"1rem"}}>{fieldLabels.subcategoria.subtitle}</Typography> 
                  
                 <CustomTextField  
                     id="provincia"  
@@ -110,6 +114,7 @@ const FormMicroEdit = ({ initialValues, onSubmit }) => {
                         </MenuItem>  
                     ))}  
                     </CustomTextField>
+                    <Typography variant="cf2" sx={{marginLeft:"1rem"}}>{fieldLabels.provincia.subtitle}</Typography> 
 
                 <CustomTextField  
                     id="ciudad"   
@@ -120,6 +125,7 @@ const FormMicroEdit = ({ initialValues, onSubmit }) => {
                     value={formData.city || ''}   
                     onChange={handleChange}  
                 />  
+                <Typography variant="cf2" sx={{marginLeft:"1rem"}}>{fieldLabels.ciudad.subtitle}</Typography> 
         
                 <CustomTextField  
                     id="descripcion"  
@@ -132,6 +138,20 @@ const FormMicroEdit = ({ initialValues, onSubmit }) => {
                     value={formData.description || ''}  
                     onChange={handleChange}  
                 />  
+                <Grid
+          container
+          justifyContent='space-between'
+          alignItems='center'
+          sx={{ padding: '0 10px' }}
+        >
+<Typography variant='body2' color='textSecondary'>
+            Máximo 300 caracteres
+          </Typography>
+          <Typography variant='body2' color='textSecondary'>
+            {`${formData.description.length}/300`}
+          </Typography>
+        </Grid>
+
         
                 <CustomTextField   
                     id="masInformacion"   
@@ -144,6 +164,20 @@ const FormMicroEdit = ({ initialValues, onSubmit }) => {
                     value={formData.moreInformation || ''}  
                     onChange={handleChange}  
                 />  
+                  <Grid
+          container
+          justifyContent='space-between'
+          alignItems='center'
+          sx={{ padding: '0 10px' }}
+        >
+<Typography variant='body2' color='textSecondary'>
+            Máximo 300 caracteres
+          </Typography>
+          <Typography variant='body2' color='textSecondary'>
+            {`${formData.moreInformation.length}/300`}
+          </Typography>
+        </Grid>
+
 
                     <Box display="flex" justifyContent="space-between" sx={{ marginTop: '1rem' }}>  
                     {initialValues.images.map((image) => (  
