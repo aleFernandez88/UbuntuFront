@@ -40,7 +40,7 @@ export const Home = () => {
 					textAlign: 'center',
 				}}
 			>
-				<Link underline='none' href={'/emprendimientos'}>
+				<Link underline='none' href={'/microemprendimientos'}>
 					<Button
 						variant='contained'
 						sx={{ borderRadius: '20px', mt: '10px', minWidth: '184px' }}
