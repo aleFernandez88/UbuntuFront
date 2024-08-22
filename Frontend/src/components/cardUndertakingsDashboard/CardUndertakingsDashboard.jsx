@@ -35,7 +35,7 @@ const CardUndertakingsDashboard = () => {
             }
         }
         searchCategory();
-    },[])
+    },[datos])
 
     return (
         <Box sx={{
