@@ -30,7 +30,7 @@ const CardMessage = ({color, text, number}) => {
                     </Box>
                     <Typography variant="p" sx={{
                         fontSize: '20px',
-                        fontWeight: '700',
+                        fontWeight: '900',
                     }}> 
                         {number}
                     </Typography>

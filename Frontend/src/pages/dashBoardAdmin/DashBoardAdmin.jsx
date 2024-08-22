@@ -1,6 +1,8 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 import MessageManaged from '../../components/messageManaged/MessageManaged'
+import CardNewUndertakingsDashboard from '../../components/cardNewUndertakingsDashboard/CardNewUndertakingsDashboard'
+import CardUndertakingsDashboard from '../../components/cardUndertakingsDashboard/CardUndertakingsDashboard'
 
 export const DashBoardAdmin = () => {
 	return (
@@ -27,17 +29,11 @@ export const DashBoardAdmin = () => {
 					</Typography>
 				</Box>
 				
-				<Box sx={{margin: 'auto'}}>
-					<Typography sx={{ mt: 2, fontSize: '16px' }}> Nuevos Emprendimientos (CUADRO)</Typography>
-					
-				</Box>
+				<CardNewUndertakingsDashboard/>
 
 				<MessageManaged/>
 
-				<Box sx={{margin: 'auto'}}>
-					<Typography sx={{ mt: 2, fontSize: '16px' }}> Microemprendimientos por categoria</Typography>
-					
-				</Box>
+				<CardUndertakingsDashboard/>
 				
 				<Box sx={{ margin: 'auto'}}>
 					<Typography variant='h5' sx={{ 
