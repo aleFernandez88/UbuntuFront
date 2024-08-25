@@ -1,11 +1,12 @@
-import axios from 'axios'
+import axios from 'axios';
+import apiClient from './apiClient';
 
 const servicesAxios = {
 	category: async () => {
 		try {
 			// const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
 
-			const response = await axios.get('http://localhost:8080/category')
+			const response = await apiClient.get('/category')
 			return response.data
 		} catch (error) {
 			console.log(error)
@@ -14,8 +15,8 @@ const servicesAxios = {
 
 	undertakings: async id => {
 		try {
-			const response = await axios.get(
-				`http://localhost:8080/microbusiness/category/${id}`
+			const response = await apiClient.get(
+				`/microbusiness/category/${id}`
 			)
 			return response.data
 		} catch (error) {
@@ -25,7 +26,7 @@ const servicesAxios = {
 
 	undertakingsAll: async() => {
 		try {
-			const response = await axios.get(`http://localhost:8080/microbusiness`)
+			const response = await apiClient.get(`/microbusiness`)
 			return response.data;
 		} catch (error) {
 			console.log(error)
@@ -34,8 +35,8 @@ const servicesAxios = {
 
 	sendContactForm: async formData => {
 		try {
-			const response = await axios.post(
-				`http://localhost:8080/message`,
+			const response = await apiClient.post(
+				`/message`,
 				formData
 			)
 			return response.data
@@ -46,7 +47,7 @@ const servicesAxios = {
 
 	message: async () => {
 		try {
-			const response = await axios.get(`http://localhost:8080/message`)
+			const response = await apiClient.get(`/message`);
 			return response.data
 		} catch (error) {
 			console.log(error)
@@ -55,7 +56,7 @@ const servicesAxios = {
 
 	messageId: async id => {
 		try {
-			const response = await axios.get(`http://localhost:8080/message/${id}`)
+			const response = await apiClient.get(`/message/${id}`)
 			return response.data
 		} catch (error) {
 			console.log(error)
@@ -64,8 +65,8 @@ const servicesAxios = {
 
 	messageUpdate: async (id, datos) => {
 		try {
-			const response = await axios.put(
-				`http://localhost:8080/message/${id}`,
+			const response = await apiClient.put(
+				`/message/${id}`,
 				datos
 			)
 			return response.data

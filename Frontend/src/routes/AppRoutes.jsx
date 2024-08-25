@@ -19,6 +19,8 @@ import ContactRequest from '../pages/contactRequest/ContactRequest'
 import ContactSelected from '../pages/contactRequest/ContactSelected'
 import { EditMicroemprendimiento } from '../pages/microbusinessForm/MicroBusinessFormPut'
 import { UndertakingsAdmin } from '../pages/undertakings/UndertakingsAdmin'
+import RouteProtected from './RouteProtected'
+import { NotFoundPage } from '../pages/notFoundPage/NotFoundPage'
 
 export const AppRoutes = () => {
 	const routes = [
@@ -40,7 +42,7 @@ export const AppRoutes = () => {
 				},
 				{
 					path: '/microemprendimientosA',
-					element: <UndertakingsAdmin />,
+					element: <RouteProtected> <UndertakingsAdmin /> </RouteProtected>,
 				},
 				{
 					path: '/categoriaSeleccionada/:id',
@@ -61,31 +63,35 @@ export const AppRoutes = () => {
 				},
 				{
 					path: '/dashboard',
-					element: <DashBoardAdmin />,
+					element: (<RouteProtected> <DashBoardAdmin /> </RouteProtected>),
 				},
 			
 				{
 					path: '/microcrear',
-					element: <CreateFormu />,
+					element: <RouteProtected> <CreateFormu /> </RouteProtected>,
 				},
 			
 				{
 					path: '/microeditar/:id',
-					element: <EditMicroemprendimiento />,
+					element: <RouteProtected> <EditMicroemprendimiento /> </RouteProtected>,
 				},
 				{
 					path: '/microver/:id',
-					element: <MicroemprendimientoDetail />,
+					element: <RouteProtected> <MicroemprendimientoDetail /> </RouteProtected>,
 				},
 				
 				{
 					path: '/solicitudContacto',
-					element: <ContactRequest />,
+					element: <RouteProtected> <ContactRequest /> </RouteProtected>,
 				},
 				{
 					path: '/contactoSeleccionado',
-					element: <ContactSelected />,
+					element: <RouteProtected> <ContactSelected /> </RouteProtected>,
 				},
+				{
+					path: '*',
+					element: <NotFoundPage />
+				}
 			],
 		},
 		{
