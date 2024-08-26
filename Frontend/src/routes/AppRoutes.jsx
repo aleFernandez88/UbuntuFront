@@ -86,10 +86,6 @@ export const AppRoutes = () => {
 					path: '/contactoSeleccionado',
 					element: <ContactSelected />,
 				},
-				{
-					path: '/chatBot',
-					element: <ChatBot />,
-				},
 			],
 		},
 		{

@@ -6,7 +6,6 @@ const ChatWindow = () => {
 	const [messages, setMessages] = useState([])
 	const [currentLevel, setCurrentLevel] = useState('main')
 
-	// Ref para el contenedor de mensajes
 	const messagesEndRef = useRef(null)
 
 	const scrollToBottom = () => {
@@ -78,11 +77,9 @@ const ChatWindow = () => {
 				display: 'flex',
 				flexDirection: 'column',
 				height: '450px',
-				width: '300px',
-				border: '1px solid #ccc',
+				border: 'none',
 				borderRadius: '10px',
 				padding: '10px',
-				backgroundColor: 'white',
 			}}
 		>
 			<div
@@ -96,7 +93,6 @@ const ChatWindow = () => {
 				{messages.map((msg, index) => (
 					<Message key={index} text={msg.text} isUser={msg.isUser} />
 				))}
-				{/* Elemento de referencia para el desplazamiento */}
 				<div ref={messagesEndRef} />
 			</div>
 			<Options

@@ -29,12 +29,12 @@ const Options = ({ options, onSelectOption }) => {
 					padding: '10px',
 					margin: '5px 0',
 					borderRadius: '10px',
-					backgroundColor: 'transparent',
-					color: '#BC1111',
+					backgroundColor: '#093C59',
+					color: 'white',
 					border: 'none',
 				}}
 			>
-				Volver al inicio
+				Resetear
 			</button>
 		</div>
 	)
