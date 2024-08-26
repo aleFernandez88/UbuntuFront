@@ -4,8 +4,9 @@ import axios from 'axios';
 // Crear una instancia de Axios
 const apiClient = axios.create({
   baseURL: 'http://localhost:8080', // Reemplaza con tu URL base
-  headers: {
-    'Content-Type': 'application/json',
+  headers: { 
+    'Content-Type': ['application/json',
+     'multipart/form-data']
   },
 });
 
