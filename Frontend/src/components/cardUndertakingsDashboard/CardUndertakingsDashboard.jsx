@@ -5,7 +5,7 @@ import servicesAxios from "../../services/axios";
 
 const CardUndertakingsDashboard = () => {
 
-    const [datos, setDatos] = useState('');
+    const [datos, setDatos] = useState([]);
     const [error, setError] = useState('');
     const [categoryUndertakings, setCategoryUndertakings] = useState([0,0,0,0]);
 
@@ -16,9 +16,14 @@ const CardUndertakingsDashboard = () => {
             try {
                 
                 const response = await servicesAxios.undertakings(item.id);
-                const array = categoryUndertakings;
-                array[item.id-1] = response.length;
-                setCategoryUndertakings(array);
+                // const array = categoryUndertakings;
+                // array[item.id-1] = response.length;
+                // setCategoryUndertakings(array);
+                setCategoryUndertakings(prev => {
+                    const newCategoryUndertakings = [...prev];
+                    newCategoryUndertakings[item.id - 1] = response.length;
+                    return newCategoryUndertakings;
+                });
             } catch (error) {
                 setError(error);
             }
@@ -27,8 +32,9 @@ const CardUndertakingsDashboard = () => {
         const searchCategory = async() => {
             try {
                 const response = await servicesAxios.category();
-                response.map((item) => undertakingsCategory(item) )
+                // response.map((item) => undertakingsCategory(item) )
                 // console.log(categoryUndertakings)
+                await Promise.all(response.map(item => undertakingsCategory(item)))
                 setDatos(response);
             } catch (error) {
                 setError(error);
@@ -65,12 +71,13 @@ const CardUndertakingsDashboard = () => {
                         overflow: 'hidden',
                         alignItems: 'center',
                         borderBottom: '1px solid #226516',
-                        gap: '10px',
+                        gap: '17px',
                     }}>
                             <Typography variant="h3" sx={{
                                 alignContent: "center", 
                                 fontSize: '16px',  
-                                color: '#090909'
+                                color: '#090909',
+                                wordBreak: 'break-word'
                             }}>
                                 {dato.name}
                             </Typography>  
