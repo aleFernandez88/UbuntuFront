@@ -65,12 +65,12 @@ export const AppRoutes = () => {
 					path: '/dashboard',
 					element: (<RouteProtected> <DashBoardAdmin /> </RouteProtected>),
 				},
-			
+
 				{
 					path: '/microcrear',
 					element: <RouteProtected> <CreateFormu /> </RouteProtected>,
 				},
-			
+
 				{
 					path: '/microeditar/:id',
 					element: <RouteProtected> <EditMicroemprendimiento /> </RouteProtected>,
@@ -97,8 +97,6 @@ export const AppRoutes = () => {
 			path: '/login',
 			element: <Login />,
 		},
-
-		
 	]
 
 	return useRoutes(routes)
