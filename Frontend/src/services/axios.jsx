@@ -24,6 +24,17 @@ const servicesAxios = {
 		}
 	},
 
+	undertakingsId: async id => {
+		try {
+			const response = await apiClient.get(
+				`/microbusiness/${id}`
+			)
+			return response.data
+		} catch (error) {
+			console.log(error)
+		}
+	},
+
 	undertakingsAll: async() => {
 		try {
 			const response = await apiClient.get(`/microbusiness`)
@@ -38,6 +49,33 @@ const servicesAxios = {
 			const response = await apiClient.post(
 				`/message`,
 				formData
+			)
+			return response.data
+		} catch (error) {
+			console.log(error)
+		}
+	},
+	sendMicroForm: async form => {
+	try {  
+		const response = await apiClient.post('/microbusiness', form, {  
+		  headers: {  
+			'Content-Type': 'multipart/form-data',  
+		},  
+	}); 
+		  return response.data
+		} catch (error) {
+			console.log(error)
+		}
+	},
+	putMicroForm: async (id, form) => {
+		try {
+			const response = await apiClient.put(
+				`/microbusiness/${id}`,
+				form,
+				{ headers: {  
+					'Content-Type': 'multipart/form-data',  
+				},  
+			}
 			)
 			return response.data
 		} catch (error) {
@@ -74,6 +112,8 @@ const servicesAxios = {
 			console.log(error)
 		}
 	},
+
+	
 }
 
 export default servicesAxios

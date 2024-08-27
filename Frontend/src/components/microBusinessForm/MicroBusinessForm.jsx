@@ -1,18 +1,21 @@
 import React from 'react';  
-import { Container, TextField, Typography, Box, Dialog} from '@mui/material';   
+import { Container, TextField, Typography, Box} from '@mui/material';   
 import { styled } from '@mui/material/styles';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
-import ImageViewer from './VisorImagen';
 import { useState } from 'react';
+
+import ImageOverlay from './ImageOverlay';
 
 const CustomTextField = styled(TextField)(({ theme }) => ({  
     ...theme.typography.cf1,  
   }));  
 const FormMicroGet = ({ initialValues }) => {  
   const [open, setOpen] = useState(false);  
+  const [currentIndex, setCurrentIndex] = useState(0); 
   const [currentImageIndex, setCurrentImageIndex] = useState(0); 
   const handleImageClick = (index) => {  
     setCurrentImageIndex(index); // Guarda el índice de la imagen actual  
+    setCurrentIndex(index);  
     setOpen(true); // Abre el modal  
   };  
 
@@ -47,8 +50,8 @@ const FormMicroGet = ({ initialValues }) => {
         </Typography>
         
         <CustomTextField
-        id="provincia"
-        label={<Typography variant="cf1">Provincia</Typography>}  
+        id="country"
+        label={<Typography variant="cf1">Pais</Typography>}  
         fullWidth  
         margin="normal"    
         value={initialValues.province.country.name}  
@@ -127,12 +130,17 @@ const FormMicroGet = ({ initialValues }) => {
       ))}  
     </Box>  
           
-    <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>  
-        <ImageViewer images={initialValues.images} initialIndex={currentImageIndex} /> {/* Pasa la lista de imágenes y el índice actual al visor */}  
-      </Dialog> 
+    <ImageOverlay  
+        open={open}  
+        onClose={handleClose}  
+        images={initialValues.images}  
+        currentIndex={currentIndex}  
+        setCurrentIndex={setCurrentIndex} 
+      />  
 
     </Container>  
   );  
 };  
 
 export default FormMicroGet;
+

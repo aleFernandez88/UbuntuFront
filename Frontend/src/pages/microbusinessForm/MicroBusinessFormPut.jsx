@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";  
 import { useParams, useNavigate } from "react-router-dom";  
 import axios from 'axios';  
-import FormMicroEdit from "../../components/microBusinessForm/MicroBusinessFormEdit"; 
-import { ModalGeneric2 } from "../../components/modalGeneric/ModalGeneric copy";
+import FormMicroEdit from "../../components/microBusinessForm/MicroBusinessFormEdit";   
+import { ModalGeneric } from "../../components/modalGeneric/ModalGeneric";  // Actualizar importación  
+import { dataForm } from "../../assets/editForm.json";  
+import servicesAxios from "../../services/axios";  
 
 export const EditMicroemprendimiento = () => {  
     const { id } = useParams();  
@@ -11,7 +13,10 @@ export const EditMicroemprendimiento = () => {
     const [modalOpen, setModalOpen] = useState(false);  
     const [modalTitle, setModalTitle] = useState('');  
     const [modalMessage, setModalMessage] = useState('');  
-  
+    const fieldLabels = dataForm[0].fieldLabels.reduce((acc, item) => {  
+        return { ...acc, ...item };  
+    }, {});  
+
     const navigate = useNavigate(); // Para redirigir después de la edición  
   
     useEffect(() => {  
@@ -28,22 +33,43 @@ export const EditMicroemprendimiento = () => {
   
         fetchMicroBusiness();  
     }, [id]);  
+
+    const handleSubmit = async (formData) => {  
+        const { name, description, moreInformation, city, category, subCategory, province, images } = formData;  
+        const form = new FormData();  
+        
+        if (images && images.length > 0) {  
+            images.forEach((image) => {  
+                form.append('file', image);  
+            });  
+        }  
     
-    const handleSubmit = async (values) => {  
+        const microBusinessData = {  
+            name,  
+            description,  
+            moreInformation,  
+            city,  
+            category: { id: category },  
+            subCategory,  
+            province: { id: province }  
+        };  
+    
+        form.append('microBusiness', JSON.stringify(microBusinessData));  
+    
         try {  
-            await axios.put(`http://localhost:8080/microbusiness/${id}`, values);  
-            console.log(values)
+            const response = await servicesAxios.putMicroForm(id, form);  
             setModalTitle('Éxito');  
             setModalMessage('Microemprendimiento actualizado exitosamente!');  
             setModalOpen(true);  
         } catch (error) {  
-            console.error('Error al actualizar el microemprendimiento:', error.response ? error.response.data : error.message);  
+            const errorMessage = error.response ? error.response.data : error.message;  
+            console.error('Error al actualizar el microemprendimiento:', errorMessage);  
             setModalTitle('Error');  
             setModalMessage('No se pudo actualizar el microemprendimiento.');  
             setModalOpen(true);  
         }  
-    };  
-  
+    };   
+   
     const handleModalClose = () => {  
         setModalOpen(false);  
         navigate(`/microver/${id}`); // Redirige a la página de detalles después de cerrar el modal  
@@ -62,12 +88,13 @@ export const EditMicroemprendimiento = () => {
             <FormMicroEdit  
                 initial  
                 initialValues={microbusinessData}  
+                fieldLabels={fieldLabels}   
                 onSubmit={handleSubmit} // Agrega esta prop para manejar el envío  
             />  
-            <ModalGeneric2   
+            <ModalGeneric   
                 titulo={modalTitle}   
                 mensaje={modalMessage}   
-                open={modalOpen}   
+                isOpen={modalOpen} // Cambiar a isOpen  
                 onClose={handleModalClose}   
             />   
         </div>  

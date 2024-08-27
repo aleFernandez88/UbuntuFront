@@ -41,18 +41,24 @@
         "provincia": {  
           "label": "Provincia/Estado",  
           "subtitle": "Seleccioná una Provincia/Estado de la lista",
-          "item1": {"id": 11,
+           "item1": {"id": 1,
                     "name": "La Rioja"
                     } , 
-          "item2": {"id": 21,
+          "item2": {"id": 2,
                     "name": "Vizcaya"
                     },    
-          "item3": {"id": 31,
+          "item3": {"id": 3,
                     "name": "Chaco"
                     }  , 
-          "item4": {"id": 41,
+          "item4": {"id": 4,
                     "name": "Jujuy"
-                    }  
+                    } ,
+          "item5": {"id": 5,
+                    "name": "Cordoba"
+                    },
+          "item6": {"id": 6,
+                    "name": "Monterrey"
+                    } 
         },  
         "ciudad": {  
           "label": "Ciudad",  

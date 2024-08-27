@@ -1,11 +1,12 @@
-import React from "react";  
-import FormMicroemprendimiento from "../../components/microBusinessForm/MicroBusinessFormPost";
-import { dataForm } from "../../assets/createForm.json";
-import axios from "axios";
-import { ModalGeneric2 } from "../../components/modalGeneric/ModalGeneric copy";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";  
+import { useNavigate } from "react-router-dom";  
+import FormMicroemprendimiento from "../../components/microBusinessForm/MicroBusinessFormPost";  
+import { dataForm } from "../../assets/createForm.json";  
+import servicesAxios from "../../services/axios";  
+import { ModalGeneric } from "../../components/modalGeneric/ModalGeneric";   
 
 export const CreateFormu = () => {  
+  const navigate = useNavigate();  
   const title = dataForm[0].title || '';  
   const subtitle = dataForm[0].subtitle || '';  
   const button2 = dataForm[0].button2 || '';  
@@ -20,14 +21,15 @@ export const CreateFormu = () => {
 
   const handleModalClose = () => {  
     setModalOpen(false);  
-    window.location.reload(); 
+    navigate('/microemprendimientosA'); // Redirigir al cerrar el modal  
   };  
+
   const handleSubmit = async (formData) => {  
     const { name, description, moreInformation, city, category, subCategory, province, images } = formData;  
     const form = new FormData();  
 
     images.forEach((image) => {  
-      form.append('file', image);   
+      form.append('file', image);  
     });  
 
     const microBusinessData = {  
@@ -43,19 +45,12 @@ export const CreateFormu = () => {
     form.append('microBusiness', JSON.stringify(microBusinessData));  
 
     try {  
-      const response = await axios.post('http://localhost:8080/microbusiness', form, {  
-        headers: {  
-          'Content-Type': 'multipart/form-data',  
-        },  
-      });  
+      const response = await servicesAxios.sendMicroForm(form);  
       console.log('Microemprendimiento creado exitosamente:', response.data);   
-       
 
-      // Configurar el modal para éxito  
       setModalTitle('Éxito');  
       setModalMessage('Microemprendimiento cargado con éxito.');  
       setModalOpen(true);  
-
 
     } catch (error) {  
       console.error('Error al crear microemprendimiento:', error.response ? error.response.data : error.message);  
@@ -65,23 +60,22 @@ export const CreateFormu = () => {
       setModalOpen(true);  
     }  
   };  
-  
+
   return (  
-    <div>
-    <FormMicroemprendimiento  
-      title={title}   
-      subtitle={subtitle}   
-      button2={button2}   
-      fieldLabels={fieldLabels}  
-      onSubmit={handleSubmit}  
-       
-    />  
-    <ModalGeneric2   
+    <div>  
+      <FormMicroemprendimiento  
+        title={title}   
+        subtitle={subtitle}   
+        button2={button2}   
+        fieldLabels={fieldLabels}  
+        onSubmit={handleSubmit}  
+      />  
+      <ModalGeneric  
         titulo={modalTitle}   
         mensaje={modalMessage}   
-        open={modalOpen}   
-        onClose={handleModalClose}   
+        isOpen={modalOpen}  
+        onClose={handleModalClose} // Asegúrate de pasar el onClose  
       />  
-      </div>
+    </div>  
   );  
 };

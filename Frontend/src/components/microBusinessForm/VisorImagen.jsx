@@ -15,7 +15,7 @@ const ImageViewer = ({ images, initialIndex }) => {
 
   return (  
     <Box sx={{ position: 'relative', textAlign: 'center' }}>  
-      <Typography variant="h6" sx={{ position: 'absolute', top: '10px', left: '50%', transform: 'translateX(-50%)' }}>  
+      <Typography variant="h6" sx={{ position: 'absolute',color: 'white', top: '10px', left: '50%', transform: 'translateX(-50%)' }}>  
         {currentIndex + 1}/{images.length}  
       </Typography>  
       <img  

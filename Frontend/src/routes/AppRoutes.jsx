@@ -79,6 +79,7 @@ export const AppRoutes = () => {
 					path: '/microver/:id',
 					element: <RouteProtected> <MicroemprendimientoDetail /> </RouteProtected>,
 				},
+				
 				{
 					path: '/solicitudContacto',
 					element: <RouteProtected> <ContactRequest /> </RouteProtected>,
