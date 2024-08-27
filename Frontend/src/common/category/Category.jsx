@@ -47,7 +47,7 @@ function Category({cant}) {
                             <CategoryComponent
                                 key={categoria.id}
                                 text={categoria.name}
-                                url={categorias.data[0].url}
+                                url={categorias.data[categoria.id - 1].url}
                             />
                         </Link>
 					))
