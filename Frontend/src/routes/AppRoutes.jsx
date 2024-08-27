@@ -19,7 +19,6 @@ import ContactRequest from '../pages/contactRequest/ContactRequest'
 import ContactSelected from '../pages/contactRequest/ContactSelected'
 import { EditMicroemprendimiento } from '../pages/microbusinessForm/MicroBusinessFormPut'
 import { UndertakingsAdmin } from '../pages/undertakings/UndertakingsAdmin'
-import ChatBot from '../components/chatBot/ChatBot'
 
 export const AppRoutes = () => {
 	const routes = [
