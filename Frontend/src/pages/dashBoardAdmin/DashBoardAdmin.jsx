@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
+import PublicationView from '../../components/publicationView/PublicationView'
 
 export const DashBoardAdmin = () => {
 	return (
@@ -11,6 +12,7 @@ export const DashBoardAdmin = () => {
 				<Typography variant='h5' sx={{ mt: 4, fontSize: '16px' }}>
 					Estadisticas mesuales
 				</Typography>
+				<PublicationView />
 			</Box>
 		</>
 	)

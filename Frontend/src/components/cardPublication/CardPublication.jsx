@@ -11,16 +11,14 @@ import { Carousel } from '../carousel/Carousel'
 import servicesAxios from '../../services/axios'
 
 export const CardPublication = () => {
-	const [publication, setPublication] = useState([])
-	const [expanded, setExpanded] = useState(false)
+	const [publications, setPublications] = useState([])
+	const [expandedCards, setExpandedCards] = useState({})
 
 	useEffect(() => {
 		const fetchPublications = async () => {
 			try {
 				const response = await servicesAxios.getPublications()
-
-				// Suponiendo que el array de publicaciones viene ordenado cronológicamente desde el backend
-				setPublication(response)
+				setPublications(response)
 			} catch (error) {
 				console.log('Error al obtener las publicaciones:', error)
 			}
@@ -29,16 +27,36 @@ export const CardPublication = () => {
 		fetchPublications()
 	}, [])
 
-	// Manejar el cambio de estado
-	const handleExpandClick = () => {
-		setExpanded(!expanded)
+	// Manejar el cambio de estado para una tarjeta específica
+	const handleExpandClick = async id => {
+		// Alternar el estado de expansión de la tarjeta específica
+		setExpandedCards(prevState => ({
+			...prevState,
+			[id]: !prevState[id],
+		}))
+
+		// Aumentar las vistas de la publicación
+		try {
+			await servicesAxios.increaseViews(id)
+		} catch (error) {
+			console.log('Error al aumentar las vistas:', error)
+		}
+	}
+
+	const formatCreationDate = creationDate => {
+		const date = new Date(creationDate)
+		return date.toLocaleDateString('es-AR', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric',
+		})
 	}
 
 	return (
 		<>
-			{publication.slice(0, 3).map((publi, index) => (
+			{publications.slice(0, 3).map(publi => (
 				<Card
-					key={index}
+					key={publi.id}
 					sx={{
 						maxWidth: 345,
 						margin: 'auto',
@@ -53,12 +71,12 @@ export const CardPublication = () => {
 						</Typography>
 						<Carousel images={publi.images} />
 						<Typography variant='h5' component='div' margin={'20px 0 4px 0'}>
-							{publi.creationDate || 'Fecha no disponible'}
+							{formatCreationDate(publi.creationDate) || 'Fecha no disponible'}
 						</Typography>
 						<Typography variant='body2' color='text.secondary' paragraph>
 							{publi.description.split('\n')[0]}
 						</Typography>
-						<Collapse in={expanded} timeout='auto' unmountOnExit>
+						<Collapse in={expandedCards[publi.id]} timeout='auto' unmountOnExit>
 							{publi.description
 								.split('\n')
 								.slice(1)
@@ -77,11 +95,11 @@ export const CardPublication = () => {
 							<Box sx={{ textAlign: 'center' }}>
 								<Button
 									size='small'
-									onClick={handleExpandClick}
+									onClick={() => handleExpandClick(publi.id)}
 									color='primary'
 									paddingTop='0px'
 								>
-									{expanded ? 'Ver menos' : 'Ver más'}
+									{expandedCards[publi.id] ? 'Ver menos' : 'Ver más'}
 								</Button>
 							</Box>
 						)}
