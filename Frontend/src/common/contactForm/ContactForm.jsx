@@ -25,7 +25,7 @@ function ContactForm () {
 
 				setMessage(message);
 
-				const response = await servicesAxios.messageUpdate(message.id, message)
+				const response = await servicesAxios.messageUpdate(message.id)
 
 				if ( response ) {
 					setIsModalOpen(true);

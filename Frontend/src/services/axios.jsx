@@ -91,9 +91,9 @@ const servicesAxios = {
 		}
 	},
 
-	messageUpdate: async (id, datos) => {
+	messageUpdate: async (id) => {
 		try {
-			const response = await apiClient.put(`/message/${id}`, datos)
+			const response = await apiClient.post(`/message/managed/${id}`)
 			return response.data
 		} catch (error) {
 			console.log(error)
