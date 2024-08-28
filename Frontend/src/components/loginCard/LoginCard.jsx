@@ -38,7 +38,7 @@ function LoginCardComponent() {
 				localStorage.setItem('email', res.data.email)
 				// localStorage.setItem('phone', res.data.phone)
 
-				navigate('/')
+				navigate('/dashboard')
 			} catch (error) {
 				console.error('Login Failed:', error.response || error)
 			}
