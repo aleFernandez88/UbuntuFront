@@ -17,36 +17,68 @@ const ChatWindow = () => {
 	}, [messages])
 
 	const mainOptions = [
-		{ label: '¿Cómo está el clima hoy?', value: 'climaHoy' },
-		{ label: '¿Lloverá mañana?', value: 'lloveraManana' },
-		{ label: '¿Cuál es la temperatura actual?', value: 'temperaturaActual' },
+		{ label: '¿Qué es un microemprendimiento?', value: 'soyMicro' },
+		{
+			label: '¿Cómo puedo registrarme como inversor?',
+			value: 'lloveraManana',
+		},
+		{
+			label: '¿Cómo puedo registrarme como emprendedor?',
+			value: 'temperaturaActual',
+		},
 	]
 
 	const subOptions = {
-		climaHoy: [
-			{ label: '¿Qué tan fuerte es el viento?', value: 'viento' },
-			{ label: '¿Está nublado?', value: 'nublado' },
+		soyMicro: [
+			{ label: '¿Cómo puedo empezar un microemprendimiento?', value: 'viento' },
+			{
+				label:
+					'¿Cuáles son los beneficios de invertir en un microemprendimiento?',
+				value: 'nublado',
+			},
 		],
 		lloveraManana: [
-			{ label: '¿Qué probabilidad hay?', value: 'probabilidadLluvia' },
-			{ label: '¿A qué hora podría llover?', value: 'horaLluvia' },
+			{
+				label: '¿Qué documentos necesito para registrarme como inversor?',
+				value: 'probabilidadLluvia',
+			},
+			{
+				label: '¿Qué métodos de pago están disponibles para invertir?',
+				value: 'horaLluvia',
+			},
 		],
 		temperaturaActual: [
-			{ label: '¿Hace calor o frío?', value: 'calorFrio' },
-			{ label: '¿Cuál es la sensación térmica?', value: 'sensacionTermica' },
+			{
+				label: '¿Qué documentos necesito para registrarme como emprendedor?',
+				value: 'calorFrio',
+			},
+			{
+				label:
+					'¿Cuáles son los requisitos para publicar un microemprendimiento?',
+				value: 'sensacionTermica',
+			},
 		],
 	}
 
 	const responses = {
-		climaHoy: 'El clima está despejado y soleado.',
-		lloveraManana: 'Hay un 50% de probabilidad de lluvia mañana.',
-		temperaturaActual: 'La temperatura actual es de 25°C.',
-		viento: 'El viento es leve, con ráfagas de 10 km/h.',
-		nublado: 'No, el cielo está despejado.',
-		probabilidadLluvia: 'Hay un 50% de probabilidad de lluvia.',
-		horaLluvia: 'Podría llover por la tarde, alrededor de las 3 PM.',
-		calorFrio: 'Hace un clima templado.',
-		sensacionTermica: 'La sensación térmica es de 27°C.',
+		soyMicro:
+			'Un microemprendimiento es un negocio pequeño iniciado por un emprendedor.',
+		lloveraManana:
+			'Para registrarte como inversor, debes completar el formulario de registro y proporcionar la documentación necesaria.',
+		temperaturaActual:
+			'Para registrarte como emprendedor, debes completar el formulario de registro y proporcionar la documentación necesaria.',
+		viento:
+			'Puedes empezar un microemprendimiento identificando una oportunidad de negocio y desarrollando un plan.	',
+		nublado:
+			'Invertir en un microemprendimiento puede ofrecer altos retornos y apoyar la economía local.',
+		probabilidadLluvia:
+			'Para registrarte como inversor, necesitas un documento de identidad y una prueba de fondos.',
+		horaLluvia:
+			'Los métodos de pago disponibles incluyen transferencia bancaria y pagos electrónicos.',
+		calorFrio:
+			'Para registrarte como emprendedor, necesitas un documento de identidad y un plan de negocio.',
+		sensacionTermica:
+			'Para publicar un microemprendimiento, necesitas proporcionar una descripción detallada del proyecto y un plan de negocio.',
 	}
 
 	const handleSelectOption = option => {

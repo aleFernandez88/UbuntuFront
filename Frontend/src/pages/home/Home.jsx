@@ -11,12 +11,14 @@ import { Box, Button, Typography } from '@mui/material'
 import { Link } from '@mui/material'
 import { SwitchNavBar } from '../../common/switchNavBar/SwitchNavBar'
 import { ModalGeneric } from '../../components/modalGeneric/ModalGeneric'
+import { useNavigate } from 'react-router-dom'
 
 export const Home = () => {
 	const [showAll, setShowAll] = useState(false)
+	const navigate = useNavigate()
 
 	const handleShowAllClick = () => {
-		setShowAll(true)
+		navigate('/publicaciones')
 	}
 	return (
 		<>
@@ -67,17 +69,7 @@ export const Home = () => {
 			>
 				Finanzas con impacto
 			</Typography>
-			{dataPublis
-				.slice(0, showAll ? dataPublis.length : 3)
-				.map((publi, index) => (
-					<CardPublication
-						key={index}
-						images={publi.images}
-						title={publi.title}
-						date={publi.date}
-						content={publi.content}
-					/>
-				))}
+			<CardPublication publication={dataPublis} showAll={showAll} />
 			<Box sx={{ textAlign: 'center' }}>
 				<Button
 					variant='contained'

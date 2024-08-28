@@ -7,7 +7,7 @@ import { CardPublication } from '../../components/cardPublication/CardPublicatio
 
 export const Publications = () => {
 	return (
-		<div>
+		<div style={{ marginBottom: '30px' }}>
 			<Hero publi={dataHero[0]} imageBG={dataImages[0].url} />
 			{dataPublis?.map((publi, index) => (
 				<CardPublication

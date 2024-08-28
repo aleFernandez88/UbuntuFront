@@ -1,5 +1,5 @@
-import axios from 'axios';
-import apiClient from './apiClient';
+import axios from 'axios'
+import apiClient from './apiClient'
 
 const servicesAxios = {
 	category: async () => {
@@ -15,9 +15,7 @@ const servicesAxios = {
 
 	undertakings: async id => {
 		try {
-			const response = await apiClient.get(
-				`/microbusiness/category/${id}`
-			)
+			const response = await apiClient.get(`/microbusiness/category/${id}`)
 			return response.data
 		} catch (error) {
 			console.log(error)
@@ -26,19 +24,17 @@ const servicesAxios = {
 
 	undertakingsId: async id => {
 		try {
-			const response = await apiClient.get(
-				`/microbusiness/${id}`
-			)
+			const response = await apiClient.get(`/microbusiness/${id}`)
 			return response.data
 		} catch (error) {
 			console.log(error)
 		}
 	},
 
-	undertakingsAll: async() => {
+	undertakingsAll: async () => {
 		try {
 			const response = await apiClient.get(`/microbusiness`)
-			return response.data;
+			return response.data
 		} catch (error) {
 			console.log(error)
 		}
@@ -46,37 +42,31 @@ const servicesAxios = {
 
 	sendContactForm: async formData => {
 		try {
-			const response = await apiClient.post(
-				`/message`,
-				formData
-			)
+			const response = await apiClient.post(`/message`, formData)
 			return response.data
 		} catch (error) {
 			console.log(error)
 		}
 	},
 	sendMicroForm: async form => {
-	try {  
-		const response = await apiClient.post('/microbusiness', form, {  
-		  headers: {  
-			'Content-Type': 'multipart/form-data',  
-		},  
-	}); 
-		  return response.data
+		try {
+			const response = await apiClient.post('/microbusiness', form, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			})
+			return response.data
 		} catch (error) {
 			console.log(error)
 		}
 	},
 	putMicroForm: async (id, form) => {
 		try {
-			const response = await apiClient.put(
-				`/microbusiness/${id}`,
-				form,
-				{ headers: {  
-					'Content-Type': 'multipart/form-data',  
-				},  
-			}
-			)
+			const response = await apiClient.put(`/microbusiness/${id}`, form, {
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+			})
 			return response.data
 		} catch (error) {
 			console.log(error)
@@ -85,7 +75,7 @@ const servicesAxios = {
 
 	message: async () => {
 		try {
-			const response = await apiClient.get(`/message`);
+			const response = await apiClient.get(`/message`)
 			return response.data
 		} catch (error) {
 			console.log(error)
@@ -103,17 +93,30 @@ const servicesAxios = {
 
 	messageUpdate: async (id, datos) => {
 		try {
-			const response = await apiClient.put(
-				`/message/${id}`,
-				datos
-			)
+			const response = await apiClient.put(`/message/${id}`, datos)
 			return response.data
 		} catch (error) {
 			console.log(error)
 		}
 	},
 
-	
+	getPublications: async () => {
+		try {
+			const response = await apiClient.get(`/publication/last`)
+			return response.data
+		} catch (error) {
+			console.log(error)
+		}
+	},
+
+	increaseViews: async id => {
+		try {
+			const response = await apiClient.patch(`/publication/${id}/views`)
+			return response.data
+		} catch (error) {
+			console.log(error)
+		}
+	},
 }
 
 export default servicesAxios
